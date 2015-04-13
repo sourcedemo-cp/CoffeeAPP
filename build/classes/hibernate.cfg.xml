@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <mapping class="com.training.entity.Employee"/>
+  <mapping class="com.training.entity.Product"/>
+  <mapping class="com.training.entity.CoffeeTable"/>
+  <mapping class="com.training.entity.Order"/>
+  <mapping class="com.training.entity.OrderDetail"/>
+ </session-factory>
+</hibernate-configuration>
