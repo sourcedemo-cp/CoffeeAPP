@@ -52,7 +52,7 @@ public class Service extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public int getOrderDetail() {
+	public int getOrderDetail1() {
 		Product product = new Product();
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("1");
@@ -61,37 +61,272 @@ public class Service extends JFrame {
 		dtm.addColumn("4");
 		dtm.addColumn("5");
 		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
-		//CoffeeTable coffeeTable = new CoffeeTable();
+		// CoffeeTable coffeeTable = new CoffeeTable();
 		int id = 1;
 		CoffeeTable cf = new CoffeeTable();
 		cf.setTableId(id);
-		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService.getOrderDetailByID(1);
-		for (OrderDetail orderDetail : orderDetails) {
-			dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
-					orderDetail.getProduct().getProductName(),
-					orderDetail.getProduct().getProductPrice(),
-					orderDetail.getQuantity(), orderDetail.getPayment() });
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(1);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
 		}
-		tableDisplay.setModel(dtm);
-		return 1;
+		return -1;
 	}
 
-	// product.getProductName(), product.getProductPrice(),
-	// List<OrderDetail> orderDetails = orderDetailService.getAllOrderDetail();
-	// if(orderDetails != null){
-	// for (int i =0;i< orderDetails.size();i++) {
-	//
-	// System.out.println(orderDetails.get(i).getOrderDetailId());
-	// }
-	// }
-	//
-	//
-	// List<OrderDetail> orders =this.orderDetailService.getAllOrderDetail();
-	//
-	// for(OrderDetail orderDetail: orders){
-	// dtm.addRow(new Object[]{orderDetail.getOrder(), orderDetail.getPayment(),
-	// orderDetail.getQuantity(), orderDetail.getOrderDetailId()});
-	// }
+	public int getOrderDetail2() {
+		Product product = new Product();
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("1");
+		dtm.addColumn("2");
+		dtm.addColumn("3");
+		dtm.addColumn("4");
+		dtm.addColumn("5");
+		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
+		// CoffeeTable coffeeTable = new CoffeeTable();
+		int id = 1;
+		CoffeeTable cf = new CoffeeTable();
+		cf.setTableId(id);
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(2);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
+		}
+		return -1;
+	}
+
+	public int getOrderDetail3() {
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("1");
+		dtm.addColumn("2");
+		dtm.addColumn("3");
+		dtm.addColumn("4");
+		dtm.addColumn("5");
+		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(3);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	public int getOrderDetail4() {
+		Product product = new Product();
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("1");
+		dtm.addColumn("2");
+		dtm.addColumn("3");
+		dtm.addColumn("4");
+		dtm.addColumn("5");
+		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
+		// CoffeeTable coffeeTable = new CoffeeTable();
+		int id = 1;
+		CoffeeTable cf = new CoffeeTable();
+		cf.setTableId(id);
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(4);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
+		}
+		return -1;
+	}
+
+	public int getOrderDetail5() {
+		Product product = new Product();
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("1");
+		dtm.addColumn("2");
+		dtm.addColumn("3");
+		dtm.addColumn("4");
+		dtm.addColumn("5");
+		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
+		// CoffeeTable coffeeTable = new CoffeeTable();
+		int id = 1;
+		CoffeeTable cf = new CoffeeTable();
+		cf.setTableId(id);
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(5);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
+		}
+		return -1;
+	}
+
+	public int getOrderDetail6() {
+		Product product = new Product();
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("1");
+		dtm.addColumn("2");
+		dtm.addColumn("3");
+		dtm.addColumn("4");
+		dtm.addColumn("5");
+		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
+		// CoffeeTable coffeeTable = new CoffeeTable();
+		int id = 1;
+		CoffeeTable cf = new CoffeeTable();
+		cf.setTableId(id);
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(6);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
+		}
+		return -1;
+	}
+
+	public int getOrderDetail7() {
+		Product product = new Product();
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("1");
+		dtm.addColumn("2");
+		dtm.addColumn("3");
+		dtm.addColumn("4");
+		dtm.addColumn("5");
+		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
+		// CoffeeTable coffeeTable = new CoffeeTable();
+		int id = 1;
+		CoffeeTable cf = new CoffeeTable();
+		cf.setTableId(id);
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(7);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
+		}
+		return -1;
+	}
+
+	public int getOrderDetail8() {
+		Product product = new Product();
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("1");
+		dtm.addColumn("2");
+		dtm.addColumn("3");
+		dtm.addColumn("4");
+		dtm.addColumn("5");
+		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
+		// CoffeeTable coffeeTable = new CoffeeTable();
+		int id = 1;
+		CoffeeTable cf = new CoffeeTable();
+		cf.setTableId(id);
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(8);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
+		}
+		return -1;
+	}
+
+	public int getOrderDetail9() {
+		Product product = new Product();
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("1");
+		dtm.addColumn("2");
+		dtm.addColumn("3");
+		dtm.addColumn("4");
+		dtm.addColumn("5");
+		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
+		// CoffeeTable coffeeTable = new CoffeeTable();
+		int id = 1;
+		CoffeeTable cf = new CoffeeTable();
+		cf.setTableId(id);
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(9);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
+		}
+		return -1;
+	}
+
+	public int getOrderDetail10() {
+		Product product = new Product();
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("1");
+		dtm.addColumn("2");
+		dtm.addColumn("3");
+		dtm.addColumn("4");
+		dtm.addColumn("5");
+		dtm.addRow(new Object[] { "ID", "Name", "Price", "Quantity", "Payment" });
+		// CoffeeTable coffeeTable = new CoffeeTable();
+		int id = 1;
+		CoffeeTable cf = new CoffeeTable();
+		cf.setTableId(id);
+		List<OrderDetail> orderDetails = (List<OrderDetail>) orderDetailService
+				.getOrderDetailByID(10);
+		if (orderDetails.size() != 0) {
+			for (OrderDetail orderDetail : orderDetails) {
+				dtm.addRow(new Object[] { orderDetail.getOrderDetailId(),
+						orderDetail.getProduct().getProductName(),
+						orderDetail.getProduct().getProductPrice(),
+						orderDetail.getQuantity(), orderDetail.getPayment() });
+			}
+			tableDisplay.setModel(dtm);
+			return 1;
+		}
+		return -1;
+	}
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -129,7 +364,9 @@ public class Service extends JFrame {
 		table1.setForeground(Color.GRAY);
 		table1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (getOrderDetail() == 1) {
+				if (getOrderDetail1() != 1) {
+					table1.setForeground(Color.GRAY);
+				} else {
 					table1.setForeground(Color.BLUE);
 				}
 			}
@@ -137,66 +374,128 @@ public class Service extends JFrame {
 		table1.setBounds(20, 24, 89, 23);
 		panel.add(table1);
 
-		JButton table2 = new JButton("B\u00E0n 2");
+		final JButton table2 = new JButton("B\u00E0n 2");
 		table2.setForeground(Color.GRAY);
 		table2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (getOrderDetail() != 1) {
-					table1.setForeground(Color.RED);
+				if (getOrderDetail2() != 1) {
+					table2.setForeground(Color.GRAY);
+				} else {
+					table2.setForeground(Color.BLUE);
 				}
 			}
 		});
 		table2.setBounds(119, 24, 89, 23);
 		panel.add(table2);
 
-		JButton table3 = new JButton("B\u00E0n 3");
+		final JButton table3 = new JButton("B\u00E0n 3");
 		table3.setForeground(Color.GRAY);
 		table3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (getOrderDetail3() == 1) {
+					table3.setForeground(Color.BLUE);
+				} else {
+					table3.setForeground(Color.GRAY);
+				}
 			}
 		});
 		table3.setBounds(218, 24, 89, 23);
 		panel.add(table3);
 
-		JButton table4 = new JButton("B\u00E0n 4");
+		final JButton table4 = new JButton("B\u00E0n 4");
 		table4.setForeground(Color.GRAY);
 		table4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (getOrderDetail4() != 1) {
+					table4.setForeground(Color.GRAY);
+				} else {
+					table4.setForeground(Color.BLUE);
+				}
 			}
 		});
 		table4.setBounds(317, 24, 89, 23);
 		panel.add(table4);
 
-		JButton table5 = new JButton("B\u00E0n 5");
+		final JButton table5 = new JButton("B\u00E0n 5");
 		table5.setForeground(Color.GRAY);
 		table5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (getOrderDetail5() != 1) {
+					table5.setForeground(Color.GRAY);
+				} else {
+					table5.setForeground(Color.BLUE);
+				}
 			}
 		});
 		table5.setBounds(416, 24, 89, 23);
 		panel.add(table5);
 
-		JButton table6 = new JButton("B\u00E0n 6");
+		final JButton table6 = new JButton("B\u00E0n 6");
+		table6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (getOrderDetail6() != 1) {
+					table6.setForeground(Color.GRAY);
+				} else {
+					table6.setForeground(Color.BLUE);
+				}
+			}
+		});
 		table6.setForeground(Color.GRAY);
 		table6.setBounds(20, 79, 89, 23);
 		panel.add(table6);
 
-		JButton table7 = new JButton("B\u00E0n 7");
+		final JButton table7 = new JButton("B\u00E0n 7");
+		table7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (getOrderDetail7() != 1) {
+					table7.setForeground(Color.GRAY);
+				} else {
+					table7.setForeground(Color.BLUE);
+				}
+			}
+		});
 		table7.setForeground(Color.GRAY);
 		table7.setBounds(119, 79, 89, 23);
 		panel.add(table7);
 
-		JButton table8 = new JButton("B\u00E0n 8");
+		final JButton table8 = new JButton("B\u00E0n 8");
+		table8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (getOrderDetail8() != 1) {
+					table8.setForeground(Color.GRAY);
+				} else {
+					table8.setForeground(Color.BLUE);
+				}
+			}
+		});
 		table8.setForeground(Color.GRAY);
 		table8.setBounds(218, 79, 89, 23);
 		panel.add(table8);
 
-		JButton table9 = new JButton("B\u00E0n 9");
+		final JButton table9 = new JButton("B\u00E0n 9");
+		table9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (getOrderDetail9() != 1) {
+					table9.setForeground(Color.GRAY);
+				} else {
+					table9.setForeground(Color.BLUE);
+				}
+			}
+		});
 		table9.setForeground(Color.GRAY);
 		table9.setBounds(317, 79, 89, 23);
 		panel.add(table9);
 
-		JButton table10 = new JButton("B\u00E0n 10");
+		final JButton table10 = new JButton("B\u00E0n 10");
+		table10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (getOrderDetail10() != 1) {
+					table10.setForeground(Color.GRAY);
+				} else {
+					table10.setForeground(Color.BLUE);
+				}
+			}
+		});
 		table10.setForeground(Color.GRAY);
 		table10.setBounds(416, 79, 89, 23);
 		panel.add(table10);
@@ -252,7 +551,7 @@ public class Service extends JFrame {
 		JButton btnNewButton = new JButton("In h\u00F3a \u0111\u01A1n");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				getOrderDetail();
+
 			}
 		});
 		btnNewButton.setBounds(85, 150, 109, 36);
