@@ -30,6 +30,8 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
 import java.util.List;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 @Component("coffeeTableManagement")
 public class CoffeeTableManagement extends JFrame {
 
@@ -95,6 +97,11 @@ public class CoffeeTableManagement extends JFrame {
 		panel_2.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Exit");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		panel_2.add(btnNewButton_2);
 		
 		JPanel panel_3 = new JPanel();
@@ -106,19 +113,18 @@ public class CoffeeTableManagement extends JFrame {
 		panel_3.add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable();
-		panel_3.add(table, BorderLayout.NORTH);
+		scrollPane.setViewportView(table);
 	}
 	
 	
 	protected int AllData(){
 		
 		DefaultTableModel dtm = new DefaultTableModel();
-		dtm.addColumn("1");
-		dtm.addColumn("2");
-		dtm.addColumn("3");
-		dtm.addColumn("4");
-		dtm.addRow(new Object[]{"ID", "Name", "Quantity","Position"});
-		
+		dtm.addColumn("ID");
+		dtm.addColumn("Name");
+		dtm.addColumn("Quantity");
+		dtm.addColumn("Position");
+
 		List<CoffeeTable> coffeeTables = coffeeTableService.getAllCoffeeTable();
 		for (CoffeeTable coffeeTable : coffeeTables) {
 			dtm.addRow(new Object[]{coffeeTable.getTableId(),coffeeTable.getTableName(), coffeeTable.getTableQuantity(),coffeeTable.getTablePosition()});
