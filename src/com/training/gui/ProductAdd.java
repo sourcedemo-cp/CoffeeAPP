@@ -92,7 +92,7 @@ public class ProductAdd extends JDialog {
 		contentPanel.add(txfPrice);
 		txfPrice.setColumns(10);
 		
-		JButton btnNewButton = new JButton("New");
+		JButton btnNewButton = new JButton("Clear");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txfProductName.setText("");
@@ -112,9 +112,12 @@ public class ProductAdd extends JDialog {
 				product.setProductPrice(Integer.parseInt(txfPrice.getText()));
 				if(productService.addProduct(product) == 1) {
 					JOptionPane.showMessageDialog(null, "Added Successful!!!");
+					dispose();
+					
 				}else{
 					JOptionPane.showMessageDialog(null, "Fail!!!");
 				}
+				productManagement.getProduct();
 			}
 		});
 		btnAdd.setBounds(140, 141, 89, 23);

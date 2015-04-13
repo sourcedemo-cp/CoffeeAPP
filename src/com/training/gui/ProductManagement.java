@@ -70,6 +70,8 @@ public class ProductManagement extends JFrame {
 			dtm.addRow(new Object[]{pr.getProductId(), pr.getProductName(), pr.getProductPrice(), pr.getProductQuantity()});
 		}
 		table1.setModel(dtm);
+		table1.repaint();
+		table1.revalidate();
 		return 1;
 	}
 	public static void main(String[] args) {
@@ -78,6 +80,9 @@ public class ProductManagement extends JFrame {
 				try {
 					ProductManagement frame = new ProductManagement();
 					frame.setVisible(true);
+					frame.table1.repaint();
+					frame.table1.revalidate();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -109,20 +109,7 @@ public class ProductUpdate extends JFrame {
 		JButton btnOK = new JButton("OK");
 		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				Product product = productServiceImpl.updateProduct(product);
-//				txtName.setText(product.getProductName());
-//				txtQuantity.setText(product.getProductPrice() + "");
-//				txtPrice.setText(product.getProductPrice() + "");
 				
-//				Product product = new Product();
-//				product.setProductName(txtName.getText());
-//				product.setProductQuantity(Integer.parseInt(txtQuantity.getText()));
-//				product.setProductPrice(Integer.parseInt(txtPrice.getText()));
-//				if(productService.updateProduct(product) == 1) {
-//					JOptionPane.showMessageDialog(null, "Added Successful!!!");
-//				}else{
-//					JOptionPane.showMessageDialog(null, "Fail!!!");
-//				}
 			}
 		});
 		btnOK.setBounds(140, 141, 89, 23);

@@ -109,5 +109,7 @@ public class Login extends JFrame {
 		textPassword = new JPasswordField();
 		textPassword.setBounds(189, 103, 126, 20);
 		contentPane.add(textPassword);
+		
+		getRootPane().setDefaultButton(btnOk);
 	}
 }

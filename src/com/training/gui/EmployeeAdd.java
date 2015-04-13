@@ -137,7 +137,7 @@ public class EmployeeAdd extends JDialog {
 		
 		JLabel lblTelephone = new JLabel("Telephone:");
 		GridBagConstraints gbc_lblTelephone = new GridBagConstraints();
-		gbc_lblTelephone.anchor = GridBagConstraints.NORTHEAST;
+		gbc_lblTelephone.anchor = GridBagConstraints.EAST;
 		gbc_lblTelephone.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTelephone.gridx = 0;
 		gbc_lblTelephone.gridy = 3;
@@ -224,7 +224,7 @@ public class EmployeeAdd extends JDialog {
 		
 		JLabel lblWorkDate = new JLabel("Work date:");
 		GridBagConstraints gbc_lblWorkDate = new GridBagConstraints();
-		gbc_lblWorkDate.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_lblWorkDate.anchor = GridBagConstraints.EAST;
 		gbc_lblWorkDate.insets = new Insets(0, 0, 5, 5);
 		gbc_lblWorkDate.gridx = 0;
 		gbc_lblWorkDate.gridy = 5;
@@ -274,7 +274,7 @@ public class EmployeeAdd extends JDialog {
 		
 		JLabel label_8 = new JLabel("User name: ");
 		GridBagConstraints gbc_label_8 = new GridBagConstraints();
-		gbc_label_8.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_label_8.anchor = GridBagConstraints.EAST;
 		gbc_label_8.insets = new Insets(0, 0, 5, 5);
 		gbc_label_8.gridx = 0;
 		gbc_label_8.gridy = 7;
