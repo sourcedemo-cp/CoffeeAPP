@@ -124,6 +124,7 @@ public class EmployeeEdit extends JDialog {
 			}
 			{
 				textID = new JTextField();
+				textID.setEditable(false);
 				textID.setColumns(10);
 				textID.setBounds(95, 19, 159, 20);
 				panel.add(textID);
@@ -185,7 +186,8 @@ public class EmployeeEdit extends JDialog {
 				JButton btnClear = new JButton("Clear");
 				btnClear.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						textID.setText("");
+						int id = employeeManagement.getId();
+						textID.setText(Integer.toString(id));
 						textName.setText("");
 						textCity.setText("");
 						textAddress.setText("");

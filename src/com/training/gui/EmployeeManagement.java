@@ -35,7 +35,16 @@ import java.awt.Color;
 @Component("employeeManagement")
 
 public class EmployeeManagement extends JFrame {
+	
+	private int id;
+	
 
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	@Autowired
 	private EmployeeService employeeService;
 	
@@ -60,23 +69,19 @@ public class EmployeeManagement extends JFrame {
 	 * Launch the application.
 	 */
 	
-	//public DefaultTableModel dtm;
 	private JTable table1;
 	
 	public int AllData(){
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("ID");
 		dtm.addColumn("Name");
-		dtm.addColumn("City");
 		dtm.addColumn("Address");
 		dtm.addColumn("Telephone");
-		dtm.addColumn("Shift");
-		dtm.addColumn("Work date");
 		dtm.addColumn("Sex");
 		dtm.addColumn("User name");
 		dtm.addColumn("Password");
 		for(Employee employee: this.employeeService.getAllEmployee()){
-			dtm.addRow(new Object[]{employee.getEmployeeId(), employee.getEmployeeName(),employee.getEmpoyeeCity(), employee.getEmployeeAddress(), employee.getEmployeeTelephone(), employee.getShift(), employee.getWorkDate(), employee.getEmployeeSex(), employee.getUserName(), employee.getPassword()});
+			dtm.addRow(new Object[]{employee.getEmployeeId(), employee.getEmployeeName(), employee.getEmployeeAddress(), employee.getEmployeeTelephone(), employee.getEmployeeSex(), employee.getUserName(), employee.getPassword()});
 		}
 		this.table1.setModel(dtm);
 		this.table1.repaint();
@@ -139,9 +144,10 @@ public class EmployeeManagement extends JFrame {
 				AllData();
 			}
 		});
-		//		contentPane.add(table1);
 				btnUpdate.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+						setId(id);
 						employeeEdit.setVisible(true);
 					}
 				});

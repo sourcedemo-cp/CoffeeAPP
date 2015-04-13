@@ -41,6 +41,11 @@ public class CoffeeTableManagement extends JFrame {
 	@Autowired
 	private Menu menu;
 	
+	@Autowired
+	private CoffeeTableAdd coffeeTableAdd;
+	
+	@Autowired
+	private CoffeeTableUpdate coffeeTableUpdate;
 	
 	private JPanel contentPane;
 	private JTable table;
@@ -85,9 +90,21 @@ public class CoffeeTableManagement extends JFrame {
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton = new JButton("Add");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				coffeeTableAdd.setVisible(true);
+				coffeeTableAdd.setLocationRelativeTo(null);
+			}
+		});
 		panel_1.add(btnNewButton);
 		
 		JButton btnEdit = new JButton("Edit");
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				coffeeTableUpdate.setVisible(true);
+				coffeeTableUpdate.setLocationRelativeTo(null);
+			}
+		});
 		panel_1.add(btnEdit);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -131,12 +148,10 @@ public class CoffeeTableManagement extends JFrame {
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("ID");
 		dtm.addColumn("Name");
-		dtm.addColumn("Quantity");
-		dtm.addColumn("Position");
 
 		List<CoffeeTable> coffeeTables = coffeeTableService.getAllCoffeeTable();
 		for (CoffeeTable coffeeTable : coffeeTables) {
-			dtm.addRow(new Object[]{coffeeTable.getTableId(),coffeeTable.getTableName(), coffeeTable.getTableQuantity(),coffeeTable.getTablePosition()});
+			dtm.addRow(new Object[]{coffeeTable.getTableId(),coffeeTable.getTableName()});
 		}
 		
 		table.setModel(dtm);
