@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.FlowLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -34,6 +35,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 @Component("coffeeTableManagement")
 public class CoffeeTableManagement extends JFrame {
+	
+	private int id;
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	@Autowired
 	private CoffeeTableService coffeeTableService;
@@ -108,6 +122,18 @@ public class CoffeeTableManagement extends JFrame {
 		panel_1.add(btnEdit);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int id = (int) table.getValueAt(table.getSelectedRow(), 0);
+				if(coffeeTableService.deleteCoffeeTableById(id)== true){
+					JOptionPane.showMessageDialog(null, "Deleted successful!!!");
+				}else {
+					JOptionPane.showMessageDialog(null, "Fail!!!");
+				}
+				
+				AllData();
+			}
+		});
 		panel_1.add(btnDelete);
 		
 		JPanel panel_2 = new JPanel();

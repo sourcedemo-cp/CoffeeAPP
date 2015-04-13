@@ -17,6 +17,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 @Component("coffeeTableUpdate")
 public class CoffeeTableUpdate extends JFrame {
 
@@ -79,6 +81,10 @@ public class CoffeeTableUpdate extends JFrame {
 		panel.add(btnClear);
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnOk.setBounds(110, 150, 89, 23);
 		panel.add(btnOk);
 		

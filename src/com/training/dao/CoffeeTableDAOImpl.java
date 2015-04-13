@@ -46,8 +46,8 @@ public class CoffeeTableDAOImpl implements CoffeeTableDAO {
 
 	@Override
 	@Transactional
-	public boolean deleteCoffeeTableById(CoffeeTable coffeeTable) {
-		//CoffeeTable coffeeTable = (CoffeeTable) sessionFactory.getCurrentSession().load(CoffeeTable.class, id);
+	public boolean deleteCoffeeTableById(int id) {
+		CoffeeTable coffeeTable = (CoffeeTable) sessionFactory.getCurrentSession().load(CoffeeTable.class, id);
 		if(null != coffeeTable){
 			sessionFactory.getCurrentSession().delete(coffeeTable);
 			return true;

@@ -30,8 +30,8 @@ public class CoffeeTableServiceImpl implements CoffeeTableService{
 	}
 
 	@Override
-	public boolean deleteCoffeeTableById(CoffeeTable coffeeTable) {
-		return coffeeTableDAO.deleteCoffeeTableById(coffeeTable);
+	public boolean deleteCoffeeTableById(int id) {
+		return coffeeTableDAO.deleteCoffeeTableById(id);
 	}
 
 	@Override

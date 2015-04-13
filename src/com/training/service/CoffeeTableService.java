@@ -9,6 +9,6 @@ public interface CoffeeTableService {
 	public List<CoffeeTable> getCoffeeTalbeByID(int id);
 	public CoffeeTable findCoffeeTableById(Integer id);
 	public int addCoffeeTable(CoffeeTable coffeeTable);
-	public boolean deleteCoffeeTableById(CoffeeTable coffeeTable);
+	public boolean deleteCoffeeTableById(int id);
 	public int updateCoffeeTable(CoffeeTable coffeeTable);
 }
