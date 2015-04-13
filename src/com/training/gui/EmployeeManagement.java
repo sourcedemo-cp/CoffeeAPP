@@ -30,6 +30,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 @Component("employeeManagement")
 
 public class EmployeeManagement extends JFrame {
@@ -108,6 +110,7 @@ public class EmployeeManagement extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 0));
 		

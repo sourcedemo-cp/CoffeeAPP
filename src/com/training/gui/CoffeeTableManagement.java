@@ -104,7 +104,6 @@ public class CoffeeTableManagement extends JFrame {
 		panel_2.add(btnNewButton_2);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panel_3, BorderLayout.CENTER);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
