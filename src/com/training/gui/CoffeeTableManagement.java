@@ -38,6 +38,10 @@ public class CoffeeTableManagement extends JFrame {
 	@Autowired
 	private CoffeeTableService coffeeTableService;
 	
+	@Autowired
+	private Menu menu;
+	
+	
 	private JPanel contentPane;
 	private JTable table;
 
@@ -93,6 +97,13 @@ public class CoffeeTableManagement extends JFrame {
 		panel.add(panel_2, BorderLayout.EAST);
 		
 		JButton btnNewButton_1 = new JButton("Back");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
 		panel_2.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Exit");
