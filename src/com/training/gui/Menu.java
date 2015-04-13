@@ -107,15 +107,6 @@ public class Menu extends JFrame {
 			}
 		});
 		mnNewMenu.add(menuProduct);
-		
-		JMenu mnNewMenu_1 = new JMenu("Statistic");
-		menuBar.add(mnNewMenu_1);
-		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Revenue");
-		mnNewMenu_1.add(mntmNewMenuItem_2);
-		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("S\u1EA3n ph\u1EA9m");
-		mnNewMenu_1.add(mntmNewMenuItem_3);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
