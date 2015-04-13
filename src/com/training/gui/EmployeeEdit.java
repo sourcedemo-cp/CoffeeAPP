@@ -32,20 +32,19 @@ public class EmployeeEdit extends JDialog {
 	private EmployeeService employeeService;
 	
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textID;
-	private JTextField textName;
-	private JTextField textCity;
-	private JTextField textAddress;
-	private JTextField textTel;
-	private JTextField textShift;
-	private JTextField textWorkDate;
-	private JTextField textSex;
-	private JTextField textUser;
-	private JPasswordField textPass;
+	static JTextField textID;
+	static JTextField textName;
+	static JTextField textCity;
+	static JTextField textAddress;
+	static JTextField textTel;
+	static JTextField textSex;
+	static JTextField textUser;
+	static JPasswordField textPass;
 
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		try {
 			EmployeeEdit dialog = new EmployeeEdit();
@@ -61,7 +60,7 @@ public class EmployeeEdit extends JDialog {
 	 */
 	public EmployeeEdit() {
 		setTitle("Employee Edit");
-		setBounds(100, 100, 434, 439);
+		setBounds(100, 100, 427, 361);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -70,7 +69,7 @@ public class EmployeeEdit extends JDialog {
 			JPanel panel = new JPanel();
 			panel.setLayout(null);
 			panel.setBorder(new TitledBorder(null, "Management", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panel.setBounds(22, 11, 368, 380);
+			panel.setBounds(22, 11, 367, 296);
 			contentPanel.add(panel);
 			{
 				JLabel label = new JLabel("ID: ");
@@ -98,28 +97,18 @@ public class EmployeeEdit extends JDialog {
 				panel.add(label);
 			}
 			{
-				JLabel label = new JLabel("Shift");
-				label.setBounds(22, 206, 46, 14);
-				panel.add(label);
-			}
-			{
-				JLabel label = new JLabel("Work date");
-				label.setBounds(22, 242, 60, 14);
-				panel.add(label);
-			}
-			{
 				JLabel label = new JLabel("Sex: ");
-				label.setBounds(22, 281, 46, 14);
+				label.setBounds(22, 200, 46, 14);
 				panel.add(label);
 			}
 			{
 				JLabel label = new JLabel("User name: ");
-				label.setBounds(22, 318, 89, 14);
+				label.setBounds(22, 231, 89, 14);
 				panel.add(label);
 			}
 			{
 				JLabel label = new JLabel("Password: ");
-				label.setBounds(22, 346, 77, 14);
+				label.setBounds(22, 262, 77, 14);
 				panel.add(label);
 			}
 			{
@@ -154,32 +143,20 @@ public class EmployeeEdit extends JDialog {
 				panel.add(textTel);
 			}
 			{
-				textShift = new JTextField();
-				textShift.setColumns(10);
-				textShift.setBounds(95, 203, 159, 20);
-				panel.add(textShift);
-			}
-			{
-				textWorkDate = new JTextField();
-				textWorkDate.setColumns(10);
-				textWorkDate.setBounds(93, 239, 161, 20);
-				panel.add(textWorkDate);
-			}
-			{
 				textSex = new JTextField();
 				textSex.setColumns(10);
-				textSex.setBounds(95, 278, 159, 20);
+				textSex.setBounds(95, 197, 159, 20);
 				panel.add(textSex);
 			}
 			{
 				textUser = new JTextField();
 				textUser.setColumns(10);
-				textUser.setBounds(95, 315, 159, 20);
+				textUser.setBounds(95, 228, 159, 20);
 				panel.add(textUser);
 			}
 			{
 				textPass = new JPasswordField();
-				textPass.setBounds(95, 343, 159, 20);
+				textPass.setBounds(95, 259, 159, 20);
 				panel.add(textPass);
 			}
 			{
@@ -192,8 +169,7 @@ public class EmployeeEdit extends JDialog {
 						textCity.setText("");
 						textAddress.setText("");
 						textTel.setText("");
-						textShift.setText("");
-						textWorkDate.setText("");
+						
 						textSex.setText("");
 						textUser.setText("");
 						textPass.setText("");
@@ -213,8 +189,7 @@ public class EmployeeEdit extends JDialog {
 						employee.setEmpoyeeCity(textCity.getText());
 						employee.setEmployeeAddress(textAddress.getText());
 						employee.setEmployeeTelephone(textTel.getText());
-						employee.setShift(textShift.getText());
-						employee.setWorkDate(textWorkDate.getText());
+						
 						if(employee.getEmployeeSex().length() != 0){
 							employee.setEmployeeSex(textSex.getText());
 						}
@@ -238,7 +213,7 @@ public class EmployeeEdit extends JDialog {
 						dispose();
 					}
 				});
-				button.setBounds(264, 342, 89, 23);
+				button.setBounds(264, 258, 89, 23);
 				panel.add(button);
 			}
 		}

@@ -3,6 +3,7 @@ package com.training.gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.security.auth.callback.TextInputCallback;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 import com.training.entity.Product;
 import com.training.service.ProductService;
-import com.training.service.ProductServiceImpl;
+import com.training.service.ProductService;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,12 +29,13 @@ public class ProductUpdate extends JFrame {
 	private ProductManagement productManagement;
 	
 	@Autowired
-	private ProductServiceImpl productServiceImpl;
+	private ProductService productService;
 	
 	private JPanel contentPane;
-	private JTextField txtName;
-	private JTextField txtQuantity;
-	private JTextField txtPrice;
+	static JTextField txtName;
+	static JTextField txtQuantity;
+	static JTextField txtPrice;
+	static JTextField textProductID;
 
 	/**
 	 * Launch the application.
@@ -109,7 +111,19 @@ public class ProductUpdate extends JFrame {
 		JButton btnOK = new JButton("OK");
 		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				int id = Integer.parseInt(textProductID.getText());
+				Product product = productService.findProductById(id);				
+				product.setProductName(txtName.getText());
+				product.setProductQuantity(Integer.parseInt(txtQuantity.getText()));
+				product.setProductPrice(Integer.parseInt(txtPrice.getText()));
+				if(productService.updateProduct(product) == 1) {
+					JOptionPane.showMessageDialog(null, "Updated Successful!!!");
+					dispose();
+					
+				}else{
+					JOptionPane.showMessageDialog(null, "Fail!!!");
+				}
+				productManagement.getProduct();
 			}
 		});
 		btnOK.setBounds(140, 141, 89, 23);
@@ -124,5 +138,15 @@ public class ProductUpdate extends JFrame {
 		});
 		btnBack.setBounds(253, 141, 89, 23);
 		panel.add(btnBack);
+		
+		JLabel lblNewLabel = new JLabel("Product ID: ");
+		lblNewLabel.setBounds(29, 9, 75, 14);
+		panel.add(lblNewLabel);
+		
+		textProductID = new JTextField();
+		textProductID.setEnabled(false);
+		textProductID.setBounds(118, 3, 181, 20);
+		panel.add(textProductID);
+		textProductID.setColumns(10);
 	}
 }

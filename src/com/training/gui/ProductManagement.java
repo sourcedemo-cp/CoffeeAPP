@@ -50,7 +50,7 @@ public class ProductManagement extends JFrame {
 	private ProductUpdate productUpdate;
 	
 	@Autowired
-	private ProductServiceImpl productServiceImpl;
+	private ProductService productService;
 	
 	private JPanel contentPane;
 	private JTable table1;
@@ -65,7 +65,7 @@ public class ProductManagement extends JFrame {
 		dtm.addColumn("Name");
 		dtm.addColumn("Price");
 		dtm.addColumn("Quantity");
-		List<Product> products = productServiceImpl.getAllProduct();
+		List<Product> products = productService.getAllProduct();
 		for(Product pr: products){
 			dtm.addRow(new Object[]{pr.getProductId(), pr.getProductName(), pr.getProductPrice(), pr.getProductQuantity()});
 		}
@@ -137,7 +137,7 @@ public class ProductManagement extends JFrame {
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-				if(productServiceImpl.deleteProductById((productServiceImpl.findProductById(id)))){
+				if(productService.deleteProductById((productService.findProductById(id)))){
 					JOptionPane.showMessageDialog(null, "Deleted successful!!!");
 				}else{
 					JOptionPane.showMessageDialog(null, "Fail!!!");
@@ -146,6 +146,12 @@ public class ProductManagement extends JFrame {
 		});
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+				Product product = productService.findProductById(id);
+				productUpdate.textProductID.setText(product.getProductId() + "");
+				productUpdate.txtName.setText(product.getProductName());
+				productUpdate.txtPrice.setText(product.getProductPrice() + "");
+				productUpdate.txtQuantity.setText(product.getProductQuantity() + "");
 				productUpdate.setVisible(true);
 			}
 		});

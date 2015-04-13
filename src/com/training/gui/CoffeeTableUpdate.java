@@ -11,21 +11,32 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.training.entity.CoffeeTable;
+import com.training.service.CoffeeTableService;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 @Component("coffeeTableUpdate")
 public class CoffeeTableUpdate extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txfID;
-	private JTextField txfName;
+	static JTextField txfID;
+	static JTextField txfName;
 
+	@Autowired
+	private CoffeeTableService coffeeTableService;
+	
+	@Autowired
+	private CoffeeTableManagement coffeeTableManagement;
 	/**
 	 * Launch the application.
 	 */
@@ -83,6 +94,11 @@ public class CoffeeTableUpdate extends JFrame {
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int id = Integer.parseInt(txfID.getText());
+				CoffeeTable coffeeTable = coffeeTableService.findCoffeeTableById(id);
+				//employee.setEmployeeId(id);
+				coffeeTable.setTableName(txfName.getText());
+				coffeeTableManagement.AllData();
 			}
 		});
 		btnOk.setBounds(110, 150, 89, 23);

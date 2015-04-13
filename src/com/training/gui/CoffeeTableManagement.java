@@ -62,7 +62,7 @@ public class CoffeeTableManagement extends JFrame {
 	private CoffeeTableUpdate coffeeTableUpdate;
 	
 	private JPanel contentPane;
-	private JTable table;
+	private JTable table1;
 
 	/**
 	 * Launch the application.
@@ -73,8 +73,8 @@ public class CoffeeTableManagement extends JFrame {
 				try {
 					CoffeeTableManagement frame = new CoffeeTableManagement();
 					frame.setVisible(true);
-					frame.table.repaint();
-					frame.table.revalidate();
+					frame.table1.repaint();
+					frame.table1.revalidate();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -115,6 +115,10 @@ public class CoffeeTableManagement extends JFrame {
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+				CoffeeTable coffeeTable = coffeeTableService.findCoffeeTableById(id);
+				coffeeTableUpdate.txfID.setText(coffeeTable.getTableId() + "");
+				coffeeTableUpdate.txfName.setText(coffeeTable.getTableName() + "");
 				coffeeTableUpdate.setVisible(true);
 				coffeeTableUpdate.setLocationRelativeTo(null);
 			}
@@ -124,7 +128,7 @@ public class CoffeeTableManagement extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id = (int) table.getValueAt(table.getSelectedRow(), 0);
+				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
 				if(coffeeTableService.deleteCoffeeTableById(id)== true){
 					JOptionPane.showMessageDialog(null, "Deleted successful!!!");
 				}else {
@@ -164,8 +168,8 @@ public class CoffeeTableManagement extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		panel_3.add(scrollPane, BorderLayout.CENTER);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		table1 = new JTable();
+		scrollPane.setViewportView(table1);
 	}
 	
 	
@@ -180,9 +184,9 @@ public class CoffeeTableManagement extends JFrame {
 			dtm.addRow(new Object[]{coffeeTable.getTableId(),coffeeTable.getTableName()});
 		}
 		
-		table.setModel(dtm);
-		table.repaint();
-		table.revalidate();
+		table1.setModel(dtm);
+		table1.repaint();
+		table1.revalidate();
 		return 1;
 	}
 

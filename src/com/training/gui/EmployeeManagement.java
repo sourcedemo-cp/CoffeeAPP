@@ -147,7 +147,23 @@ public class EmployeeManagement extends JFrame {
 				btnUpdate.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-						setId(id);
+						Employee employee = employeeService.findEmployeeById(id);
+						EmployeeEdit.textID.setText(employee.getEmployeeId() + "");
+						EmployeeEdit.textName.setText(employee.getEmployeeName());
+						EmployeeEdit.textCity.setText(employee.getEmpoyeeCity());
+						EmployeeEdit.textAddress.setText(employee.getEmployeeAddress());
+						EmployeeEdit.textTel.setText(employee.getEmployeeTelephone());
+						EmployeeEdit.textSex.setText(employee.getEmployeeSex());
+						EmployeeEdit.textUser.setText(employee.getUserName());
+						EmployeeEdit.textPass.setText(employee.getPassword());
+//						employee.setEmpoyeeCity(EmployeeEdit.textCity.getText());
+//						employee.setEmployeeAddress(EmployeeEdit.textAddress.getText());
+//						employee.setEmployeeTelephone(EmployeeEdit.textTel.getText());
+//						employee.setShift(EmployeeEdit.textShift.getText());
+//						employee.setWorkDate(EmployeeEdit.textWorkDate.getText());
+//						employee.setEmployeeSex(EmployeeEdit.textSex.getText());
+//						employee.setUserName(EmployeeEdit.textUser.getText());
+//						employee.setPassword(EmployeeEdit.textPass.getText());						
 						employeeEdit.setVisible(true);
 					}
 				});
