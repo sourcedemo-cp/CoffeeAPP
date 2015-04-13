@@ -11,44 +11,39 @@ import com.training.entity.CoffeeTable;
 @Service
 public class CoffeeTableServiceImpl implements CoffeeTableService{
 	@Autowired
-	private CoffeeTableDAO cfDAO;
+	private CoffeeTableDAO coffeeTableDAO;
 	
 	@Override
 	public List<CoffeeTable> getAllCoffeeTable() {
-		// TODO Auto-generated method stub
-		return cfDAO.getAllCoffeeTable();
+		return coffeeTableDAO.getAllCoffeeTable();
 	}
 
 	@Override
 	public CoffeeTable findCoffeeTableById(Integer id) {
-		// TODO Auto-generated method stub
-		return cfDAO.findCoffeeTableById(id);
+		return coffeeTableDAO.findCoffeeTableById(id);
 	}
 
 	@Override
 	public int addCoffeeTable(CoffeeTable coffeeTable) {
-		// TODO Auto-generated method stub
-		cfDAO.addCoffeeTable(coffeeTable);
+		coffeeTableDAO.addCoffeeTable(coffeeTable);
 		return 1;
 	}
 
 	@Override
 	public boolean deleteCoffeeTableById(CoffeeTable coffeeTable) {
-		// TODO Auto-generated method stub
-		return cfDAO.deleteCoffeeTableById(coffeeTable);
+		return coffeeTableDAO.deleteCoffeeTableById(coffeeTable);
 	}
 
 	@Override
 	public int updateCoffeeTable(CoffeeTable coffeeTable) {
-		// TODO Auto-generated method stub
-		cfDAO.updateCoffeeTable(coffeeTable);
+		coffeeTableDAO.updateCoffeeTable(coffeeTable);
 		return 1;
 		
 	}
 
 	@Override
 	public List<CoffeeTable> getCoffeeTalbeByID(int id) {
-		cfDAO.getCoffeeTalbeByID(id);
+		coffeeTableDAO.getCoffeeTalbeByID(id);
 		return null;
 	}
 
