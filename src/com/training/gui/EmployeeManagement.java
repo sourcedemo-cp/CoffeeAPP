@@ -28,6 +28,8 @@ import com.training.service.EmployeeServiceImpl;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 @Component("employeeManagement")
 
 public class EmployeeManagement extends JFrame {
@@ -60,20 +62,17 @@ public class EmployeeManagement extends JFrame {
 	private JTable table1;
 	
 	public int AllData(){
-		//dtm = (DefaultTableModel) table1.getModel();
 		DefaultTableModel dtm = new DefaultTableModel();
-		dtm.addColumn("1");
-		dtm.addColumn("2");
-		dtm.addColumn("3");
-		dtm.addColumn("4");
-		dtm.addColumn("5");
-		dtm.addColumn("6");
-		dtm.addColumn("7");
-		dtm.addColumn("8");
-		dtm.addColumn("9");
-		dtm.addColumn("10");
-		
-		dtm.addRow(new Object[]{"ID", "Name", "City","Address","Telephone","Shift", "Work date", "Sex", "User", "Password"});
+		dtm.addColumn("ID");
+		dtm.addColumn("Name");
+		dtm.addColumn("City");
+		dtm.addColumn("Address");
+		dtm.addColumn("Telephone");
+		dtm.addColumn("Shift");
+		dtm.addColumn("Work date");
+		dtm.addColumn("Sex");
+		dtm.addColumn("User name");
+		dtm.addColumn("Password");
 		for(Employee employee: this.employeeService.getAllEmployee()){
 			dtm.addRow(new Object[]{employee.getEmployeeId(), employee.getEmployeeName(),employee.getEmpoyeeCity(), employee.getEmployeeAddress(), employee.getEmployeeTelephone(), employee.getShift(), employee.getWorkDate(), employee.getEmployeeSex(), employee.getUserName(), employee.getPassword()});
 		}
@@ -106,67 +105,28 @@ public class EmployeeManagement extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-			
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.SOUTH);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1, BorderLayout.WEST);
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
 		
 		
 		JButton btnNew = new JButton("Add");
-		btnNew.setBounds(10, 234, 89, 23);
-		contentPane.add(btnNew);
-		
-		JButton btnNewButton = new JButton("Back");
-		btnNewButton.setBounds(620, 234, 89, 23);
-		contentPane.add(btnNewButton);
-		
-		JButton btnExit = new JButton("Exit");
-		btnExit.setBounds(719, 234, 89, 23);
-		contentPane.add(btnExit);
-		
-		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(243, 234, 89, 23);
-		contentPane.add(btnDelete);
+		panel_1.add(btnNew);
 		
 		JButton btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(123, 234, 89, 23);
-		contentPane.add(btnUpdate);
+		panel_1.add(btnUpdate);
 		
-		JScrollPane scrollPane = new JScrollPane(table1);
-		scrollPane.setBounds(0, 0, 2, 2);
-		contentPane.add(scrollPane);
-		
-		table1 = new JTable();
-		table1.setBounds(10, 11, 798, 193);
-		contentPane.add(table1);
-		btnUpdate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				/*Employee emp = new Employee();
-				emp.setEmployeeId(Integer.parseInt(textID.getText()));
-				emp.setEmployeeName(textName.getText());
-				emp.setEmpoyeeCity(textCity.getText());
-				emp.setEmployeeAddress(textAddress.getText());
-				emp.setEmployeeTelephone(textTelephone.getText());
-				emp.setShift(textShift.getText());
-				emp.setWorkDate(textWordDate.getText());
-				emp.setEmployeeSex(textSex.getText());
-				emp.setUserName(textUser.getText());
-				emp.setPassword(textPass.getText());
-				if(employeeService.updateEmployee(emp) == 1 ){
-					JOptionPane.showMessageDialog(null, "Updated Successful!!");
-				}else{
-					JOptionPane.showMessageDialog(null, "Updated Failure!!");
-				}*/
-				employeeEdit.setVisible(true);
-			}
-		});
+		JButton btnDelete = new JButton("Delete");
+		panel_1.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*Employee emp = new Employee();
-				int id = Integer.parseInt(textID.getText());
-				if(employeeService.deleteEmployeeById(id) == 1 ){
-					JOptionPane.showMessageDialog(null, "Deleted Successful!!");
-				}else{
-					JOptionPane.showMessageDialog(null, "Deleted Failure!!");
-				}*/
 				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
 				if(employeeServiceImpl.deleteEmployeeById(employeeServiceImpl.findEmployeeById(id))){
 					JOptionPane.showMessageDialog(null, "Deleted successful!!!");
@@ -176,6 +136,39 @@ public class EmployeeManagement extends JFrame {
 				AllData();
 			}
 		});
+		//		contentPane.add(table1);
+				btnUpdate.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						employeeEdit.setVisible(true);
+					}
+				});
+		btnNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				employeeAdd.setVisible(true);
+			}
+		});
+		
+		JPanel panel_2 = new JPanel();
+		panel.add(panel_2, BorderLayout.EAST);
+		
+		JButton btnNewButton = new JButton("Back");
+		panel_2.add(btnNewButton);
+		
+		JButton btnExit = new JButton("Exit");
+		panel_2.add(btnExit);
+		
+		JPanel panel_3 = new JPanel();
+		contentPane.add(panel_3, BorderLayout.CENTER);
+		panel_3.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		panel_3.add(scrollPane, BorderLayout.CENTER);
+		
+		table1 = new JTable();
+		
+		scrollPane.setViewportView(table1);
+		
+		
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -185,21 +178,6 @@ public class EmployeeManagement extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				menu.setVisible(true);
 				dispose();
-			}
-		});
-		btnNew.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				/*textID.setText("");
-				textName.setText("");
-				textCity.setText("");
-				textAddress.setText("");
-				textTelephone.setText("");
-				textShift.setText("");
-				textWordDate.setText("");
-				textSex.setText("");
-				textUser.setText("");
-				textPass.setText("");*/
-				employeeAdd.setVisible(true);
 			}
 		});
 	}

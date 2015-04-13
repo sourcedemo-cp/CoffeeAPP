@@ -35,6 +35,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.JScrollBar;
 import javax.swing.JProgressBar;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 @Component("productManagement")
 public class ProductManagement extends JFrame {
 
@@ -59,11 +61,10 @@ public class ProductManagement extends JFrame {
 	 */
 	public int getProduct(){
 		DefaultTableModel dtm = new DefaultTableModel();
-		dtm.addColumn("1");
-		dtm.addColumn("2");
-		dtm.addColumn("3");
-		dtm.addColumn("4");
-		dtm.addRow(new Object[]{"ID", "Name", "Price", "Quantity"});
+		dtm.addColumn("ID");
+		dtm.addColumn("Name");
+		dtm.addColumn("Price");
+		dtm.addColumn("Quantity");
 		List<Product> products = productServiceImpl.getAllProduct();
 		for(Product pr: products){
 			dtm.addRow(new Object[]{pr.getProductId(), pr.getProductName(), pr.getProductPrice(), pr.getProductQuantity()});
@@ -101,36 +102,33 @@ public class ProductManagement extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(null);
-		
-		JScrollPane scrollPane = new JScrollPane(table1);
-		scrollPane.setBounds(0, 0, 2, 2);
-		panel_1.add(scrollPane);
+		contentPane.add(panel_1,BorderLayout.CENTER);
+		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		table1 = new JTable();
-		table1.setBounds(10, 11, 541, 186);
-		panel_1.add(table1);
+//		panel_1.add(table1);
+		
+		
+		JScrollPane scrollPane = new JScrollPane(table1);
+		panel_1.add(scrollPane, BorderLayout.CENTER);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.add(panel, BorderLayout.SOUTH);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_2 = new JPanel();
+		panel.add(panel_2, BorderLayout.WEST);
+		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnAdd = new JButton("Add");
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				productAdd.setVisible(true);
-			}
-		});
-		btnAdd.setBounds(21, 204, 89, 23);
-		panel_1.add(btnAdd);
+		panel_2.add(btnAdd);
 		
 		JButton btnUpdate = new JButton("Update");
-		btnUpdate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				productUpdate.setVisible(true);
-			}
-		});
-		btnUpdate.setBounds(120, 204, 89, 23);
-		panel_1.add(btnUpdate);
+		panel_2.add(btnUpdate);
 		
 		JButton btnDelete = new JButton("Delete");
+		panel_2.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
@@ -141,27 +139,37 @@ public class ProductManagement extends JFrame {
 				}
 			}
 		});
-		btnDelete.setBounds(219, 204, 89, 23);
-		panel_1.add(btnDelete);
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				productUpdate.setVisible(true);
+			}
+		});
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				productAdd.setVisible(true);
+			}
+		});
+		
+		JPanel panel_3 = new JPanel();
+		panel.add(panel_3, BorderLayout.EAST);
+		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnBack = new JButton("Back");
+		panel_3.add(btnBack);
+		
+		JButton btnExit = new JButton("Exit");
+		panel_3.add(btnExit);
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				menu.setVisible(true);
 				dispose();
 			}
 		});
-		btnBack.setBounds(356, 204, 89, 23);
-		panel_1.add(btnBack);
-		
-		JButton btnExit = new JButton("Exit");
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
-			}
-		});
-		btnExit.setBounds(454, 204, 89, 23);
-		panel_1.add(btnExit);
 		
 	}
 }

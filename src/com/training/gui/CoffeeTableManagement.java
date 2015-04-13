@@ -38,7 +38,6 @@ public class CoffeeTableManagement extends JFrame {
 	@Autowired
 	private CoffeeTableService coffeeTableService;
 	
-	
 	private JPanel contentPane;
 	private JTable table;
 
