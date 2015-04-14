@@ -128,6 +128,7 @@ public class Payment extends JFrame implements ActionListener{
 				orderGui.fillDataTable();
 				orderGui.setVisible(true);
 				orderGui.setLocationRelativeTo(null);
+				dispose();
 			}
 		}
 	}
