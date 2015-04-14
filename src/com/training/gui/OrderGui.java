@@ -126,6 +126,7 @@ public class OrderGui extends JFrame {
 					createOrder.setVisible(true);
 					createOrder.setLocationRelativeTo(null);
 					createOrder.fillData();
+					dispose();
 				} catch (ArrayIndexOutOfBoundsException ex) {
 					JOptionPane.showMessageDialog(null,
 							"Please select a row to create order!");

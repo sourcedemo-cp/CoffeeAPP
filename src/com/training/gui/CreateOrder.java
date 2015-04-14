@@ -188,7 +188,7 @@ public class CreateOrder extends JFrame {
 					 order.setPay(true);
 					 orderService.updateOrder(order);
 					 
-					 fillData();
+//					 fillData();
 
 				} catch (NullPointerException ex) {
 					JOptionPane
@@ -212,6 +212,7 @@ public class CreateOrder extends JFrame {
 				dispose();
 				orderGui.setVisible(true);
 				orderGui.setLocationRelativeTo(null);
+				orderGui.fillDataTable();
 			}
 		});
 		panel_3.add(btnBack);
@@ -246,7 +247,7 @@ public class CreateOrder extends JFrame {
 	@PostConstruct
 	public void fillData() {
 
-//		lblSum.setText("");
+		lblSum.setText("");
 
 		// fill data to table
 		List<OrderDetail> orderDetails = orderDetailService
