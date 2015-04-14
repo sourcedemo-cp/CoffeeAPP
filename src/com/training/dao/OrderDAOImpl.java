@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.training.entity.Order;
+import com.training.entity.OrderDetail;
 
 @Repository
 public class OrderDAOImpl implements OrderDAO{
@@ -60,6 +61,13 @@ public class OrderDAOImpl implements OrderDAO{
 		String sql = "SELECT o FROM Order o JOIN o.coffeeTable t WHERE t.tableId = :id ORDER BY o.datePayment DESC";
 		List<Order> orders = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
 		return orders;
+	}
+	@Override
+	@Transactional
+	public List<Order> getOrderByTableID(int id) {
+		String sql = "SELECT od FROM Order od JOIN FETCH od.coffeeTable tb WHERE tb.tableId = :id";
+		List<Order> orderDetails = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
+		return orderDetails;
 	}
 
 	

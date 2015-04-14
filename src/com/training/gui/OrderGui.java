@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.training.entity.CoffeeTable;
 import com.training.entity.Order;
 import com.training.entity.Product;
 import com.training.service.CoffeeTableService;
@@ -31,7 +32,6 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
 import javax.swing.JComboBox;
-
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
@@ -105,6 +105,10 @@ public class OrderGui extends JFrame {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//List<Order> orders = orderService.getOrderByTableID(OrderGui.banId);
+				//Order order1 = (Order) orderService.getOrderByTableID(OrderGui.banId);
+				
+				
 				
 			}
 		});
