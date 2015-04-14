@@ -90,10 +90,7 @@ public class Payment extends JFrame implements ActionListener{
 			panel.add(btn_Bans[i]);
 			btn_Bans[i].addActionListener(this);
 		}
-		
-		
-		
-		
+
 		JPanel panel1 = new JPanel();
 		getContentPane().add(panel1, BorderLayout.SOUTH);
 		panel1.setLayout(new BorderLayout(0, 0));
@@ -135,7 +132,10 @@ public class Payment extends JFrame implements ActionListener{
 				OrderGui.banId = coffeeTables.get(i).getTableId();
 				OrderGui.lblBan.setText(tableName);
 				orderGui.setVisible(true);
+				orderGui.fillDataToComboBox();
 				orderGui.setLocationRelativeTo(null);
+				
+				
 			}
 		}
 	}

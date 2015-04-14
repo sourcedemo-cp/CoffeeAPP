@@ -3,32 +3,54 @@ package com.training.gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.annotation.PostConstruct;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.training.entity.Product;
+import com.training.service.ProductService;
+
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
+
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JComboBox;
+
 import net.miginfocom.swing.MigLayout;
+
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.List;
 @Component("orderGui")
 public class OrderGui extends JFrame {
 	
 	static int banId;
+	JComboBox cbbProduct;
 
 	@Autowired
 	private Payment payment;
+	
+	@Autowired
+	private ProductService productService;
+	
+	
+	private List<Product> products;
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -57,6 +79,12 @@ public class OrderGui extends JFrame {
 	public OrderGui() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 652, 416);
+		
+		
+	}
+	
+	@PostConstruct
+	public void fillDataToComboBox(){
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -78,9 +106,21 @@ public class OrderGui extends JFrame {
 		panel_1.add(panel_3, BorderLayout.EAST);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				payment.setVisible(true);
+				payment.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
 		panel_3.add(btnBack);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		panel_3.add(btnCancel);
 		
 		JPanel panel_4 = new JPanel();
@@ -113,7 +153,7 @@ public class OrderGui extends JFrame {
 		gbc_lblNewLabel.gridy = 0;
 		panel_5.add(lblNewLabel, gbc_lblNewLabel);
 		
-		JComboBox cbbProduct = new JComboBox();
+		cbbProduct = new JComboBox();
 		GridBagConstraints gbc_cbbProduct = new GridBagConstraints();
 		gbc_cbbProduct.insets = new Insets(0, 0, 5, 0);
 		gbc_cbbProduct.fill = GridBagConstraints.HORIZONTAL;
@@ -145,6 +185,13 @@ public class OrderGui extends JFrame {
 		table = new JTable();
 		JScrollPane scrollPane = new JScrollPane(table);
 		panel_6.add(scrollPane, BorderLayout.CENTER);
+		
+		
+		products = productService.getAllProduct();
+		
+		for (Product product : products) {
+			cbbProduct.addItem(product);
+		}
 		
 	}
 }

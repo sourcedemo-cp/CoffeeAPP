@@ -119,6 +119,7 @@ public class Menu extends JFrame {
 				payment.setVisible(true);
 				payment.setLocationRelativeTo(null);
 				payment.initButtons();
+				dispose();
 			}
 		});
 		mnNewMenu.add(mntmPayment);
