@@ -51,4 +51,9 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 		return orderDetailDAO.findOrderDetailByOrderId(id);
 	}
 
+	@Override
+	public long sumOfOrderDetailByOrderId(int id) {
+		return orderDetailDAO.sumOfOrderDetailByOrderId(id);
+	}
+
 }

@@ -1,7 +1,9 @@
 package com.training.dao;
 
+import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -72,5 +74,17 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
 		String sql = "SELECT ord FROM OrderDetail ord JOIN FETCH ord.product p JOIN FETCH ord.order o WHERE o.orderId = :id";
 		List<OrderDetail> orderDetails = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
 		return orderDetails;
+	}
+
+	@Override
+	@Transactional
+	public long sumOfOrderDetailByOrderId(int id) {
+		long result = 0;
+		String sql = "SELECT SUM(ord.quantity * p.productPrice) FROM OrderDetail ord JOIN ord.order o JOIN ord.product p  WHERE o.orderId = :id";
+		Query query = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id);
+		for(Iterator it=query.iterate();it.hasNext();){
+			result = (long) it.next();
+		}
+		return  result;
 	}
 }

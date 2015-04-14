@@ -27,6 +27,8 @@ public class TestOderDetailDAO {
 		}else{
 			System.out.println("Empty list");
 		}
+		
+		System.out.println(orderDetailDAO.sumOfOrderDetailByOrderId(1));
 	}
 
 }

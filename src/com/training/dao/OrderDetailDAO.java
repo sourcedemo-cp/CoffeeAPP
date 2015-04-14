@@ -13,4 +13,5 @@ public interface OrderDetailDAO {
 	public int updateOrderDetail(OrderDetail orderdetail);
 	public OrderDetail findOrderDetailById(int id);
 	public List<OrderDetail> findOrderDetailByOrderId(int id);
+	public long sumOfOrderDetailByOrderId(int id);
 }

@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.annotation.PostConstruct;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -37,6 +38,7 @@ import java.util.List;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 @Component("createOrder")
@@ -48,6 +50,7 @@ public class CreateOrder extends JFrame {
 	private JTextField textField;
 	private JTable table;
 	private JComboBox comboBox;
+	private JLabel lblSum;
 	
 	@Autowired
 	private OrderDetailService orderDetailService;
@@ -146,7 +149,12 @@ public class CreateOrder extends JFrame {
 		JButton btnNewButton = new JButton("Payment");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try{
+				long sum = orderDetailService.sumOfOrderDetailByOrderId(orderId);
+				lblSum.setText(Long.toString(sum));
+				}catch(NullPointerException ex){
+					JOptionPane.showMessageDialog(null, "You have no order, please insert order then click");
+				}
 			}
 		});
 		panel_3.add(btnNewButton);
@@ -157,6 +165,14 @@ public class CreateOrder extends JFrame {
 				System.exit(0);
 			}
 		});
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		panel_3.add(btnBack);
 		panel_3.add(btnCancel);
 		
 		JPanel panel_4 = new JPanel();
@@ -169,8 +185,11 @@ public class CreateOrder extends JFrame {
 		JLabel label = new JLabel("Sum:");
 		panel_5.add(label);
 		
-		JLabel lblSum = new JLabel("");
+		lblSum = new JLabel("");
 		panel_5.add(lblSum);
+		
+		JLabel lblVnd = new JLabel("VND");
+		panel_5.add(lblVnd);
 		
 		JPanel panel_6 = new JPanel();
 		panel_4.add(panel_6, BorderLayout.CENTER);
@@ -187,15 +206,19 @@ public class CreateOrder extends JFrame {
 	
 	@PostConstruct
 	public void fillData(){
+		
+		lblSum.setText("");
+		
 		//fill data to table
 		List<OrderDetail> orderDetails = orderDetailService.findOrderDetailByOrderId(orderId);
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("Order ID");
 		dtm.addColumn("Product");
 		dtm.addColumn("Quantity");
+		dtm.addColumn("Product Price");
 		
 		for (OrderDetail orderDetail : orderDetails) {
-			dtm.addRow(new Object[]{orderDetail.getOrder().getOrderId(), orderDetail.getProduct().getProductName(),orderDetail.getQuantity()});
+			dtm.addRow(new Object[]{orderDetail.getOrder().getOrderId(), orderDetail.getProduct().getProductName(),orderDetail.getQuantity(), orderDetail.getProduct().getProductPrice()});
 		}
 		
 		table.setModel(dtm);
