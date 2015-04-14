@@ -12,4 +12,5 @@ public interface OrderDetailDAO {
 	public boolean deleteOrderDetailById(OrderDetail orderdetail);
 	public int updateOrderDetail(OrderDetail orderdetail);
 	public OrderDetail findOrderDetailById(int id);
+	public List<OrderDetail> findOrderDetailByOrderId(int id);
 }

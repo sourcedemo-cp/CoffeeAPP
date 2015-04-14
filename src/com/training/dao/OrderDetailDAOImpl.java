@@ -21,13 +21,9 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public List<OrderDetail> getAllOrderDetail() {
-//		List<OrderDetail> orderDetails = sessionFactory.getCurrentSession().createQuery("SELECT od.orderDetailId, pr.productName, pr.productPrice, od.quantity, od.payment FROM OrderDetail od JOIN od.product pr").list();
 		List<OrderDetail> orderDetails = sessionFactory.getCurrentSession().createQuery("SELECT od FROM OrderDetail od JOIN FETCH od.product pr JOIN FETCH od.order os").list();
-//		List<OrderDetail> orderDetails = sessionFactory.getCurrentSession().createQuery("SELECT od FROM OrderDetail od JOIN FETCH od.product pr JOIN FETCH od.order os WHERE os.coffeeTable = :id").setParameter("id", id).list();
 	return orderDetails;
-//		return orderDetails.size()>0?orderDetails.get(0):null;
 	}
-	//JOIN orderDetail.orders 
 
 	@Override
 	@Transactional
@@ -39,7 +35,6 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
 	@Override
 	@Transactional
 	public boolean deleteOrderDetailById(OrderDetail orderdetail) {
-		//OrderDetail orderDetail = (OrderDetail) sessionFactory.getCurrentSession().load(OrderDetail.class, id);
 		if(orderdetail != null){
 			sessionFactory.getCurrentSession().delete(orderdetail);
 			return true;
@@ -58,17 +53,23 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
 	@Override
 	@Transactional
 	public OrderDetail findOrderDetailById(int id) {
-		//List<OrderDetail> orderDetails = sessionFactory.getCurrentSession().createQuery("SELECT od FROM OrderDetail od WHERE od.orderDetailId = :id").setParameter("id", id).list();
 		List<OrderDetail> orderDetails = sessionFactory.getCurrentSession().createQuery("SELECT od FROM OrderDetail od JOIN FETCH od.product pr JOIN FETCH od.order os WHERE os.coffeeTable = :id").setParameter("id", id).list();
 		return orderDetails.size()>0?orderDetails.get(0):null;
-		//return (OrderDetail) orderDetails;
 	}
 
 	@Override
 	@Transactional
 	public List<OrderDetail> getOrderDetailByID(int id) {
 		String sql = "SELECT od FROM OrderDetail od JOIN FETCH od.product pr JOIN FETCH od.order o JOIN FETCH o.coffeeTable tb WHERE tb.tableId = :id";
-		//String sql = "SELECT tb FROM CoffeeTable tb JOIN FETCH tb.orders o";
+		List<OrderDetail> orderDetails = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
+		return orderDetails;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<OrderDetail> findOrderDetailByOrderId(int id) {
+		String sql = "SELECT ord FROM OrderDetail ord JOIN FETCH ord.product p JOIN FETCH ord.order o WHERE o.orderId = :id";
 		List<OrderDetail> orderDetails = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
 		return orderDetails;
 	}

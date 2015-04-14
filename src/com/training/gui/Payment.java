@@ -66,15 +66,11 @@ public class Payment extends JFrame implements ActionListener{
 	public Payment() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Order");
-		
-		
-	
 	}
 	
 	@PostConstruct
 	public void initButtons() {
 		coffeeTables = coffeeTableService.getAllCoffeeTable();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -126,7 +122,6 @@ public class Payment extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		for(int i = 0;i < coffeeTables.size();i++){
 			if(e.getSource()==btn_Bans[i]){
-				
 				String tableName = coffeeTables.get(i).getTableName();
 				OrderGui.banId = coffeeTables.get(i).getTableId();
 				OrderGui.lblBan.setText(tableName);

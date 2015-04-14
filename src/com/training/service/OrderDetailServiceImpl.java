@@ -46,4 +46,9 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 		return orderDetailDAO.getOrderDetailByID(id);
 	}
 
+	@Override
+	public List<OrderDetail> findOrderDetailByOrderId(int id) {
+		return orderDetailDAO.findOrderDetailByOrderId(id);
+	}
+
 }

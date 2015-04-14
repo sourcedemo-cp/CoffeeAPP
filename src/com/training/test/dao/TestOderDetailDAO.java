@@ -13,14 +13,13 @@ public class TestOderDetailDAO {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		OrderDetailDAO orderDetailDAO = (OrderDetailDAO) context.getBean("orderDetailDAOImpl");
-		List<OrderDetail> orderDetails = orderDetailDAO.getOrderDetailByID(1);
+		List<OrderDetail> orderDetails = orderDetailDAO.findOrderDetailByOrderId(1);
 		if(null != orderDetails){
 			
 			System.out.println(orderDetails.size());
 			for (OrderDetail orderDetail : orderDetails) {
 				System.out.println(orderDetail.getOrderDetailId());
 				System.out.println(orderDetail.getProduct().getProductName());
-				
 				System.out.println(orderDetail.getProduct().getProductPrice());
 				System.out.println(orderDetail.getQuantity());
 			}

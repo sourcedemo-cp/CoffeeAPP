@@ -57,7 +57,7 @@ public class OrderDAOImpl implements OrderDAO{
 	@Transactional
 	public List<Order> findOrderByCoffeeTableId(int id) {
 
-		String sql = "SELECT o FROM Order o JOIN o.coffeeTable t WHERE t.tableId = :id";
+		String sql = "SELECT o FROM Order o JOIN o.coffeeTable t WHERE t.tableId = :id ORDER BY o.datePayment DESC";
 		List<Order> orders = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
 		return orders;
 	}

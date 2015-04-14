@@ -24,7 +24,9 @@ public class Order {
 	@Column(name="DATE_PAYMENT")
 	private Timestamp datePayment;
 	
-	
+	@Column(name="IS_PAY")
+	private Boolean pay;
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="TABLE_ID", referencedColumnName="TABLE_ID")
 	private CoffeeTable coffeeTable;
@@ -64,5 +66,11 @@ public class Order {
 		this.datePayment = datePayment;
 	}
 	
-	
+	public Boolean getPay() {
+		return pay;
+	}
+
+	public void setPay(Boolean pay) {
+		this.pay = pay;
+	}
 }
