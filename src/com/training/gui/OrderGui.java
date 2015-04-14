@@ -58,6 +58,9 @@ public class OrderGui extends JFrame {
 	@Autowired
 	private CreateOrder createOrder;
 
+	@Autowired
+	private OrderGuiAdd orderGuiAdd;
+	
 	private JPanel contentPane;
 	private JTable table;
 	static JLabel lblBan;
@@ -107,9 +110,7 @@ public class OrderGui extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//List<Order> orders = orderService.getOrderByTableID(OrderGui.banId);
 				//Order order1 = (Order) orderService.getOrderByTableID(OrderGui.banId);
-				
-				
-				
+				orderGuiAdd.setVisible(true);
 			}
 		});
 		panel_2.add(btnAdd);
