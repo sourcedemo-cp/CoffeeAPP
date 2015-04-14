@@ -39,6 +39,8 @@ import javax.swing.JTable;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Component("orderGui")
@@ -105,11 +107,26 @@ public class OrderGui extends JFrame {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//List<Order> orders = orderService.getOrderByTableID(OrderGui.banId);
-				//Order order1 = (Order) orderService.getOrderByTableID(OrderGui.banId);
-				
-				
-				
+//				orderAdd.setVisible(true);
+//				orderAdd.setLocationRelativeTo(null);
+//				dispose();
+				try{
+					
+					CoffeeTable coffeeTable = coffeeTableService.findCoffeeTableById(banId);
+					Order order = new Order();
+					order.setPay(false);
+					Date date = new Date();
+					order.setDatePayment(new Timestamp(date.getTime()));
+					order.setCoffeeTable(coffeeTable);
+					if(orderService.addOrder(order)==true){
+						JOptionPane.showMessageDialog(null, "Add successful!");
+					}else {
+						JOptionPane.showMessageDialog(null, "Fail!");
+					}
+					fillDataTable();					
+				}catch(Exception ex){
+					
+				}
 			}
 		});
 		panel_2.add(btnAdd);

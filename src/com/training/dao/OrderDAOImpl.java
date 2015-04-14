@@ -26,9 +26,9 @@ public class OrderDAOImpl implements OrderDAO{
 	}
 	@Override
 	@Transactional
-	public int addOrder(Order order) {
+	public boolean addOrder(Order order) {
 		sessionFactory.getCurrentSession().save(order);
-		return 1;
+		return true;
 	}
 	@Override
 	@Transactional

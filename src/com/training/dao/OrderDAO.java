@@ -8,7 +8,7 @@ import com.training.entity.OrderDetail;
 public interface OrderDAO {
 	public List<Order> getAllOrder();
 	public List<Order> getOrderByTableID(int id);
-	public int addOrder(Order order);
+	public boolean addOrder(Order order);
 	public boolean deleteOrderByID(Order order);
 	public int updateOrder(Order order);
 	public Order findOrderByID(int id);

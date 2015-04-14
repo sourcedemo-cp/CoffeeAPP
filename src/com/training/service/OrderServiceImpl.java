@@ -21,9 +21,8 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public int addOrder(Order order) {
-		orderDAO.addOrder(order);
-		return 1;
+	public boolean addOrder(Order order) {
+		return orderDAO.addOrder(order);
 	}
 
 	@Override
