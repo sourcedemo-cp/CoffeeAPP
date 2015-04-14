@@ -162,7 +162,6 @@ public class EmployeeManagement extends JFrame {
 					Employee employee = employeeService.findEmployeeById(id);
 					EmployeeEdit.textID.setText(employee.getEmployeeId() + "");
 					EmployeeEdit.textName.setText(employee.getEmployeeName());
-					EmployeeEdit.textCity.setText(employee.getEmpoyeeCity());
 					EmployeeEdit.textAddress.setText(employee
 							.getEmployeeAddress());
 					EmployeeEdit.textTel.setText(employee
