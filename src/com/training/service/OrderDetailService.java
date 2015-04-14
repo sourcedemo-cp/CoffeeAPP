@@ -13,4 +13,5 @@ public interface OrderDetailService {
 	public OrderDetail findOrderDetailById(int id);
 	public List<OrderDetail> findOrderDetailByOrderId(int id);
 	public long sumOfOrderDetailByOrderId(int id);
+	public boolean deleteOrderDetailByID(int id);
 }

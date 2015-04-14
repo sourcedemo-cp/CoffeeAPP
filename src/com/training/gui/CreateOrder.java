@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.springframework.asm.commons.TryCatchBlockSorter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -63,7 +64,7 @@ public class CreateOrder extends JFrame {
 
 	@Autowired
 	private OrderService orderService;
-	
+
 	@Autowired
 	private OrderGui orderGui;
 
@@ -149,29 +150,49 @@ public class CreateOrder extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Product product = (Product) comboBox.getSelectedItem();
-					
+
 					OrderDetail orderDetail = new OrderDetail();
 					orderDetail.setQuantity(Integer.valueOf(txtQuantity
 							.getText()));
-					
-					System.out.println("---------------------------"+CreateOrder.orderId);
-					Order order = orderService.findOrderByID(CreateOrder.orderId);
-					
+
+					System.out.println("---------------------------"
+							+ CreateOrder.orderId);
+					Order order = orderService
+							.findOrderByID(CreateOrder.orderId);
+
 					orderDetail.setProduct(product);
 					orderDetail.setOrder(order);
-					
+
 					orderDetailService.addOrderDetail(orderDetail);
-					
+
 					fillData();
-					
+
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "Please insert integer number in Quantity!");
+					JOptionPane.showMessageDialog(null,
+							"Please insert integer number in Quantity!");
 				}
 			}
 		});
 		panel_2.add(btnSave);
 
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int id = (int) table.getValueAt(table.getSelectedRow(), 0);
+					if(orderDetailService.deleteOrderDetailByID(id) == true){
+						JOptionPane.showMessageDialog(null,
+								"Deleted successful!!!");
+					}else {
+						JOptionPane.showMessageDialog(null, "Fail!!!");
+					}
+					fillData();
+					
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null, "Please select a row to delete!");
+				}
+			}
+		});
 		panel_2.add(btnDelete);
 
 		JPanel panel_3 = new JPanel();
@@ -184,11 +205,11 @@ public class CreateOrder extends JFrame {
 					long sum = orderDetailService
 							.sumOfOrderDetailByOrderId(orderId);
 					lblSum.setText(Long.toString(sum));
-					 Order order = orderService.findOrderByID(orderId);
-					 order.setPay(true);
-					 orderService.updateOrder(order);
-					 
-//					 fillData();
+					Order order = orderService.findOrderByID(orderId);
+					order.setPay(true);
+					orderService.updateOrder(order);
+
+					// fillData();
 
 				} catch (NullPointerException ex) {
 					JOptionPane
@@ -253,13 +274,14 @@ public class CreateOrder extends JFrame {
 		List<OrderDetail> orderDetails = orderDetailService
 				.findOrderDetailByOrderId(orderId);
 		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("ID");
 		dtm.addColumn("Order ID");
 		dtm.addColumn("Product");
 		dtm.addColumn("Quantity");
 		dtm.addColumn("Product Price");
 
 		for (OrderDetail orderDetail : orderDetails) {
-			dtm.addRow(new Object[] { orderDetail.getOrder().getOrderId(),
+			dtm.addRow(new Object[] {orderDetail.getOrderDetailId() ,orderDetail.getOrder().getOrderId(),
 					orderDetail.getProduct().getProductName(),
 					orderDetail.getQuantity(),
 					orderDetail.getProduct().getProductPrice() });

@@ -87,4 +87,15 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
 		}
 		return  result;
 	}
+
+	@Override
+	@Transactional
+	public boolean deleteOrderDetailByID(int id) {
+		OrderDetail orderDetail = (OrderDetail) sessionFactory.getCurrentSession().load(OrderDetail.class, id);
+		if (null != orderDetail) {
+			sessionFactory.getCurrentSession().delete(orderDetail);
+			return true;
+		}
+		return false;
+	}
 }

@@ -56,4 +56,10 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 		return orderDetailDAO.sumOfOrderDetailByOrderId(id);
 	}
 
+	@Override
+	public boolean deleteOrderDetailByID(int id) {
+		
+		return orderDetailDAO.deleteOrderDetailByID(id);
+	}
+
 }

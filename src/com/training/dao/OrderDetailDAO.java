@@ -10,6 +10,7 @@ public interface OrderDetailDAO {
 	public List<OrderDetail> getOrderDetailByID(int id);
 	public int addOrderDetail(OrderDetail orderdetail);
 	public boolean deleteOrderDetailById(OrderDetail orderdetail);
+	public boolean deleteOrderDetailByID(int id);
 	public int updateOrderDetail(OrderDetail orderdetail);
 	public OrderDetail findOrderDetailById(int id);
 	public List<OrderDetail> findOrderDetailByOrderId(int id);
