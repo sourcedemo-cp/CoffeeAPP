@@ -37,21 +37,22 @@ import javax.swing.JScrollBar;
 import javax.swing.JProgressBar;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+
 @Component("productManagement")
 public class ProductManagement extends JFrame {
 
 	@Autowired
 	private Menu menu;
-	
+
 	@Autowired
 	private ProductAdd productAdd;
-	
+
 	@Autowired
 	private ProductUpdate productUpdate;
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	private JPanel contentPane;
 	private JTable table1;
 	private final JScrollBar scrollBar_1 = new JScrollBar();
@@ -59,21 +60,23 @@ public class ProductManagement extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public int getProduct(){
+	public int getProduct() {
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("ID");
 		dtm.addColumn("Name");
 		dtm.addColumn("Price");
 		dtm.addColumn("Quantity");
 		List<Product> products = productService.getAllProduct();
-		for(Product pr: products){
-			dtm.addRow(new Object[]{pr.getProductId(), pr.getProductName(), pr.getProductPrice(), pr.getProductQuantity()});
+		for (Product pr : products) {
+			dtm.addRow(new Object[] { pr.getProductId(), pr.getProductName(),
+					pr.getProductPrice(), pr.getProductQuantity() });
 		}
 		table1.setModel(dtm);
 		table1.repaint();
 		table1.revalidate();
 		return 1;
 	}
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -82,7 +85,7 @@ public class ProductManagement extends JFrame {
 					frame.setVisible(true);
 					frame.table1.repaint();
 					frame.table1.revalidate();
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -90,10 +93,11 @@ public class ProductManagement extends JFrame {
 		});
 	}
 
-	public int getProductToUpdate(){
+	public int getProductToUpdate() {
 		int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
 		return 1;
 	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -105,69 +109,85 @@ public class ProductManagement extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1,BorderLayout.CENTER);
+		contentPane.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new BorderLayout(0, 0));
-		
+
 		table1 = new JTable();
-//		panel_1.add(table1);
-		
-		
+		// panel_1.add(table1);
+
 		JScrollPane scrollPane = new JScrollPane(table1);
 		panel_1.add(scrollPane, BorderLayout.CENTER);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2, BorderLayout.WEST);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JButton btnAdd = new JButton("Add");
 		panel_2.add(btnAdd);
-		
+
 		JButton btnUpdate = new JButton("Update");
 		panel_2.add(btnUpdate);
-		
+
 		JButton btnDelete = new JButton("Delete");
 		panel_2.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-				if(productService.deleteProductById((productService.findProductById(id)))){
-					JOptionPane.showMessageDialog(null, "Deleted successful!!!");
-				}else{
-					JOptionPane.showMessageDialog(null, "Fail!!!");
+				try {
+					int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+					if (productService.deleteProductById((productService
+							.findProductById(id)))) {
+						JOptionPane.showMessageDialog(null,
+								"Deleted successful!!!");
+					} else {
+						JOptionPane.showMessageDialog(null, "Fail!!!");
+					}
+					getProduct();
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null, "Please select a row to delete!");
 				}
 			}
 		});
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-				Product product = productService.findProductById(id);
-				productUpdate.textProductID.setText(product.getProductId() + "");
-				productUpdate.txtName.setText(product.getProductName());
-				productUpdate.txtPrice.setText(product.getProductPrice() + "");
-				productUpdate.txtQuantity.setText(product.getProductQuantity() + "");
-				productUpdate.setVisible(true);
+				try {
+					int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+					Product product = productService.findProductById(id);
+					productUpdate.textProductID.setText(product.getProductId()
+							+ "");
+					productUpdate.txtName.setText(product.getProductName());
+					productUpdate.txtPrice.setText(product.getProductPrice()
+							+ "");
+					productUpdate.txtQuantity.setText(product
+							.getProductQuantity() + "");
+					productUpdate.setVisible(true);
+					productUpdate.setLocationRelativeTo(null);
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null,
+							"Please select a row to Update!");
+				}
 			}
 		});
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				productAdd.setVisible(true);
+				productAdd.setLocationRelativeTo(null);
 			}
 		});
-		
+
 		JPanel panel_3 = new JPanel();
 		panel.add(panel_3, BorderLayout.EAST);
 		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JButton btnBack = new JButton("Back");
 		panel_3.add(btnBack);
-		
+
 		JButton btnExit = new JButton("Exit");
 		panel_3.add(btnExit);
 		btnExit.addActionListener(new ActionListener() {
@@ -178,9 +198,10 @@ public class ProductManagement extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				menu.setVisible(true);
+				menu.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
-		
+
 	}
 }

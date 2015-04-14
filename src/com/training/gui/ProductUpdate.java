@@ -27,10 +27,10 @@ public class ProductUpdate extends JFrame {
 
 	@Autowired
 	private ProductManagement productManagement;
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	private JPanel contentPane;
 	static JTextField txtName;
 	static JTextField txtQuantity;
@@ -57,47 +57,47 @@ public class ProductUpdate extends JFrame {
 	 * Create the frame.
 	 */
 	public ProductUpdate() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setBounds(36, 29, 359, 180);
 		contentPane.add(panel);
-		
+
 		JLabel label = new JLabel("Product name:");
 		label.setBounds(29, 34, 89, 14);
 		panel.add(label);
-		
+
 		JLabel label_1 = new JLabel("Quantity:");
 		label_1.setBounds(53, 59, 65, 14);
 		panel.add(label_1);
-		
+
 		JLabel label_2 = new JLabel("Price:");
 		label_2.setBounds(72, 84, 46, 14);
 		panel.add(label_2);
-		
+
 		txtName = new JTextField();
 		txtName.setColumns(10);
 		txtName.setBounds(118, 31, 181, 20);
 		panel.add(txtName);
-		
+
 		txtQuantity = new JTextField();
 		txtQuantity.setColumns(10);
 		txtQuantity.setBounds(118, 56, 181, 20);
 		panel.add(txtQuantity);
-		
+
 		txtPrice = new JTextField();
 		txtPrice.setColumns(10);
 		txtPrice.setBounds(118, 81, 181, 20);
 		panel.add(txtPrice);
-		
-		JButton btnNew = new JButton("New");
+
+		JButton btnNew = new JButton("Clear");
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtName.setText("");
@@ -107,28 +107,34 @@ public class ProductUpdate extends JFrame {
 		});
 		btnNew.setBounds(29, 141, 89, 23);
 		panel.add(btnNew);
-		
+
 		JButton btnOK = new JButton("OK");
 		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id = Integer.parseInt(textProductID.getText());
-				Product product = productService.findProductById(id);				
-				product.setProductName(txtName.getText());
-				product.setProductQuantity(Integer.parseInt(txtQuantity.getText()));
-				product.setProductPrice(Integer.parseInt(txtPrice.getText()));
-				if(productService.updateProduct(product) == 1) {
-					JOptionPane.showMessageDialog(null, "Updated Successful!!!");
-					dispose();
-					
-				}else{
-					JOptionPane.showMessageDialog(null, "Fail!!!");
+				try {
+					int id = Integer.parseInt(textProductID.getText());
+					Product product = productService.findProductById(id);
+					product.setProductName(txtName.getText());
+					product.setProductQuantity(Integer.parseInt(txtQuantity
+							.getText()));
+					product.setProductPrice(Integer.parseInt(txtPrice.getText()));
+					if (productService.updateProduct(product) == 1) {
+						JOptionPane.showMessageDialog(null,
+								"Updated Successful!!!");
+						dispose();
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Fail!!!");
+					}
+					productManagement.getProduct();
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Please insert number in Price and Quantity field!");
 				}
-				productManagement.getProduct();
 			}
 		});
 		btnOK.setBounds(140, 141, 89, 23);
 		panel.add(btnOK);
-		
+
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -138,11 +144,11 @@ public class ProductUpdate extends JFrame {
 		});
 		btnBack.setBounds(253, 141, 89, 23);
 		panel.add(btnBack);
-		
+
 		JLabel lblNewLabel = new JLabel("Product ID: ");
 		lblNewLabel.setBounds(29, 9, 75, 14);
 		panel.add(lblNewLabel);
-		
+
 		textProductID = new JTextField();
 		textProductID.setEnabled(false);
 		textProductID.setBounds(118, 3, 181, 20);

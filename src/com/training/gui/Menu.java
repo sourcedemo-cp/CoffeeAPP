@@ -103,6 +103,7 @@ public class Menu extends JFrame {
 		menuProduct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				productManagement.setVisible(true);
+				productManagement.setLocationRelativeTo(null);
 				productManagement.getProduct();
 				dispose();
 			}
