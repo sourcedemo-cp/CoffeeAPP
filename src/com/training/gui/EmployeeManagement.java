@@ -32,46 +32,47 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
-@Component("employeeManagement")
 
+@Component("employeeManagement")
 public class EmployeeManagement extends JFrame {
-	
+
 	private int id;
-	
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	@Autowired
 	private EmployeeService employeeService;
-	
+
 	@Autowired
 	private Menu menu;
-	
+
 	@Autowired
 	private EmployeeAdd employeeAdd;
-	
+
 	@Autowired
 	private EmployeeEdit employeeEdit;
-	
+
 	@Autowired
 	private EmployeeServiceImpl employeeServiceImpl;
-	
-	@Autowired 
+
+	@Autowired
 	private ProductManagement productManagement;
-	
+
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	
+
 	private JTable table1;
-	
-	public int AllData(){
+
+	public int AllData() {
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("ID");
 		dtm.addColumn("Name");
@@ -80,20 +81,24 @@ public class EmployeeManagement extends JFrame {
 		dtm.addColumn("Sex");
 		dtm.addColumn("User name");
 		dtm.addColumn("Password");
-		for(Employee employee: this.employeeService.getAllEmployee()){
-			dtm.addRow(new Object[]{employee.getEmployeeId(), employee.getEmployeeName(), employee.getEmployeeAddress(), employee.getEmployeeTelephone(), employee.getEmployeeSex(), employee.getUserName(), employee.getPassword()});
+		for (Employee employee : this.employeeService.getAllEmployee()) {
+			dtm.addRow(new Object[] { employee.getEmployeeId(),
+					employee.getEmployeeName(), employee.getEmployeeAddress(),
+					employee.getEmployeeTelephone(), employee.getEmployeeSex(),
+					employee.getUserName(), employee.getPassword() });
 		}
 		this.table1.setModel(dtm);
 		this.table1.repaint();
 		this.table1.revalidate();
 		return 1;
 	}
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {			
+				try {
 					EmployeeManagement frame = new EmployeeManagement();
-					frame.setVisible(true);	
+					frame.setVisible(true);
 					frame.table1.repaint();
 					frame.table1.revalidate();
 				} catch (Exception e) {
@@ -102,6 +107,7 @@ public class EmployeeManagement extends JFrame {
 			}
 		});
 	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -113,87 +119,92 @@ public class EmployeeManagement extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1, BorderLayout.WEST);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		
-		
+
 		JButton btnNew = new JButton("Add");
 		panel_1.add(btnNew);
-		
+
 		JButton btnUpdate = new JButton("Update");
 		panel_1.add(btnUpdate);
-		
+
 		JButton btnDelete = new JButton("Delete");
 		panel_1.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-				if(employeeServiceImpl.deleteEmployeeById(employeeServiceImpl.findEmployeeById(id))){
-					JOptionPane.showMessageDialog(null, "Deleted successful!!!");
-				}else{
-					JOptionPane.showMessageDialog(null, "Fail!!!");
+				try {
+					int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+					if (employeeServiceImpl
+							.deleteEmployeeById(employeeServiceImpl
+									.findEmployeeById(id))) {
+						JOptionPane.showMessageDialog(null,
+								"Deleted successful!!!");
+					} else {
+						JOptionPane.showMessageDialog(null, "Fail!!!");
+					}
+					AllData();
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null, "Please select a row to delete!");
 				}
-				AllData();
 			}
 		});
-				btnUpdate.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-						Employee employee = employeeService.findEmployeeById(id);
-						EmployeeEdit.textID.setText(employee.getEmployeeId() + "");
-						EmployeeEdit.textName.setText(employee.getEmployeeName());
-						EmployeeEdit.textCity.setText(employee.getEmpoyeeCity());
-						EmployeeEdit.textAddress.setText(employee.getEmployeeAddress());
-						EmployeeEdit.textTel.setText(employee.getEmployeeTelephone());
-						EmployeeEdit.textSex.setText(employee.getEmployeeSex());
-						EmployeeEdit.textUser.setText(employee.getUserName());
-						EmployeeEdit.textPass.setText(employee.getPassword());
-//						employee.setEmpoyeeCity(EmployeeEdit.textCity.getText());
-//						employee.setEmployeeAddress(EmployeeEdit.textAddress.getText());
-//						employee.setEmployeeTelephone(EmployeeEdit.textTel.getText());
-//						employee.setShift(EmployeeEdit.textShift.getText());
-//						employee.setWorkDate(EmployeeEdit.textWorkDate.getText());
-//						employee.setEmployeeSex(EmployeeEdit.textSex.getText());
-//						employee.setUserName(EmployeeEdit.textUser.getText());
-//						employee.setPassword(EmployeeEdit.textPass.getText());						
-						employeeEdit.setVisible(true);
-					}
-				});
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+					Employee employee = employeeService.findEmployeeById(id);
+					EmployeeEdit.textID.setText(employee.getEmployeeId() + "");
+					EmployeeEdit.textName.setText(employee.getEmployeeName());
+					EmployeeEdit.textCity.setText(employee.getEmpoyeeCity());
+					EmployeeEdit.textAddress.setText(employee
+							.getEmployeeAddress());
+					EmployeeEdit.textTel.setText(employee
+							.getEmployeeTelephone());
+					EmployeeEdit.textSex.setText(employee.getEmployeeSex());
+					EmployeeEdit.textUser.setText(employee.getUserName());
+					EmployeeEdit.textPass.setText(employee.getPassword());
+					employeeEdit.setVisible(true);
+					employeeEdit.setLocationRelativeTo(null);
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null,
+							"Please select a row to update!");
+				}
+			}
+		});
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				employeeAdd.setVisible(true);
+				employeeAdd.setLocationRelativeTo(null);
 			}
 		});
-		
+
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2, BorderLayout.EAST);
-		
+
 		JButton btnNewButton = new JButton("Back");
 		panel_2.add(btnNewButton);
-		
+
 		JButton btnExit = new JButton("Exit");
 		panel_2.add(btnExit);
-		
+
 		JPanel panel_3 = new JPanel();
 		contentPane.add(panel_3, BorderLayout.CENTER);
 		panel_3.setLayout(new BorderLayout(0, 0));
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		panel_3.add(scrollPane, BorderLayout.CENTER);
-		
+
 		table1 = new JTable();
-		
+
 		scrollPane.setViewportView(table1);
-		
-		
+
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();

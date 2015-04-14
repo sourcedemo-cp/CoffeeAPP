@@ -164,13 +164,12 @@ public class EmployeeEdit extends JDialog {
 				JButton btnClear = new JButton("Clear");
 				btnClear.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						int id = employeeManagement.getId();
-						textID.setText(Integer.toString(id));
+//						int id = employeeManagement.getId();
+//						textID.setText(Integer.toString(id));
 						textName.setText("");
 						textCity.setText("");
 						textAddress.setText("");
 						textTel.setText("");
-						
 						textSex.setText("");
 						textUser.setText("");
 						textPass.setText("");
@@ -185,7 +184,6 @@ public class EmployeeEdit extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						int id = Integer.parseInt(textID.getText());
 						Employee employee = employeeService.findEmployeeById(id);
-						//employee.setEmployeeId(id);
 						employee.setEmployeeName(textName.getText());
 						employee.setEmpoyeeCity(textCity.getText());
 						employee.setEmployeeAddress(textAddress.getText());
@@ -202,6 +200,7 @@ public class EmployeeEdit extends JDialog {
 							JOptionPane.showMessageDialog(null, "Updated Failure!!");
 						}
 						employeeManagement.AllData();
+						dispose();
 					}
 				});
 				button.setBounds(264, 91, 89, 23);

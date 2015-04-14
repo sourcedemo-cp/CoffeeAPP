@@ -71,6 +71,7 @@ public class Menu extends JFrame {
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				employeeManagement.setVisible(true);
+				employeeManagement.setLocationRelativeTo(null);
 				employeeManagement.AllData();
 				dispose();
 			}
