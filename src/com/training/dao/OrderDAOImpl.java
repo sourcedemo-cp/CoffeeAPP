@@ -50,7 +50,7 @@ public class OrderDAOImpl implements OrderDAO{
 	@Override
 	@Transactional
 	public Order findOrderByID(int id) {
-		List<Order> orders = sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o WHERE o.oderId = :id").setParameter("id", id).list();
+		List<Order> orders = sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o WHERE o.orderId = :id").setParameter("id", id).list();
 		return orders.size()>0?orders.get(0):null;
 	}
 	@Override
