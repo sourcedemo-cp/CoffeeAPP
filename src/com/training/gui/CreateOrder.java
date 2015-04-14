@@ -165,7 +165,7 @@ public class CreateOrder extends JFrame {
 					fillData();
 					
 				} catch (NumberFormatException ex) {
-
+					JOptionPane.showMessageDialog(null, "Please insert integer number in Quantity!");
 				}
 			}
 		});
