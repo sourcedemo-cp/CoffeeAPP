@@ -50,11 +50,11 @@ CREATE TABLE `orderdetail` (
   KEY `FK_oderdetail_product` (`PRODUCT_ID`),
   CONSTRAINT `FK_oderdetail` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`PRODUCT_ID`) ON DELETE SET NULL,
   CONSTRAINT `FK_oderdetail_order` FOREIGN KEY (`ORDER_ID`) REFERENCES `orders` (`ORDER_ID`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `orderdetail` */
 
-insert  into `orderdetail`(`ORDER_ID`,`PRODUCT_ID`,`QUANTITY`,`ORDERDETAIL_ID`) values (1,1,2,1);
+insert  into `orderdetail`(`ORDER_ID`,`PRODUCT_ID`,`QUANTITY`,`ORDERDETAIL_ID`) values (1,1,2,1),(1,2,3,2),(1,3,4,3);
 
 /*Table structure for table `orders` */
 
@@ -64,14 +64,15 @@ CREATE TABLE `orders` (
   `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT,
   `DATE_PAYMENT` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `TABLE_ID` int(11) DEFAULT NULL,
+  `IS_PAY` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`ORDER_ID`),
   KEY `FK_tables` (`TABLE_ID`),
   CONSTRAINT `FK_order_tables` FOREIGN KEY (`TABLE_ID`) REFERENCES `tables` (`TABLE_ID`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `orders` */
 
-insert  into `orders`(`ORDER_ID`,`DATE_PAYMENT`,`TABLE_ID`) values (1,'2015-04-03 09:37:11',1),(2,'2015-04-14 18:02:06',1);
+insert  into `orders`(`ORDER_ID`,`DATE_PAYMENT`,`TABLE_ID`,`IS_PAY`) values (1,'2015-04-03 09:37:11',1,1),(2,'2015-04-14 18:02:06',1,0),(3,'2015-04-14 18:14:31',2,0);
 
 /*Table structure for table `product` */
 
@@ -83,7 +84,7 @@ CREATE TABLE `product` (
   `PRODUCT_QUANTITY` int(11) unsigned DEFAULT NULL,
   `PRODUCT_PRICE` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`PRODUCT_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `product` */
 
