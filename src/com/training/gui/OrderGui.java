@@ -32,8 +32,6 @@ import java.awt.Insets;
 
 import javax.swing.JComboBox;
 
-import net.miginfocom.swing.MigLayout;
-
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
@@ -84,6 +82,7 @@ public class OrderGui extends JFrame {
 	 * Create the frame.
 	 */
 	public OrderGui() {
+		setTitle("Order");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 652, 416);
 		contentPane = new JPanel();
@@ -104,6 +103,11 @@ public class OrderGui extends JFrame {
 		panel_1.add(panel_2, BorderLayout.WEST);
 
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		panel_2.add(btnAdd);
 
 		JButton btnDelete = new JButton("Delete");

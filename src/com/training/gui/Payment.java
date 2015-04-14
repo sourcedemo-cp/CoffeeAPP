@@ -65,7 +65,7 @@ public class Payment extends JFrame implements ActionListener{
 	
 	public Payment() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setTitle("Order");
+		setTitle("Table");
 	}
 	
 	@PostConstruct
