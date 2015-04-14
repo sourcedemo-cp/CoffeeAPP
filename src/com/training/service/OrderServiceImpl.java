@@ -41,5 +41,10 @@ public class OrderServiceImpl implements OrderService{
 	public Order findOrderByID(int id) {
 		return orderDAO.findOrderByID(id);
 	}
+
+	@Override
+	public List<Order> findOrderByCoffeeTableId(int id) {
+		return orderDAO.findOrderByCoffeeTableId(id);
+	}
 	
 }

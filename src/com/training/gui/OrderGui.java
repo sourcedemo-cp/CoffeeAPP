@@ -11,11 +11,15 @@ import javax.swing.border.EmptyBorder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.training.entity.Order;
 import com.training.entity.Product;
+import com.training.service.CoffeeTableService;
+import com.training.service.OrderService;
 import com.training.service.ProductService;
 
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
 
@@ -41,19 +45,18 @@ import java.util.List;
 public class OrderGui extends JFrame {
 	
 	static int banId;
-	JComboBox cbbProduct;
+
 
 	@Autowired
 	private Payment payment;
 	
 	@Autowired
-	private ProductService productService;
+	private CoffeeTableService coffeeTableService;
 	
-	
-	private List<Product> products;
+	@Autowired
+	private OrderService orderService;
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTable table;
 	static JLabel lblBan;
 
@@ -79,9 +82,6 @@ public class OrderGui extends JFrame {
 	public OrderGui() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 652, 416);
-		
-		
-		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -98,6 +98,15 @@ public class OrderGui extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_1.add(panel_2, BorderLayout.WEST);
+		
+		JButton btnAdd = new JButton("Add");
+		panel_2.add(btnAdd);
+		
+		JButton btnDelete = new JButton("Delete");
+		panel_2.add(btnDelete);
+		
+		JButton btnCreateOrder = new JButton("Create Order");
+		panel_2.add(btnCreateOrder);
 		
 		JPanel panel_3 = new JPanel();
 		panel_1.add(panel_3, BorderLayout.EAST);
@@ -142,37 +151,7 @@ public class OrderGui extends JFrame {
 		gbc_lblBan.gridy = 0;
 		panel_5.add(lblBan, gbc_lblBan);
 		
-		JLabel lblNewLabel = new JLabel("Product");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 2;
-		gbc_lblNewLabel.gridy = 0;
-		panel_5.add(lblNewLabel, gbc_lblNewLabel);
-		
-		cbbProduct = new JComboBox();
-		GridBagConstraints gbc_cbbProduct = new GridBagConstraints();
-		gbc_cbbProduct.insets = new Insets(0, 0, 5, 0);
-		gbc_cbbProduct.fill = GridBagConstraints.HORIZONTAL;
-		gbc_cbbProduct.gridx = 3;
-		gbc_cbbProduct.gridy = 0;
-		panel_5.add(cbbProduct, gbc_cbbProduct);
-		
-		JLabel lblNewLabel_1 = new JLabel("Quantity");
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel_1.gridx = 2;
-		gbc_lblNewLabel_1.gridy = 1;
-		panel_5.add(lblNewLabel_1, gbc_lblNewLabel_1);
-		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 3;
-		gbc_textField.gridy = 1;
-		panel_5.add(textField, gbc_textField);
-		textField.setColumns(10);
+
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -184,15 +163,20 @@ public class OrderGui extends JFrame {
 		panel_6.add(scrollPane, BorderLayout.CENTER);
 	}
 	
+	
 	@PostConstruct
-	public void fillDataToComboBox(){
-
-		products = productService.getAllProduct();
-		for (Product product : products) {
-			cbbProduct.addItem(product);
+	public void fillDataTable(){
+		List<Order> orders = orderService.findOrderByCoffeeTableId(banId);
+		DefaultTableModel dtm = new DefaultTableModel();
+		dtm.addColumn("ID");
+		dtm.addColumn("Date");
+		
+		for (Order order : orders) {
+			dtm.addRow(new Object[]{order.getOrderId(), order.getDatePayment()});
 		}
-
-		System.out.println(banId);
+		
+		table.setModel(dtm);
 		
 	}
+
 }

@@ -23,20 +23,12 @@ public class Employee {
 	@Column(name="EMPLOYEE_NAME")
 	private String employeeName;
 	
-	@Column(name="EMPLOYEE_CITY")
-	private String empoyeeCity;
-	
 	@Column(name="EMPLOYEE_ADDRESS")
 	private String employeeAddress;
 	
 	@Column(name="EMPLOYEE_TELEPHONE")
 	private String employeeTelephone;
 	
-	@Column(name="SHIFT")
-	private String shift;
-	
-	@Column(name="WORK_DATE")
-	private String workDate;
 	
 	@Column(name="EMPLOYEE_SEX")
 	private String employeeSex;
@@ -44,19 +36,6 @@ public class Employee {
 	private String userName;
 	@Column(name="PASSWORD")
 	private String password;
-
-	@OneToMany(mappedBy="employee",fetch=FetchType.LAZY)
-	private List<Order> orders;
-	
-	
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -72,14 +51,6 @@ public class Employee {
 
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
-	}
-
-	public String getEmpoyeeCity() {
-		return empoyeeCity;
-	}
-
-	public void setEmpoyeeCity(String empoyeeCity) {
-		this.empoyeeCity = empoyeeCity;
 	}
 
 	public String getEmployeeAddress() {
@@ -98,21 +69,6 @@ public class Employee {
 		this.employeeTelephone = employeeTelephone;
 	}
 
-	public String getShift() {
-		return shift;
-	}
-
-	public void setShift(String shift) {
-		this.shift = shift;
-	}
-
-	public String getWorkDate() {
-		return workDate;
-	}
-
-	public void setWorkDate(String workDate) {
-		this.workDate = workDate;
-	}
 
 	public String getEmployeeSex() {
 		return employeeSex;

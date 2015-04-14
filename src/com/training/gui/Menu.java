@@ -29,9 +29,6 @@ public class Menu extends JFrame {
 	private ProductManagement productManagement;
 	
 	@Autowired
-	private Service service;
-	
-	@Autowired
 	private CoffeeTableManagement coffeeTableManagement;
 	
 	@Autowired
@@ -92,15 +89,6 @@ public class Menu extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
-		
-		JMenuItem mntmSystem = new JMenuItem("System");
-		mntmSystem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				service.setVisible(true);
-				dispose();
-			}
-		});
-		mnNewMenu.add(mntmSystem);
 		
 		JMenuItem menuProduct = new JMenuItem("Product");
 		menuProduct.addActionListener(new ActionListener() {

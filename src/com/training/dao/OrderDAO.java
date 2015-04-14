@@ -10,5 +10,5 @@ public interface OrderDAO {
 	public boolean deleteOrderByID(Order order);
 	public int updateOrder(Order order);
 	public Order findOrderByID(int id);
+	public List<Order> findOrderByCoffeeTableId(int id);
 }
-// test n�t pull trong syn

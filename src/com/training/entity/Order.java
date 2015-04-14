@@ -24,9 +24,6 @@ public class Order {
 	@Column(name="DATE_PAYMENT")
 	private Timestamp datePayment;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="EMPLOYEE_ID", referencedColumnName="EMPLOYEE_ID")
-	private Employee employee;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="TABLE_ID", referencedColumnName="TABLE_ID")
@@ -49,14 +46,6 @@ public class Order {
 
 	public void setCoffeeTable(CoffeeTable coffeeTable) {
 		this.coffeeTable = coffeeTable;
-	}
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
 	}
 
 	public Integer getOrderId() {

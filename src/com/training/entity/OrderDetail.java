@@ -17,9 +17,6 @@ public class OrderDetail {
 	@Column(name="ORDERDETAIL_ID")
 	private Integer orderDetailId;
 	
-	@Column(name="PAYMENT")
-	private Integer payment;
-	
 	@Column(name="QUANTITY")
 	private Integer quantity;
 	
@@ -39,14 +36,6 @@ public class OrderDetail {
 
 	public void setOrderDetailId(Integer orderDetailId) {
 		this.orderDetailId = orderDetailId;
-	}
-
-	public Integer getPayment() {
-		return payment;
-	}
-
-	public void setPayment(Integer payment) {
-		this.payment = payment;
 	}
 
 	public Integer getQuantity() {

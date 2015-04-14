@@ -130,10 +130,9 @@ public class Payment extends JFrame implements ActionListener{
 				String tableName = coffeeTables.get(i).getTableName();
 				OrderGui.banId = coffeeTables.get(i).getTableId();
 				OrderGui.lblBan.setText(tableName);
+				orderGui.fillDataTable();
 				orderGui.setVisible(true);
-				orderGui.fillDataToComboBox();
 				orderGui.setLocationRelativeTo(null);
-
 			}
 		}
 	}

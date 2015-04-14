@@ -53,6 +53,14 @@ public class OrderDAOImpl implements OrderDAO{
 		List<Order> orders = sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o WHERE o.oderId = :id").setParameter("id", id).list();
 		return orders.size()>0?orders.get(0):null;
 	}
+	@Override
+	@Transactional
+	public List<Order> findOrderByCoffeeTableId(int id) {
+
+		String sql = "SELECT o FROM Order o JOIN o.coffeeTable t WHERE t.tableId = :id";
+		List<Order> orders = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
+		return orders;
+	}
 
 	
 
