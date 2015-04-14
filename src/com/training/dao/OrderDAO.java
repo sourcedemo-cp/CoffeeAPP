@@ -13,4 +13,5 @@ public interface OrderDAO {
 	public int updateOrder(Order order);
 	public Order findOrderByID(int id);
 	public List<Order> findOrderByCoffeeTableId(int id);
+	public boolean deleteOrderById(int id);
 }

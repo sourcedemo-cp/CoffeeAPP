@@ -69,6 +69,16 @@ public class OrderDAOImpl implements OrderDAO{
 		List<Order> orderDetails = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
 		return orderDetails;
 	}
+	@Override
+	@Transactional
+	public boolean deleteOrderById(int id) {
+		Order order = (Order) sessionFactory.getCurrentSession().load(Order.class, id);
+		if(null != order){
+			sessionFactory.getCurrentSession().delete(order);
+			return true;
+		}
+		return false;
+	}
 
 	
 

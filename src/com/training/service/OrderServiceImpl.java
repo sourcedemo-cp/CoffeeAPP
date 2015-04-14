@@ -51,5 +51,10 @@ public class OrderServiceImpl implements OrderService{
 	public List<Order> getOrderByTableID(int id) {
 		return orderDAO.getOrderByTableID(id);
 	}
+
+	@Override
+	public boolean deleteOrderById(int id) {
+		return orderDAO.deleteOrderById(id);
+	}
 	
 }

@@ -115,6 +115,24 @@ public class OrderGui extends JFrame {
 		panel_2.add(btnAdd);
 
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					int id = (int) table.getValueAt(table.getSelectedRow(), 0);
+					if(orderService.deleteOrderById(id)==true){
+						JOptionPane.showMessageDialog(null,
+								"Deleted successful!!!");
+					}else {
+						JOptionPane.showMessageDialog(null, "Fail!!!");
+					}
+					
+					fillDataTable();
+					
+				}catch(ArrayIndexOutOfBoundsException ex){
+					JOptionPane.showMessageDialog(null, "Please select a row to delete");
+				}
+			}
+		});
 		panel_2.add(btnDelete);
 
 		JButton btnCreateOrder = new JButton("Create Order");
