@@ -1,6 +1,7 @@
 package com.training.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,12 +12,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.training.entity.CoffeeTable;
 import com.training.service.CoffeeTableService;
+
 import java.awt.FlowLayout;
 @Component("payment")
 public class Payment extends JFrame implements ActionListener{
@@ -63,9 +66,37 @@ public class Payment extends JFrame implements ActionListener{
 	public Payment() {
 		setTitle("Order");
 		
+		
+	
+	}
+	
+	@PostConstruct
+	public void initButtons() {
+		coffeeTables = coffeeTableService.getAllCoffeeTable();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.CENTER);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btn_Bans = new JButton[coffeeTables.size()];
+		for(int i = 0;i < coffeeTables.size();i ++){
+			btn_Bans[i] = new JButton(coffeeTables.get(i).getTableName());
+			panel.add(btn_Bans[i]);
+			btn_Bans[i].addActionListener(this);
+		}
+		
+		
+		
+		
 		JPanel panel1 = new JPanel();
 		getContentPane().add(panel1, BorderLayout.SOUTH);
 		panel1.setLayout(new BorderLayout(0, 0));
+		panel1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JPanel panel2 = new JPanel();
 		panel1.add(panel2, BorderLayout.WEST);
@@ -91,27 +122,6 @@ public class Payment extends JFrame implements ActionListener{
 			}
 		});
 		panel_1.add(btnNewButton_1);
-	
-	}
-	
-	@PostConstruct
-	public void initButtons() {
-		coffeeTables = coffeeTableService.getAllCoffeeTable();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.CENTER);
-		btn_Bans = new JButton[coffeeTables.size()];
-		for(int i = 0;i < coffeeTables.size();i ++){
-			btn_Bans[i] = new JButton(coffeeTables.get(i).getTableName());
-			panel.add(btn_Bans[i]);
-			btn_Bans[i].addActionListener(this);
-		}
 	}
 	
 	@Override
