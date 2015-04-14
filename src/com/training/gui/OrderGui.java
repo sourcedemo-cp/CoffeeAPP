@@ -81,10 +81,7 @@ public class OrderGui extends JFrame {
 		setBounds(100, 100, 652, 416);
 		
 		
-	}
-	
-	@PostConstruct
-	public void fillDataToComboBox(){
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -185,13 +182,17 @@ public class OrderGui extends JFrame {
 		table = new JTable();
 		JScrollPane scrollPane = new JScrollPane(table);
 		panel_6.add(scrollPane, BorderLayout.CENTER);
-		
-		
+	}
+	
+	@PostConstruct
+	public void fillDataToComboBox(){
+
 		products = productService.getAllProduct();
-		
 		for (Product product : products) {
 			cbbProduct.addItem(product);
 		}
+
+		System.out.println(banId);
 		
 	}
 }

@@ -126,7 +126,6 @@ public class Payment extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		for(int i = 0;i < coffeeTables.size();i++){
 			if(e.getSource()==btn_Bans[i]){
-//				orderGui.setBanId(coffeeTables.get(i).getTableId());
 				
 				String tableName = coffeeTables.get(i).getTableName();
 				OrderGui.banId = coffeeTables.get(i).getTableId();
@@ -134,8 +133,7 @@ public class Payment extends JFrame implements ActionListener{
 				orderGui.setVisible(true);
 				orderGui.fillDataToComboBox();
 				orderGui.setLocationRelativeTo(null);
-				
-				
+
 			}
 		}
 	}
