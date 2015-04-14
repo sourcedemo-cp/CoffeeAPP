@@ -50,11 +50,11 @@ CREATE TABLE `orderdetail` (
   KEY `FK_oderdetail_product` (`PRODUCT_ID`),
   CONSTRAINT `FK_oderdetail` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`PRODUCT_ID`) ON DELETE SET NULL,
   CONSTRAINT `FK_oderdetail_order` FOREIGN KEY (`ORDER_ID`) REFERENCES `orders` (`ORDER_ID`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `orderdetail` */
 
-insert  into `orderdetail`(`ORDER_ID`,`PRODUCT_ID`,`QUANTITY`,`ORDERDETAIL_ID`) values (1,1,2,1),(1,2,3,2),(1,3,4,3);
+insert  into `orderdetail`(`ORDER_ID`,`PRODUCT_ID`,`QUANTITY`,`ORDERDETAIL_ID`) values (NULL,1,2,1),(NULL,2,3,2),(NULL,3,4,3),(2,1,1,4),(2,2,2,5),(2,4,3,6),(2,6,2,7),(4,1,2,8),(4,2,1,9),(3,1,1,10),(3,2,1,11),(NULL,4,2,12),(NULL,7,1,14),(2,9,2,15),(4,9,2,16),(7,2,1,17),(7,3,2,18),(8,2,2,19),(8,9,5,20);
 
 /*Table structure for table `orders` */
 
@@ -68,11 +68,11 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`ORDER_ID`),
   KEY `FK_tables` (`TABLE_ID`),
   CONSTRAINT `FK_order_tables` FOREIGN KEY (`TABLE_ID`) REFERENCES `tables` (`TABLE_ID`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `orders` */
 
-insert  into `orders`(`ORDER_ID`,`DATE_PAYMENT`,`TABLE_ID`,`IS_PAY`) values (1,'2015-04-03 09:37:11',1,1),(2,'2015-04-14 18:02:06',1,0),(3,'2015-04-14 18:14:31',2,0);
+insert  into `orders`(`ORDER_ID`,`DATE_PAYMENT`,`TABLE_ID`,`IS_PAY`) values (2,'2015-04-14 18:02:06',1,1),(3,'2015-04-14 18:14:31',2,1),(4,'2015-04-14 23:48:16',1,1),(6,'2015-04-15 01:20:49',2,0),(7,'2015-04-15 01:22:28',1,1),(8,'2015-04-15 01:24:05',5,1),(10,'2015-04-15 01:25:21',14,0);
 
 /*Table structure for table `product` */
 
@@ -100,11 +100,11 @@ CREATE TABLE `tables` (
   `TABLE_QUANTITY` int(11) unsigned DEFAULT NULL,
   `TABLE_POSITION` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`TABLE_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `tables` */
 
-insert  into `tables`(`TABLE_ID`,`TABLE_NAME`,`TABLE_QUANTITY`,`TABLE_POSITION`) values (1,'Bàn 1',10,'1'),(2,'Bàn 2',NULL,NULL),(5,'Bàn 3',NULL,NULL),(6,'Bàn 4',NULL,NULL),(7,'Bàn 5',NULL,NULL),(8,'Bàn 6',NULL,NULL),(9,'Bàn 7',NULL,NULL),(10,'Bàn 8',NULL,NULL),(11,'Bàn 9',NULL,NULL),(12,'Bàn 10',NULL,NULL),(13,'Bàn 11',NULL,NULL);
+insert  into `tables`(`TABLE_ID`,`TABLE_NAME`,`TABLE_QUANTITY`,`TABLE_POSITION`) values (1,'Bàn 1',10,'1'),(2,'Bàn 2',NULL,NULL),(5,'Bàn 3',NULL,NULL),(6,'Bàn 4',NULL,NULL),(7,'Bàn 5',NULL,NULL),(8,'Bàn 6',NULL,NULL),(9,'Bàn 7',NULL,NULL),(10,'Bàn 8',NULL,NULL),(11,'Bàn 9',NULL,NULL),(12,'Bàn 10',NULL,NULL),(13,'Bàn 11',NULL,NULL),(14,'Bàn 12',NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
