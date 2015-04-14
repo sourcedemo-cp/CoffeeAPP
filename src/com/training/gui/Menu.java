@@ -34,6 +34,9 @@ public class Menu extends JFrame {
 	@Autowired
 	private CoffeeTableManagement coffeeTableManagement;
 	
+	@Autowired
+	private Payment payment;
+	
 	private JPanel contentPane;
 	private JTable table;
 
@@ -109,6 +112,15 @@ public class Menu extends JFrame {
 			}
 		});
 		mnNewMenu.add(menuProduct);
+		
+		JMenuItem mntmPayment = new JMenuItem("Payment");
+		mntmPayment.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				payment.setVisible(true);
+				payment.setLocationRelativeTo(null);
+			}
+		});
+		mnNewMenu.add(mntmPayment);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
