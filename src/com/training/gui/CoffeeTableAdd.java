@@ -55,7 +55,7 @@ public class CoffeeTableAdd extends JFrame {
 	 */
 	public CoffeeTableAdd() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 379, 163);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -96,6 +96,7 @@ public class CoffeeTableAdd extends JFrame {
 					JOptionPane.showMessageDialog(null, "Saved Failure!!");
 				}
 				coffeeTableManagement.AllData();
+				dispose();
 			}
 		});
 		btnOk.setBounds(110, 80, 89, 23);

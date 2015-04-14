@@ -33,12 +33,11 @@ import java.awt.Color;
 import java.util.List;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 @Component("coffeeTableManagement")
 public class CoffeeTableManagement extends JFrame {
-	
+
 	private int id;
-	
-	
 
 	public int getId() {
 		return id;
@@ -48,19 +47,18 @@ public class CoffeeTableManagement extends JFrame {
 		this.id = id;
 	}
 
-
 	@Autowired
 	private CoffeeTableService coffeeTableService;
-	
+
 	@Autowired
 	private Menu menu;
-	
+
 	@Autowired
 	private CoffeeTableAdd coffeeTableAdd;
-	
+
 	@Autowired
 	private CoffeeTableUpdate coffeeTableUpdate;
-	
+
 	private JPanel contentPane;
 	private JTable table1;
 
@@ -93,16 +91,16 @@ public class CoffeeTableManagement extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1, BorderLayout.WEST);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JButton btnNewButton = new JButton("Add");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -111,38 +109,51 @@ public class CoffeeTableManagement extends JFrame {
 			}
 		});
 		panel_1.add(btnNewButton);
-		
+
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-				CoffeeTable coffeeTable = coffeeTableService.findCoffeeTableById(id);
-				coffeeTableUpdate.txfID.setText(coffeeTable.getTableId() + "");
-				coffeeTableUpdate.txfName.setText(coffeeTable.getTableName() + "");
-				coffeeTableUpdate.setVisible(true);
-				coffeeTableUpdate.setLocationRelativeTo(null);
+				try {
+					int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+					CoffeeTable coffeeTable = coffeeTableService
+							.findCoffeeTableById(id);
+					coffeeTableUpdate.txfID.setText(coffeeTable.getTableId()
+							+ "");
+					coffeeTableUpdate.txfName.setText(coffeeTable
+							.getTableName() + "");
+					coffeeTableUpdate.setVisible(true);
+					coffeeTableUpdate.setLocationRelativeTo(null);
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null, "Please select a row to edit");
+				}
 			}
 		});
 		panel_1.add(btnEdit);
-		
+
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-				if(coffeeTableService.deleteCoffeeTableById(id)== true){
-					JOptionPane.showMessageDialog(null, "Deleted successful!!!");
-				}else {
-					JOptionPane.showMessageDialog(null, "Fail!!!");
+				try {
+					int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+					if (coffeeTableService.deleteCoffeeTableById(id) == true) {
+						JOptionPane.showMessageDialog(null,
+								"Deleted successful!!!");
+					} else {
+						JOptionPane.showMessageDialog(null, "Fail!!!");
+					}
+
+					AllData();
+				} catch (ArrayIndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null,
+							"Please select a row to delete");
 				}
-				
-				AllData();
 			}
 		});
 		panel_1.add(btnDelete);
-		
+
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2, BorderLayout.EAST);
-		
+
 		JButton btnNewButton_1 = new JButton("Back");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -152,38 +163,38 @@ public class CoffeeTableManagement extends JFrame {
 			}
 		});
 		panel_2.add(btnNewButton_1);
-		
+
 		JButton btnNewButton_2 = new JButton("Exit");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
+				dispose();
 			}
 		});
 		panel_2.add(btnNewButton_2);
-		
+
 		JPanel panel_3 = new JPanel();
 		contentPane.add(panel_3, BorderLayout.CENTER);
 		panel_3.setLayout(new BorderLayout(0, 0));
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		panel_3.add(scrollPane, BorderLayout.CENTER);
-		
+
 		table1 = new JTable();
 		scrollPane.setViewportView(table1);
 	}
-	
-	
-	protected int AllData(){
-		
+
+	protected int AllData() {
+
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("ID");
 		dtm.addColumn("Name");
 
 		List<CoffeeTable> coffeeTables = coffeeTableService.getAllCoffeeTable();
 		for (CoffeeTable coffeeTable : coffeeTables) {
-			dtm.addRow(new Object[]{coffeeTable.getTableId(),coffeeTable.getTableName()});
+			dtm.addRow(new Object[] { coffeeTable.getTableId(),
+					coffeeTable.getTableName() });
 		}
-		
+
 		table1.setModel(dtm);
 		table1.repaint();
 		table1.revalidate();

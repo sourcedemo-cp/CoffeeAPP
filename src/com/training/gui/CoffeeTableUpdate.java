@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -88,6 +89,11 @@ public class CoffeeTableUpdate extends JFrame {
 		txfName.setColumns(10);
 		
 		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txfName.setText("");
+			}
+		});
 		btnClear.setBounds(10, 150, 89, 23);
 		panel.add(btnClear);
 		
@@ -96,15 +102,26 @@ public class CoffeeTableUpdate extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int id = Integer.parseInt(txfID.getText());
 				CoffeeTable coffeeTable = coffeeTableService.findCoffeeTableById(id);
-				//employee.setEmployeeId(id);
 				coffeeTable.setTableName(txfName.getText());
+				if(coffeeTableService.updateCoffeeTable(coffeeTable)==1){
+					JOptionPane.showMessageDialog(null, "Edit Success!");
+				}else {
+					JOptionPane.showMessageDialog(null, "Edit fail!");
+				}
 				coffeeTableManagement.AllData();
+				
+				dispose();
 			}
 		});
 		btnOk.setBounds(110, 150, 89, 23);
 		panel.add(btnOk);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnCancel.setBounds(325, 150, 89, 23);
 		panel.add(btnCancel);
 	}

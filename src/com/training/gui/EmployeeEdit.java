@@ -59,6 +59,7 @@ public class EmployeeEdit extends JDialog {
 	 * Create the dialog.
 	 */
 	public EmployeeEdit() {
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setTitle("Employee Edit");
 		setBounds(100, 100, 427, 361);
 		getContentPane().setLayout(new BorderLayout());
