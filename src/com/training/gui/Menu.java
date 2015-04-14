@@ -118,6 +118,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				payment.setVisible(true);
 				payment.setLocationRelativeTo(null);
+				payment.initButtons();
 			}
 		});
 		mnNewMenu.add(mntmPayment);
