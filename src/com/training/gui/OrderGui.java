@@ -43,6 +43,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+@SuppressWarnings({ "serial", "unused" })
 @Component("orderGui")
 public class OrderGui extends JFrame {
 

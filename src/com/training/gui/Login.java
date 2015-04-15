@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 import com.training.service.EmployeeService;
 
+@SuppressWarnings("serial")
 @Component("login")
 public class Login extends JFrame {
 	
@@ -83,6 +84,7 @@ public class Login extends JFrame {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String userName = textUsername.getText();
+				@SuppressWarnings("deprecation")
 				String password = textPassword.getText();
 				if(employeeService.isEmployeeByUsernamePassword(userName, password)){
 					dispose();

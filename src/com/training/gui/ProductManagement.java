@@ -1,43 +1,31 @@
 package com.training.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.config.TxNamespaceHandler;
 
 import com.training.entity.Product;
 import com.training.service.ProductService;
-import com.training.service.ProductServiceImpl;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.FlowLayout;
-import java.util.List;
-
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.JScrollBar;
-import javax.swing.JProgressBar;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-
+@SuppressWarnings("serial")
 @Component("productManagement")
 public class ProductManagement extends JFrame {
 
@@ -55,6 +43,7 @@ public class ProductManagement extends JFrame {
 
 	private JPanel contentPane_product;
 	private JTable table1;
+	@SuppressWarnings("unused")
 	private final JScrollBar scrollBar_1 = new JScrollBar();
 
 	/**
@@ -91,11 +80,6 @@ public class ProductManagement extends JFrame {
 				}
 			}
 		});
-	}
-
-	public int getProductToUpdate() {
-		int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-		return 1;
 	}
 
 	/**
@@ -155,17 +139,15 @@ public class ProductManagement extends JFrame {
 			}
 		});
 		btnUpdate.addActionListener(new ActionListener() {
+			@SuppressWarnings("static-access")
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
 					Product product = productService.findProductById(id);
-					productUpdate.textProductID.setText(product.getProductId()
-							+ "");
+					productUpdate.textProductID.setText(product.getProductId()+ "");
 					productUpdate.txtName.setText(product.getProductName());
-					productUpdate.txtPrice.setText(product.getProductPrice()
-							+ "");
-					productUpdate.txtQuantity.setText(product
-							.getProductQuantity() + "");
+					productUpdate.txtPrice.setText(product.getProductPrice()+ "");
+					productUpdate.txtQuantity.setText(product.getProductQuantity() + "");
 					productUpdate.setVisible(true);
 					productUpdate.setLocationRelativeTo(null);
 				} catch (ArrayIndexOutOfBoundsException ex) {

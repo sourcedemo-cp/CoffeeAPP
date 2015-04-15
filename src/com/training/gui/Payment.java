@@ -21,6 +21,7 @@ import com.training.entity.CoffeeTable;
 import com.training.service.CoffeeTableService;
 
 import java.awt.FlowLayout;
+@SuppressWarnings("serial")
 @Component("payment")
 public class Payment extends JFrame implements ActionListener{
 
