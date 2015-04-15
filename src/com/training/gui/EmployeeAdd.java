@@ -167,7 +167,7 @@ public class EmployeeAdd extends JDialog {
 				}else{
 					JOptionPane.showMessageDialog(null, "Saved Failure!!");
 				}
-				employeeManagement.AllData();
+				employeeManagement.fillAllData();
 				dispose();
 			}
 		});

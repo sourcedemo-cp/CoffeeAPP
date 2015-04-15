@@ -72,7 +72,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				employeeManagement.setVisible(true);
 				employeeManagement.setLocationRelativeTo(null);
-				employeeManagement.AllData();
+				employeeManagement.fillAllData();
 				dispose();
 			}
 		});

@@ -183,7 +183,7 @@ public class EmployeeEdit extends JDialog {
 						}else{
 							JOptionPane.showMessageDialog(null, "Updated Failure!!");
 						}
-						employeeManagement.AllData();
+						employeeManagement.fillAllData();
 						dispose();
 					}
 				});

@@ -1,40 +1,33 @@
 package com.training.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.training.entity.Employee;
 import com.training.service.EmployeeService;
 import com.training.service.EmployeeServiceImpl;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-
 @Component("employeeManagement")
 public class EmployeeManagement extends JFrame {
+
+	private static final long serialVersionUID = -7604799192448396715L;
 
 	private int id;
 
@@ -72,7 +65,7 @@ public class EmployeeManagement extends JFrame {
 
 	private JTable table1;
 
-	public int AllData() {
+	public int fillAllData() {
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("ID");
 		dtm.addColumn("Name");
@@ -149,7 +142,7 @@ public class EmployeeManagement extends JFrame {
 					} else {
 						JOptionPane.showMessageDialog(null, "Fail!!!");
 					}
-					AllData();
+					fillAllData();
 				} catch (ArrayIndexOutOfBoundsException ex) {
 					JOptionPane.showMessageDialog(null, "Please select a row to delete!");
 				}
