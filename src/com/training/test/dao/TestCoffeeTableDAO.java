@@ -8,8 +8,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.training.dao.CoffeeTableDAO;
 import com.training.entity.CoffeeTable;
 
-public class TestCoffeeDAO {
-	public static void main(String[] args) {
+public class TestCoffeeTableDAO {
+	
+	public static void main(String[] args) {	
+		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		CoffeeTableDAO coffeeTableDAO = (CoffeeTableDAO) context.getBean("coffeeTableDAOImpl");
 		
