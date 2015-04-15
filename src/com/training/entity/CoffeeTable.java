@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tables")
 public class CoffeeTable {
+	
 	@Id
 	@GeneratedValue
 	@Column(name="TABLE_ID")
@@ -30,8 +31,6 @@ public class CoffeeTable {
 	@OneToMany(mappedBy="coffeeTable", fetch=FetchType.LAZY)
 	private List<Order> orders;
 	
-	
-
 	public List<Order> getOrders() {
 		return orders;
 	}
@@ -71,6 +70,5 @@ public class CoffeeTable {
 	public void setTablePosition(String tablePosition) {
 		this.tablePosition = tablePosition;
 	}
-	
 	
 }

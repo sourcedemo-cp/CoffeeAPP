@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="employee")
 public class Employee {
+	
 	@Id
 	@GeneratedValue
 	@Column(name="EMPLOYEE_ID")
@@ -29,11 +30,12 @@ public class Employee {
 	@Column(name="EMPLOYEE_TELEPHONE")
 	private String employeeTelephone;
 	
-	
 	@Column(name="EMPLOYEE_SEX")
 	private String employeeSex;
+	
 	@Column(name="USER_NAME")
 	private String userName;
+	
 	@Column(name="PASSWORD")
 	private String password;
 

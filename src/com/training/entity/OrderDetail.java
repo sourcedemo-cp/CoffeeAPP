@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="orderdetail")
 public class OrderDetail {
+	
 	@Id
 	@GeneratedValue
 	@Column(name="ORDERDETAIL_ID")
@@ -61,6 +62,5 @@ public class OrderDetail {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	
 	
 }

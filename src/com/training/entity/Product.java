@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="product")
 public class Product {
+	
 	@Id
 	@GeneratedValue
 	@Column(name="PRODUCT_ID")
@@ -74,6 +75,5 @@ public class Product {
 	public String toString() {
 		return this.productName;
 	}
-	
 	
 }
