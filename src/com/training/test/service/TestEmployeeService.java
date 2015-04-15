@@ -10,13 +10,14 @@ import com.training.service.EmployeeService;
 
 public class TestEmployeeService {
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		EmployeeService employeeService = (EmployeeService) context.getBean("employeeServiceImpl");
 		List<Employee> employees = employeeService.getAllEmployee();
-		if(null != employees){
+		if(null != employees) {
 			System.out.println("OK");
 			System.out.println(employees.size());
-		}else {
+		} else {
 			System.out.println("Null");
 		}
 		
