@@ -1,30 +1,29 @@
 package com.training.gui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.toedter.calendar.JTextFieldDateEditor;
 import com.training.entity.Employee;
 import com.training.service.EmployeeService;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 @Component("EmployeeEdit")
 public class EmployeeEdit extends JDialog {
 	
+	private static final long serialVersionUID = -8449708040996123151L;
+
 	@Autowired
 	private EmployeeManagement employeeManagement;
 	
@@ -166,6 +165,7 @@ public class EmployeeEdit extends JDialog {
 			{
 				JButton button = new JButton("Update");
 				button.addActionListener(new ActionListener() {
+					@SuppressWarnings("deprecation")
 					public void actionPerformed(ActionEvent e) {
 						int id = Integer.parseInt(textID.getText());
 						Employee employee = employeeService.findEmployeeById(id);
