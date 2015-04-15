@@ -24,7 +24,9 @@ import com.training.entity.Employee;
 import com.training.service.EmployeeService;
 @Component("employeeAdd")
 public class EmployeeAdd extends JDialog {
-	
+
+	private static final long serialVersionUID = -8009824742286634014L;
+
 	@Autowired
 	private EmployeeManagement employeeManagement;
 	
@@ -151,6 +153,7 @@ public class EmployeeAdd extends JDialog {
 		
 		JButton button_2 = new JButton("Save");
 		button_2.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				Employee employee = new Employee();
 				employee.setEmployeeName(textName.getText());
