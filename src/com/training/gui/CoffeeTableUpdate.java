@@ -2,33 +2,26 @@ package com.training.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import java.awt.GridBagLayout;
-
-import javax.swing.JLabel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.training.entity.CoffeeTable;
 import com.training.service.CoffeeTableService;
-
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 @Component("coffeeTableUpdate")
 public class CoffeeTableUpdate extends JFrame {
 
+	private static final long serialVersionUID = -3108484766123465700L;
 	private JPanel contentPane;
 	static JTextField txfID;
 	static JTextField txfName;
