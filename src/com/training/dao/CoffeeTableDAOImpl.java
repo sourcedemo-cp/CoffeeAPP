@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.training.entity.CoffeeTable;
-import com.training.entity.OrderDetail;
 
 @Repository
 public class CoffeeTableDAOImpl implements CoffeeTableDAO {
@@ -62,11 +61,11 @@ public class CoffeeTableDAOImpl implements CoffeeTableDAO {
 		return 1;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<CoffeeTable> getCoffeeTalbeByID(int id) {
 		String sql = "SELECT tb FROM CoffeeTable tb JOIN FETCH tb.orders o JOIN o.orderDetails od JOIN od.product pr WHERE tb.tableId = :id";
-		//String sql = "SELECT tb FROM CoffeeTable tb JOIN FETCH tb.orders o";
 		List<CoffeeTable> coffeeTables = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
 		return coffeeTables;
 	}

@@ -35,13 +35,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	@Transactional
 	public boolean deleteEmployeeById(Employee employee) {
-		//Employee employee = (Employee) sessionFactory.getCurrentSession().load(Employee.class, id);
 		if (null != employee) {
 			sessionFactory.getCurrentSession().delete(employee);
 			return true;
 		}
 		return false;
-
 	}
 
 	@Override

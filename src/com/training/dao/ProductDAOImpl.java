@@ -33,7 +33,6 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	@Transactional
 	public boolean deleteProductById(Product product) {
-		//Product product = (Product) sessionFactory.getCurrentSession().load(Product.class, id);
 		if (null != product) {
 			sessionFactory.getCurrentSession().delete(product);
 			return true;

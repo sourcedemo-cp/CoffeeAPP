@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.training.entity.Order;
-import com.training.entity.OrderDetail;
 
 @Repository
 public class OrderDAOImpl implements OrderDAO{
@@ -30,17 +29,17 @@ public class OrderDAOImpl implements OrderDAO{
 		sessionFactory.getCurrentSession().save(order);
 		return true;
 	}
+	
 	@Override
 	@Transactional
 	public boolean deleteOrderByID(Order order) {
-		// TODO Auto-generated method stub
-		//Order order = (Order) sessionFactory.getCurrentSession().load(Order.class, id);
 		if(order != null){
 			sessionFactory.getCurrentSession().delete(order);
 			return true;
 		}
 		return false;
 	}
+	
 	@Override
 	@Transactional
 	public int updateOrder(Order order) {
@@ -48,20 +47,24 @@ public class OrderDAOImpl implements OrderDAO{
 		return 1;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public Order findOrderByID(int id) {
 		List<Order> orders = sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o WHERE o.orderId = :id").setParameter("id", id).list();
 		return orders.size()>0?orders.get(0):null;
 	}
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<Order> findOrderByCoffeeTableId(int id) {
-
 		String sql = "SELECT o FROM Order o JOIN o.coffeeTable t WHERE t.tableId = :id ORDER BY o.datePayment DESC";
 		List<Order> orders = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
 		return orders;
 	}
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<Order> getOrderByTableID(int id) {
@@ -69,6 +72,7 @@ public class OrderDAOImpl implements OrderDAO{
 		List<Order> orderDetails = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
 		return orderDetails;
 	}
+	
 	@Override
 	@Transactional
 	public boolean deleteOrderById(int id) {
@@ -79,7 +83,5 @@ public class OrderDAOImpl implements OrderDAO{
 		}
 		return false;
 	}
-
-	
 
 }

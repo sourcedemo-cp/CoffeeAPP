@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.training.entity.CoffeeTable;
 import com.training.entity.OrderDetail;
 
 @Repository
@@ -59,6 +58,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
 		return orderDetails.size()>0?orderDetails.get(0):null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<OrderDetail> getOrderDetailByID(int id) {
@@ -76,6 +76,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
 		return orderDetails;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	@Transactional
 	public long sumOfOrderDetailByOrderId(int id) {
