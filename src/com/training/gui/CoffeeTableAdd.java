@@ -23,9 +23,6 @@ import com.training.service.CoffeeTableService;
 @Component("coffeeTableAdd")
 public class CoffeeTableAdd extends JFrame {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Autowired

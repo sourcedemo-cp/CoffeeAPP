@@ -1,33 +1,27 @@
 package com.training.gui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.training.entity.Employee;
 import com.training.entity.Product;
-import com.training.service.EmployeeService;
 import com.training.service.ProductService;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JTable;
 
 @Component("productAdd")
 public class ProductAdd extends JDialog {
+
+	private static final long serialVersionUID = -7457390207916091609L;
 
 	@Autowired
 	private ProductService productService;
@@ -43,7 +37,6 @@ public class ProductAdd extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-
 	public static void main(String[] args) {
 		try {
 			ProductAdd dialog = new ProductAdd();
