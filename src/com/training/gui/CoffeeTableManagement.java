@@ -27,9 +27,6 @@ import com.training.service.CoffeeTableService;
 @Component("coffeeTableManagement")
 public class CoffeeTableManagement extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private int id;
@@ -107,6 +104,7 @@ public class CoffeeTableManagement extends JFrame {
 
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.addActionListener(new ActionListener() {
+			@SuppressWarnings("static-access")
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int id = (int) table_management.getValueAt(table_management.getSelectedRow(), 0);
