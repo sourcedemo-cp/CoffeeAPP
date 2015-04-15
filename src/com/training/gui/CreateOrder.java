@@ -1,15 +1,29 @@
 package com.training.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
-import org.springframework.asm.commons.TryCatchBlockSorter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,39 +34,17 @@ import com.training.service.OrderDetailService;
 import com.training.service.OrderService;
 import com.training.service.ProductService;
 
-import javax.swing.JButton;
-
-import java.awt.GridBagLayout;
-
-import javax.swing.JLabel;
-
-import java.awt.GridBagConstraints;
-
-import javax.swing.JComboBox;
-
-import java.awt.Insets;
-
-import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
-
-import java.awt.Color;
-import java.util.List;
-
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 @Component("createOrder")
 public class CreateOrder extends JFrame {
+
+	private static final long serialVersionUID = 6372870975820166134L;
 
 	static int orderId;
 
 	private JPanel contentPane;
 	private JTextField txtQuantity;
 	private JTable table;
+	@SuppressWarnings("rawtypes")
 	private JComboBox comboBox;
 	private JLabel lblSum;
 
@@ -87,6 +79,7 @@ public class CreateOrder extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("rawtypes")
 	public CreateOrder() {
 		setTitle("Order Management");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -264,6 +257,7 @@ public class CreateOrder extends JFrame {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void fillData() {
 
