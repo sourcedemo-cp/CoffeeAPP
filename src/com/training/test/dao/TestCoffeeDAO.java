@@ -12,18 +12,17 @@ public class TestCoffeeDAO {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		CoffeeTableDAO coffeeTableDAO = (CoffeeTableDAO) context.getBean("coffeeTableDAOImpl");
-		List<CoffeeTable> coffeeTables = coffeeTableDAO.getCoffeeTalbeByID(1);
+		
+		List<CoffeeTable> coffeeTables = coffeeTableDAO.getCoffeeTableByID(1);
 		if(null != coffeeTables){
-//			for (CoffeeTable coffeeTable : coffeeTables) {
-//				System.out.println(coffeeTable.getOrders().get(0).getEmployee()a);
-//			}
+			System.out.println(coffeeTables.size());
 		}
 		
-//		CoffeeTable coffeeTable = coffeeTableDAO.findCoffeeTableById(1);
-//		if(coffeeTable != null){
-//			System.out.println("OK");
-//		}else{
-//			System.out.println("null");
-//		}
+		CoffeeTable coffeeTable = coffeeTableDAO.findCoffeeTableById(1);
+		if(coffeeTable != null){
+			System.out.println("OK");
+		}else{
+			System.out.println("null");
+		}
 	}
 }

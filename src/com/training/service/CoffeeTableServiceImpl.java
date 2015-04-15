@@ -43,8 +43,8 @@ public class CoffeeTableServiceImpl implements CoffeeTableService{
 	}
 
 	@Override
-	public List<CoffeeTable> getCoffeeTalbeByID(int id) {
-		coffeeTableDAO.getCoffeeTalbeByID(id);
+	public List<CoffeeTable> getCoffeeTableByID(int id) {
+		coffeeTableDAO.getCoffeeTableByID(id);
 		return null;
 	}
 

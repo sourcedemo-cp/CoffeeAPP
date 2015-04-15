@@ -64,7 +64,7 @@ public class CoffeeTableDAOImpl implements CoffeeTableDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<CoffeeTable> getCoffeeTalbeByID(int id) {
+	public List<CoffeeTable> getCoffeeTableByID(int id) {
 		String sql = "SELECT tb FROM CoffeeTable tb JOIN FETCH tb.orders o JOIN o.orderDetails od JOIN od.product pr WHERE tb.tableId = :id";
 		List<CoffeeTable> coffeeTables = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id).list();
 		return coffeeTables;
