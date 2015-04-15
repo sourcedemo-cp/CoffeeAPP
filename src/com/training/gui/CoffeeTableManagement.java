@@ -132,7 +132,7 @@ public class CoffeeTableManagement extends JFrame {
 						JOptionPane.showMessageDialog(null, "Fail!!!");
 					}
 
-					AllData();
+					fillAllData();
 				} catch (ArrayIndexOutOfBoundsException ex) {
 					JOptionPane.showMessageDialog(null,
 							"Please select a row to delete");
@@ -173,7 +173,7 @@ public class CoffeeTableManagement extends JFrame {
 		scrollPane.setViewportView(table_management);
 	}
 
-	protected int AllData() {
+	protected int fillAllData() {
 
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("ID");

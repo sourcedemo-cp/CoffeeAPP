@@ -84,7 +84,7 @@ public class Menu extends JFrame {
 				coffeeTableManagement.setVisible(true);
 				coffeeTableManagement.setLocationRelativeTo(null);
 				
-				coffeeTableManagement.AllData();
+				coffeeTableManagement.fillAllData();
 				dispose();
 			}
 		});

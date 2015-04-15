@@ -101,7 +101,7 @@ public class CoffeeTableUpdate extends JFrame {
 				}else {
 					JOptionPane.showMessageDialog(null, "Edit fail!");
 				}
-				coffeeTableManagement.AllData();
+				coffeeTableManagement.fillAllData();
 				
 				dispose();
 			}

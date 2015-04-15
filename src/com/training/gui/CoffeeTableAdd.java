@@ -95,7 +95,7 @@ public class CoffeeTableAdd extends JFrame {
 				}else{
 					JOptionPane.showMessageDialog(null, "Saved Failure!!");
 				}
-				coffeeTableManagement.AllData();
+				coffeeTableManagement.fillAllData();
 				dispose();
 			}
 		});
