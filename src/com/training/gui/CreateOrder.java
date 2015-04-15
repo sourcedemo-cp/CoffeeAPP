@@ -154,7 +154,6 @@ public class CreateOrder extends JFrame {
 					OrderDetail orderDetail = new OrderDetail();
 					orderDetail.setQuantity(Integer.valueOf(txtQuantity
 							.getText()));
-
 					System.out.println("---------------------------"
 							+ CreateOrder.orderId);
 					Order order = orderService

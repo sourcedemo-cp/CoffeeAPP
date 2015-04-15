@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="CoffeeAPP" basedir="." default="default">
-
-	<property name="build.dir" location="../build" />
-	<property name="classes.dir" value="${build.dir}/classes" />
-	<property name="lib.dir" location="../lib" />
-	<property name="jar.dir" value="${build.dir}/jar" />
+<project name="CoffeeAPP" basedir="." default="jar">
+	<property name="source.dir" value="../src" />
+	<property name="lib.dir" value="../lib" />
+	<property name="class.dir" value="../bin" />
+	<property name="jar.dir" value="../dist" />
+	<property name="jar.file" value="${jar.dir}/${ant.project.name}.jar" />
 	<property name="main-class" value="com.training.Main" />
 
-	<path id="classpath">
-		<pathelement location="${build.dir}" />
-		<fileset dir="${lib.dir}" />
+	<path id="libraries.path">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
 	</path>
 
-	<target name="clean">
-		<delete dir="${build.dir}" />
+	<target name="clean" description="delete old files">
+		<delete dir="${class.dir}" />
+		<delete dir="${jar.dir}" />
 	</target>
 
-	<target name="compile">
-		<mkdir dir="${build.dir}/classes" />
-		<javac srcdir="../src" destdir="${build.dir}/classes" classpathref="classpath" encoding="UTF8" debug="on" deprecation="on" />
-		<copy todir="${build.dir}/classes" overwrite="true">
+	<target name="compile" description="build class files" depends="clean">
+		<mkdir dir="${class.dir}" />
+		<javac srcdir="${source.dir}" destdir="${class.dir}" encoding="UTF8" debug="on" deprecation="on">
+			<classpath refid="libraries.path" />
+		</javac>
+		<copy todir="${class.dir}" overwrite="true">
 			<fileset dir="../resources">
 				<include name="**/*.xml" />
 			</fileset>
 		</copy>
-		<copy todir="${build.dir}/classes" overwrite="true">
+		<copy todir="${class.dir}" overwrite="true">
 			<fileset dir="../resources">
 				<include name="**/*.properties" />
 			</fileset>
 		</copy>
-		<copy todir="${build.dir}/classes" overwrite="true">
+		<copy todir="${class.dir}" overwrite="true">
 			<fileset dir="../hibernate">
 				<include name="**/*.xml" />
 			</fileset>
@@ -38,22 +42,25 @@
 
 	<target name="jar" depends="compile">
 		<mkdir dir="${jar.dir}" />
-		<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+		<mkdir dir="${class.dir}/${lib.dir}" />
+		<copy todir="${class.dir}/${lib.dir}" flatten="true">
+			<path refid="libraries.path" />
+		</copy>
+
+		<manifestclasspath property="manifest.classpath" jarfile="${jar.file}">
+			<classpath refid="libraries.path" />
+		</manifestclasspath>
+
+		<jar destfile="${jar.file}" basedir="${class.dir}">
 			<manifest>
 				<attribute name="Main-Class" value="${main-class}" />
+				<attribute name="Class-Path" value="${manifest.classpath}" />
 			</manifest>
 		</jar>
 	</target>
 
-
-	<target name="run" depends="compile">
-		<java classname="com.training.Main" fork="true">
-			<classpath>
-				<path refid="classpath" />
-				<pathelement location="${build.dir}/classes" />
-			</classpath>
-		</java>
+	<target name="run" depends="jar">
+		<java jar="${jar.dir}/${ant.project.name}.jar" fork="true" />
 	</target>
-	
-	<target name="default" depends="clean, compile, run" />
+
 </project>

@@ -39,6 +39,8 @@ import javax.swing.JTable;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Component("orderGui")
@@ -108,9 +110,32 @@ public class OrderGui extends JFrame {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+//<<<<<<< HEAD
 				//List<Order> orders = orderService.getOrderByTableID(OrderGui.banId);
 				//Order order1 = (Order) orderService.getOrderByTableID(OrderGui.banId);
-				orderGuiAdd.setVisible(true);
+				//orderGuiAdd.setVisible(true);
+//=======
+//				orderAdd.setVisible(true);
+//				orderAdd.setLocationRelativeTo(null);
+//				dispose();
+				try{
+					
+					CoffeeTable coffeeTable = coffeeTableService.findCoffeeTableById(banId);
+					Order order = new Order();
+					order.setPay(false);
+					Date date = new Date();
+					order.setDatePayment(new Timestamp(date.getTime()));
+					order.setCoffeeTable(coffeeTable);
+					if(orderService.addOrder(order)==true){
+						JOptionPane.showMessageDialog(null, "Add successful!");
+					}else {
+						JOptionPane.showMessageDialog(null, "Fail!");
+					}
+					fillDataTable();					
+				}catch(Exception ex){
+					
+				}
+//>>>>>>> branch 'master' of https://github.com/sourcedemo-cp/CoffeeAPP.git
 			}
 		});
 		panel_2.add(btnAdd);
@@ -214,11 +239,11 @@ public class OrderGui extends JFrame {
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("ID");
 		dtm.addColumn("Date");
-		dtm.addColumn("Payed");
+		dtm.addColumn("Payment");
 
 		for (Order order : orders) {
 			dtm.addRow(new Object[] { order.getOrderId(),
-					order.getDatePayment(), order.getPay() });
+					order.getDatePayment(), order.getPay() == true ? "Paid" : "UnPaid" });
 		}
 		table.setModel(dtm);
 
