@@ -59,9 +59,6 @@ public class OrderGui extends JFrame {
 
 	@Autowired
 	private CreateOrder createOrder;
-
-	@Autowired
-	private OrderGuiAdd orderGuiAdd;
 	
 	private JPanel contentPane;
 	private JTable table;
