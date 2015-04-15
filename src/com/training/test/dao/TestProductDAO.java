@@ -10,13 +10,14 @@ import com.training.entity.Product;
 
 public class TestProductDAO {
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		ProductDAO productDAO = (ProductDAO) context.getBean("productDAOImpl");
 		List<Product> products = productDAO.getAllProduct();
-		if(null != products){
+		if(null != products) {
 			System.out.println("OK");
 			System.out.println(products.size());
-		}else {
+		} else {
 			System.out.println("Null");
 		}
 	}

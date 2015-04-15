@@ -11,10 +11,11 @@ import com.training.entity.Order;
 public class TestOrderDAO {
 
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		OrderDAO orderDAO = (OrderDAO) context.getBean("orderDAOImpl");
 		List<Order> orders = orderDAO.getOrderByTableID(1);
-		if(null != orders){
+		if(null != orders) {
 			System.out.println("OK");
 		}
 	}

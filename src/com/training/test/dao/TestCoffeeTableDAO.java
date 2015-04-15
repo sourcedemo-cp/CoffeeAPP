@@ -16,14 +16,14 @@ public class TestCoffeeTableDAO {
 		CoffeeTableDAO coffeeTableDAO = (CoffeeTableDAO) context.getBean("coffeeTableDAOImpl");
 		
 		List<CoffeeTable> coffeeTables = coffeeTableDAO.getCoffeeTableByID(1);
-		if(null != coffeeTables){
+		if(null != coffeeTables) {
 			System.out.println(coffeeTables.size());
 		}
 		
 		CoffeeTable coffeeTable = coffeeTableDAO.findCoffeeTableById(1);
-		if(coffeeTable != null){
+		if(coffeeTable != null) {
 			System.out.println("OK");
-		}else{
+		} else {
 			System.out.println("null");
 		}
 	}

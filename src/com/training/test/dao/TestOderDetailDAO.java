@@ -11,11 +11,11 @@ import com.training.entity.OrderDetail;
 public class TestOderDetailDAO {
 
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		OrderDetailDAO orderDetailDAO = (OrderDetailDAO) context.getBean("orderDetailDAOImpl");
 		List<OrderDetail> orderDetails = orderDetailDAO.findOrderDetailByOrderId(1);
-		if(null != orderDetails){
-			
+		if(null != orderDetails) {
 			System.out.println(orderDetails.size());
 			for (OrderDetail orderDetail : orderDetails) {
 				System.out.println(orderDetail.getOrderDetailId());
@@ -23,11 +23,9 @@ public class TestOderDetailDAO {
 				System.out.println(orderDetail.getProduct().getProductPrice());
 				System.out.println(orderDetail.getQuantity());
 			}
-			
-		}else{
+		} else {
 			System.out.println("Empty list");
 		}
-		
 		System.out.println(orderDetailDAO.sumOfOrderDetailByOrderId(1));
 	}
 

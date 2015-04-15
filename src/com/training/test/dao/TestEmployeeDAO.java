@@ -9,31 +9,28 @@ import com.training.dao.EmployeeDAO;
 import com.training.entity.Employee;
 
 public class TestEmployeeDAO {
+	
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		EmployeeDAO employeeDAO = (EmployeeDAO) context.getBean("employeeDAOImpl");
 		List<Employee> employees = employeeDAO.getAllEmployee();
-		if(null != employees){
+		if(null != employees) {
 			System.out.println("OK");
 			System.out.println(employees.size());
-		}else {
+		} else {
 			System.out.println("null");
 		}
 		
 		Employee employee = employeeDAO.findEmployeeById(1);
-		if(null != employee){
+		if(null != employee) {
 			System.out.println("OK");
-		}else{
+		} else {
 			System.out.println("null");
 		}
 		
-		//Test for delete by Id
-		
-//		employeeDAO.deleteEmployeeById(1);
-//		System.out.println("Go to db to review");
-		
 		// Test check for login
-		System.out.println(employeeDAO.isEmployeeByUsernamePassword("cuongn", "123456"));
-		
+		System.out.println(employeeDAO.isEmployeeByUsernamePassword("cuongn", "123456"));	
 	}
+	
 }
