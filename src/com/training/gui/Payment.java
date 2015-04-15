@@ -77,27 +77,24 @@ public class Payment extends JFrame implements ActionListener{
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		JPanel panel_table = new JPanel();
+		contentPane.add(panel_table, BorderLayout.CENTER);
+		panel_table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_Bans = new JButton[coffeeTables.size()];
 		for(int i = 0;i < coffeeTables.size();i ++){
 			btn_Bans[i] = new JButton(coffeeTables.get(i).getTableName());
-			panel.add(btn_Bans[i]);
+			panel_table.add(btn_Bans[i]);
 			btn_Bans[i].addActionListener(this);
 		}
 
-		JPanel panel1 = new JPanel();
-		getContentPane().add(panel1, BorderLayout.SOUTH);
-		panel1.setLayout(new BorderLayout(0, 0));
-		panel1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		JPanel panel_button = new JPanel();
+		getContentPane().add(panel_button, BorderLayout.SOUTH);
+		panel_button.setLayout(new BorderLayout(0, 0));
+		panel_button.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JPanel panel2 = new JPanel();
-		panel1.add(panel2, BorderLayout.WEST);
-		
-		JPanel panel_1 = new JPanel();
-		panel1.add(panel_1, BorderLayout.EAST);
-		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel panel_out = new JPanel();
+		panel_button.add(panel_out, BorderLayout.EAST);
+		panel_out.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton = new JButton("Back");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -107,7 +104,7 @@ public class Payment extends JFrame implements ActionListener{
 				dispose();
 			}
 		});
-		panel_1.add(btnNewButton);
+		panel_out.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Exit");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -115,7 +112,7 @@ public class Payment extends JFrame implements ActionListener{
 				System.exit(0);
 			}
 		});
-		panel_1.add(btnNewButton_1);
+		panel_out.add(btnNewButton_1);
 	}
 	
 	@Override

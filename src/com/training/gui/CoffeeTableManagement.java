@@ -1,11 +1,22 @@
 package com.training.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,29 +24,13 @@ import org.springframework.stereotype.Component;
 import com.training.entity.CoffeeTable;
 import com.training.service.CoffeeTableService;
 
-import javax.swing.JButton;
-
-import java.awt.FlowLayout;
-
-import javax.swing.BoxLayout;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-
-import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
-
-import java.awt.Color;
-import java.util.List;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 @Component("coffeeTableManagement")
 public class CoffeeTableManagement extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private int id;
 
@@ -59,8 +54,8 @@ public class CoffeeTableManagement extends JFrame {
 	@Autowired
 	private CoffeeTableUpdate coffeeTableUpdate;
 
-	private JPanel contentPane;
-	private JTable table1;
+	private JPanel contentPane_tableManagement;
+	private JTable table_management;
 
 	/**
 	 * Launch the application.
@@ -71,8 +66,8 @@ public class CoffeeTableManagement extends JFrame {
 				try {
 					CoffeeTableManagement frame = new CoffeeTableManagement();
 					frame.setVisible(true);
-					frame.table1.repaint();
-					frame.table1.revalidate();
+					frame.table_management.repaint();
+					frame.table_management.revalidate();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -87,40 +82,37 @@ public class CoffeeTableManagement extends JFrame {
 		setTitle("Table Management");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 562, 322);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane_tableManagement = new JPanel();
+		contentPane_tableManagement.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane_tableManagement);
+		contentPane_tableManagement.setLayout(new BorderLayout(0, 0));
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		contentPane.add(panel, BorderLayout.SOUTH);
+		contentPane_tableManagement.add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_1 = new JPanel();
-		panel.add(panel_1, BorderLayout.WEST);
-		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel panel_update = new JPanel();
+		panel.add(panel_update, BorderLayout.WEST);
+		panel_update.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		JButton btnNewButton = new JButton("Add");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				coffeeTableAdd.setVisible(true);
 				coffeeTableAdd.setLocationRelativeTo(null);
 			}
 		});
-		panel_1.add(btnNewButton);
+		panel_update.add(btnAdd);
 
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
-					CoffeeTable coffeeTable = coffeeTableService
-							.findCoffeeTableById(id);
-					coffeeTableUpdate.txfID.setText(coffeeTable.getTableId()
-							+ "");
-					coffeeTableUpdate.txfName.setText(coffeeTable
-							.getTableName() + "");
+					int id = (int) table_management.getValueAt(table_management.getSelectedRow(), 0);
+					CoffeeTable coffeeTable = coffeeTableService.findCoffeeTableById(id);
+					coffeeTableUpdate.txfID.setText(coffeeTable.getTableId()+ "");
+					coffeeTableUpdate.txfName.setText(coffeeTable.getTableName() + "");
 					coffeeTableUpdate.setVisible(true);
 					coffeeTableUpdate.setLocationRelativeTo(null);
 				} catch (ArrayIndexOutOfBoundsException ex) {
@@ -128,13 +120,13 @@ public class CoffeeTableManagement extends JFrame {
 				}
 			}
 		});
-		panel_1.add(btnEdit);
+		panel_update.add(btnEdit);
 
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int id = (int) table1.getValueAt(table1.getSelectedRow(), 0);
+					int id = (int) table_management.getValueAt(table_management.getSelectedRow(), 0);
 					if (coffeeTableService.deleteCoffeeTableById(id) == true) {
 						JOptionPane.showMessageDialog(null,
 								"Deleted successful!!!");
@@ -149,38 +141,38 @@ public class CoffeeTableManagement extends JFrame {
 				}
 			}
 		});
-		panel_1.add(btnDelete);
+		panel_update.add(btnDelete);
 
-		JPanel panel_2 = new JPanel();
-		panel.add(panel_2, BorderLayout.EAST);
+		JPanel panel_out = new JPanel();
+		panel.add(panel_out, BorderLayout.EAST);
 
-		JButton btnNewButton_1 = new JButton("Back");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				menu.setVisible(true);
 				menu.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
-		panel_2.add(btnNewButton_1);
+		panel_out.add(btnBack);
 
-		JButton btnNewButton_2 = new JButton("Exit");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 			}
 		});
-		panel_2.add(btnNewButton_2);
+		panel_out.add(btnExit);
 
-		JPanel panel_3 = new JPanel();
-		contentPane.add(panel_3, BorderLayout.CENTER);
-		panel_3.setLayout(new BorderLayout(0, 0));
+		JPanel panel_scroll = new JPanel();
+		contentPane_tableManagement.add(panel_scroll, BorderLayout.CENTER);
+		panel_scroll.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
-		panel_3.add(scrollPane, BorderLayout.CENTER);
+		panel_scroll.add(scrollPane, BorderLayout.CENTER);
 
-		table1 = new JTable();
-		scrollPane.setViewportView(table1);
+		table_management = new JTable();
+		scrollPane.setViewportView(table_management);
 	}
 
 	protected int AllData() {
@@ -195,9 +187,9 @@ public class CoffeeTableManagement extends JFrame {
 					coffeeTable.getTableName() });
 		}
 
-		table1.setModel(dtm);
-		table1.repaint();
-		table1.revalidate();
+		table_management.setModel(dtm);
+		table_management.repaint();
+		table_management.revalidate();
 		return 1;
 	}
 

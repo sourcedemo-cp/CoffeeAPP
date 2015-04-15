@@ -64,7 +64,7 @@ public class EmployeeManagement extends JFrame {
 	@Autowired
 	private ProductManagement productManagement;
 
-	private JPanel contentPane;
+	private JPanel contentPane_empManagement;
 
 	/**
 	 * Launch the application.
@@ -115,28 +115,28 @@ public class EmployeeManagement extends JFrame {
 		setTitle("Employee management");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 834, 323);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane_empManagement = new JPanel();
+		contentPane_empManagement.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane_empManagement);
+		contentPane_empManagement.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		contentPane.add(panel, BorderLayout.SOUTH);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel panel_button = new JPanel();
+		panel_button.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane_empManagement.add(panel_button, BorderLayout.SOUTH);
+		panel_button.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_1 = new JPanel();
-		panel.add(panel_1, BorderLayout.WEST);
-		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel panel_Update = new JPanel();
+		panel_button.add(panel_Update, BorderLayout.WEST);
+		panel_Update.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton btnNew = new JButton("Add");
-		panel_1.add(btnNew);
+		panel_Update.add(btnNew);
 
 		JButton btnUpdate = new JButton("Update");
-		panel_1.add(btnUpdate);
+		panel_Update.add(btnUpdate);
 
 		JButton btnDelete = new JButton("Delete");
-		panel_1.add(btnDelete);
+		panel_Update.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -184,21 +184,21 @@ public class EmployeeManagement extends JFrame {
 			}
 		});
 
-		JPanel panel_2 = new JPanel();
-		panel.add(panel_2, BorderLayout.EAST);
+		JPanel panel_out = new JPanel();
+		panel_button.add(panel_out, BorderLayout.EAST);
 
 		JButton btnNewButton = new JButton("Back");
-		panel_2.add(btnNewButton);
+		panel_out.add(btnNewButton);
 
 		JButton btnExit = new JButton("Exit");
-		panel_2.add(btnExit);
+		panel_out.add(btnExit);
 
-		JPanel panel_3 = new JPanel();
-		contentPane.add(panel_3, BorderLayout.CENTER);
-		panel_3.setLayout(new BorderLayout(0, 0));
+		JPanel panel_show = new JPanel();
+		contentPane_empManagement.add(panel_show, BorderLayout.CENTER);
+		panel_show.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
-		panel_3.add(scrollPane, BorderLayout.CENTER);
+		panel_show.add(scrollPane, BorderLayout.CENTER);
 
 		table1 = new JTable();
 

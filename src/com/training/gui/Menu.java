@@ -34,7 +34,7 @@ public class Menu extends JFrame {
 	@Autowired
 	private Payment payment;
 	
-	private JPanel contentPane;
+	private JPanel contentPane_menu;
 	private JTable table;
 
 	/**
@@ -111,13 +111,13 @@ public class Menu extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmPayment);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane_menu = new JPanel();
+		contentPane_menu.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane_menu);
+		contentPane_menu.setLayout(null);
 		
 		table = new JTable();
 		table.setBounds(10, 11, 414, 219);
-		contentPane.add(table);
+		contentPane_menu.add(table);
 	}
 }

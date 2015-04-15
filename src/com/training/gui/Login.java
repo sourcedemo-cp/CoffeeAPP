@@ -28,7 +28,7 @@ public class Login extends JFrame {
 	@Autowired
 	private Menu menu;
 	
-	private JPanel contentPane;
+	private JPanel contentPane_login;
 	private JTextField textUsername;
 	private JPasswordField textPassword;
 
@@ -56,27 +56,27 @@ public class Login extends JFrame {
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 253);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane_login = new JPanel();
+		contentPane_login.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane_login);
+		contentPane_login.setLayout(null);
 		
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblLogin.setBounds(189, 11, 57, 23);
-		contentPane.add(lblLogin);
+		contentPane_login.add(lblLogin);
 		
 		JLabel lblId = new JLabel("User name: ");
 		lblId.setBounds(101, 60, 78, 14);
-		contentPane.add(lblId);
+		contentPane_login.add(lblId);
 		
 		JLabel lblPassword = new JLabel("Password: ");
 		lblPassword.setBounds(101, 106, 65, 14);
-		contentPane.add(lblPassword);
+		contentPane_login.add(lblPassword);
 		
 		textUsername = new JTextField();
 		textUsername.setBounds(189, 57, 126, 20);
-		contentPane.add(textUsername);
+		contentPane_login.add(textUsername);
 		textUsername.setColumns(10);
 		
 		JButton btnOk = new JButton("OK");
@@ -95,7 +95,7 @@ public class Login extends JFrame {
 			}
 		});
 		btnOk.setBounds(145, 154, 74, 23);
-		contentPane.add(btnOk);
+		contentPane_login.add(btnOk);
 		
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
@@ -104,11 +104,11 @@ public class Login extends JFrame {
 			}
 		});
 		btnCancel.setBounds(255, 154, 74, 23);
-		contentPane.add(btnCancel);
+		contentPane_login.add(btnCancel);
 		
 		textPassword = new JPasswordField();
 		textPassword.setBounds(189, 103, 126, 20);
-		contentPane.add(textPassword);
+		contentPane_login.add(textPassword);
 		
 		getRootPane().setDefaultButton(btnOk);
 	}
