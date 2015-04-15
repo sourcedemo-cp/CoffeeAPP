@@ -230,11 +230,11 @@ public class OrderGui extends JFrame {
 		DefaultTableModel dtm = new DefaultTableModel();
 		dtm.addColumn("ID");
 		dtm.addColumn("Date");
-		dtm.addColumn("Payed");
+		dtm.addColumn("Payment");
 
 		for (Order order : orders) {
 			dtm.addRow(new Object[] { order.getOrderId(),
-					order.getDatePayment(), order.getPay() });
+					order.getDatePayment(), order.getPay() == true ? "Paid" : "UnPaid" });
 		}
 		table.setModel(dtm);
 
