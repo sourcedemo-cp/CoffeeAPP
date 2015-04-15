@@ -65,38 +65,38 @@ public class ProductUpdate extends JFrame {
 		setContentPane(contentPane_productUpdate);
 		contentPane_productUpdate.setLayout(null);
 
-		JPanel panel_infomation = new JPanel();
-		panel_infomation.setLayout(null);
-		panel_infomation.setBorder(new EmptyBorder(5, 5, 5, 5));
-		panel_infomation.setBounds(36, 29, 359, 180);
-		contentPane_productUpdate.add(panel_infomation);
+		JPanel panelInfomation = new JPanel();
+		panelInfomation.setLayout(null);
+		panelInfomation.setBorder(new EmptyBorder(5, 5, 5, 5));
+		panelInfomation.setBounds(36, 29, 359, 180);
+		contentPane_productUpdate.add(panelInfomation);
 
 		JLabel label = new JLabel("Product name:");
 		label.setBounds(29, 34, 89, 14);
-		panel_infomation.add(label);
+		panelInfomation.add(label);
 
-		JLabel label_1 = new JLabel("Quantity:");
-		label_1.setBounds(53, 59, 65, 14);
-		panel_infomation.add(label_1);
+		JLabel labelQuantity = new JLabel("Quantity:");
+		labelQuantity.setBounds(53, 59, 65, 14);
+		panelInfomation.add(labelQuantity);
 
-		JLabel label_2 = new JLabel("Price:");
-		label_2.setBounds(72, 84, 46, 14);
-		panel_infomation.add(label_2);
+		JLabel labelPrice = new JLabel("Price:");
+		labelPrice.setBounds(72, 84, 46, 14);
+		panelInfomation.add(labelPrice);
 
 		txtName = new JTextField();
 		txtName.setColumns(10);
 		txtName.setBounds(118, 31, 181, 20);
-		panel_infomation.add(txtName);
+		panelInfomation.add(txtName);
 
 		txtQuantity = new JTextField();
 		txtQuantity.setColumns(10);
 		txtQuantity.setBounds(118, 56, 181, 20);
-		panel_infomation.add(txtQuantity);
+		panelInfomation.add(txtQuantity);
 
 		txtPrice = new JTextField();
 		txtPrice.setColumns(10);
 		txtPrice.setBounds(118, 81, 181, 20);
-		panel_infomation.add(txtPrice);
+		panelInfomation.add(txtPrice);
 
 		JButton btnNew = new JButton("Clear");
 		btnNew.addActionListener(new ActionListener() {
@@ -107,7 +107,7 @@ public class ProductUpdate extends JFrame {
 			}
 		});
 		btnNew.setBounds(29, 141, 89, 23);
-		panel_infomation.add(btnNew);
+		panelInfomation.add(btnNew);
 
 		JButton btnOK = new JButton("OK");
 		btnOK.addActionListener(new ActionListener() {
@@ -134,7 +134,7 @@ public class ProductUpdate extends JFrame {
 			}
 		});
 		btnOK.setBounds(140, 141, 89, 23);
-		panel_infomation.add(btnOK);
+		panelInfomation.add(btnOK);
 
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -144,16 +144,16 @@ public class ProductUpdate extends JFrame {
 			}
 		});
 		btnBack.setBounds(253, 141, 89, 23);
-		panel_infomation.add(btnBack);
+		panelInfomation.add(btnBack);
 
 		JLabel lblNewLabel = new JLabel("Product ID: ");
 		lblNewLabel.setBounds(29, 9, 75, 14);
-		panel_infomation.add(lblNewLabel);
+		panelInfomation.add(lblNewLabel);
 
 		textProductID = new JTextField();
 		textProductID.setEnabled(false);
 		textProductID.setBounds(118, 3, 181, 20);
-		panel_infomation.add(textProductID);
+		panelInfomation.add(textProductID);
 		textProductID.setColumns(10);
 	}
 }

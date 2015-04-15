@@ -31,7 +31,7 @@ public class CoffeeTableAdd extends JFrame {
 	@Autowired
 	private CoffeeTableManagement coffeeTableManagement;
 
-	private JPanel contentPane_TableAdd;
+	private JPanel contentPaneTableAdd;
 	private JTextField txfName;
 
 	/**
@@ -57,23 +57,23 @@ public class CoffeeTableAdd extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 379, 163);
-		contentPane_TableAdd = new JPanel();
-		contentPane_TableAdd.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane_TableAdd);
-		contentPane_TableAdd.setLayout(new BorderLayout(0, 0));
+		contentPaneTableAdd = new JPanel();
+		contentPaneTableAdd.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPaneTableAdd);
+		contentPaneTableAdd.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel_tableAdd = new JPanel();
-		panel_tableAdd.setBorder(new LineBorder(new Color(0, 0, 0)));
-		contentPane_TableAdd.add(panel_tableAdd, BorderLayout.CENTER);
-		panel_tableAdd.setLayout(null);
+		JPanel panelTableAdd = new JPanel();
+		panelTableAdd.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPaneTableAdd.add(panelTableAdd, BorderLayout.CENTER);
+		panelTableAdd.setLayout(null);
 		
 		JLabel lblName = new JLabel("Name:");
 		lblName.setBounds(24, 14, 46, 14);
-		panel_tableAdd.add(lblName);
+		panelTableAdd.add(lblName);
 		
 		txfName = new JTextField();
 		txfName.setBounds(80, 11, 263, 20);
-		panel_tableAdd.add(txfName);
+		panelTableAdd.add(txfName);
 		txfName.setColumns(10);
 		
 		JButton btnClear = new JButton("Clear");
@@ -83,7 +83,7 @@ public class CoffeeTableAdd extends JFrame {
 			}
 		});
 		btnClear.setBounds(11, 80, 89, 23);
-		panel_tableAdd.add(btnClear);
+		panelTableAdd.add(btnClear);
 		
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
@@ -100,7 +100,7 @@ public class CoffeeTableAdd extends JFrame {
 			}
 		});
 		btnOk.setBounds(110, 80, 89, 23);
-		panel_tableAdd.add(btnOk);
+		panelTableAdd.add(btnOk);
 		
 		JButton btnNewButton = new JButton("Cancel");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -109,6 +109,6 @@ public class CoffeeTableAdd extends JFrame {
 			}
 		});
 		btnNewButton.setBounds(254, 80, 89, 23);
-		panel_tableAdd.add(btnNewButton);
+		panelTableAdd.add(btnNewButton);
 	}
 }

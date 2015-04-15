@@ -34,7 +34,7 @@ public class Menu extends JFrame {
 	@Autowired
 	private Payment payment;
 	
-	private JPanel contentPane_menu;
+	private JPanel contentPaneMenu;
 	private JTable table;
 
 	/**
@@ -64,8 +64,8 @@ public class Menu extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu menuBar_list = new JMenu("Management");
-		menuBar.add(menuBar_list);
+		JMenu menuBarList = new JMenu("Management");
+		menuBar.add(menuBarList);
 		
 		JMenuItem menuEmployee = new JMenuItem("Employee");
 		menuEmployee.addActionListener(new ActionListener() {
@@ -76,7 +76,7 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		menuBar_list.add(menuEmployee);
+		menuBarList.add(menuEmployee);
 		
 		JMenuItem menuTable = new JMenuItem("Table");
 		menuTable.addActionListener(new ActionListener() {
@@ -88,7 +88,7 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		menuBar_list.add(menuTable);
+		menuBarList.add(menuTable);
 		
 		JMenuItem menuProduct = new JMenuItem("Product");
 		menuProduct.addActionListener(new ActionListener() {
@@ -99,7 +99,7 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		menuBar_list.add(menuProduct);
+		menuBarList.add(menuProduct);
 		
 		JMenuItem menuPayment = new JMenuItem("Payment");
 		menuPayment.addActionListener(new ActionListener() {
@@ -110,14 +110,14 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		menuBar_list.add(menuPayment);
-		contentPane_menu = new JPanel();
-		contentPane_menu.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane_menu);
-		contentPane_menu.setLayout(null);
+		menuBarList.add(menuPayment);
+		contentPaneMenu = new JPanel();
+		contentPaneMenu.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPaneMenu);
+		contentPaneMenu.setLayout(null);
 		
 		table = new JTable();
 		table.setBounds(10, 11, 414, 219);
-		contentPane_menu.add(table);
+		contentPaneMenu.add(table);
 	}
 }

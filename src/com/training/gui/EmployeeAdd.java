@@ -68,15 +68,15 @@ public class EmployeeAdd extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel_employeeAdd = new JPanel();
-		panel_employeeAdd.setBorder(new TitledBorder(null, "Management", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		contentPanel.add(panel_employeeAdd, BorderLayout.CENTER);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{86, 249, 89, 0};
-		gbl_panel.rowHeights = new int[]{20, 26, 25, 24, 20, 20, 20, 20, 25, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel_employeeAdd.setLayout(gbl_panel);
+		JPanel panelEmployeeAdd = new JPanel();
+		panelEmployeeAdd.setBorder(new TitledBorder(null, "Management", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPanel.add(panelEmployeeAdd, BorderLayout.CENTER);
+		GridBagLayout gbl_panelEmployeeAdd = new GridBagLayout();
+		gbl_panelEmployeeAdd.columnWidths = new int[]{86, 249, 89, 0};
+		gbl_panelEmployeeAdd.rowHeights = new int[]{20, 26, 25, 24, 20, 20, 20, 20, 25, 0};
+		gbl_panelEmployeeAdd.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panelEmployeeAdd.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panelEmployeeAdd.setLayout(gbl_panelEmployeeAdd);
 		
 		JButton btnClear = new JButton("Clear");
 		btnClear.addActionListener(new ActionListener() {
@@ -96,7 +96,7 @@ public class EmployeeAdd extends JDialog {
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
 		gbc_label_1.gridx = 0;
 		gbc_label_1.gridy = 1;
-		panel_employeeAdd.add(label_1, gbc_label_1);
+		panelEmployeeAdd.add(label_1, gbc_label_1);
 		
 		textName = new JTextField();
 		textName.setColumns(10);
@@ -106,7 +106,7 @@ public class EmployeeAdd extends JDialog {
 		gbc_textName.insets = new Insets(0, 0, 5, 5);
 		gbc_textName.gridx = 1;
 		gbc_textName.gridy = 1;
-		panel_employeeAdd.add(textName, gbc_textName);
+		panelEmployeeAdd.add(textName, gbc_textName);
 		
 		JLabel label_3 = new JLabel("Address: ");
 		GridBagConstraints gbc_label_3 = new GridBagConstraints();
@@ -114,7 +114,7 @@ public class EmployeeAdd extends JDialog {
 		gbc_label_3.insets = new Insets(0, 0, 5, 5);
 		gbc_label_3.gridx = 0;
 		gbc_label_3.gridy = 2;
-		panel_employeeAdd.add(label_3, gbc_label_3);
+		panelEmployeeAdd.add(label_3, gbc_label_3);
 		
 		textAddress = new JTextField();
 		textAddress.setColumns(10);
@@ -124,7 +124,7 @@ public class EmployeeAdd extends JDialog {
 		gbc_textAddress.insets = new Insets(0, 0, 5, 5);
 		gbc_textAddress.gridx = 1;
 		gbc_textAddress.gridy = 2;
-		panel_employeeAdd.add(textAddress, gbc_textAddress);
+		panelEmployeeAdd.add(textAddress, gbc_textAddress);
 		
 		JLabel lblTelephone = new JLabel("Telephone:");
 		GridBagConstraints gbc_lblTelephone = new GridBagConstraints();
@@ -132,7 +132,7 @@ public class EmployeeAdd extends JDialog {
 		gbc_lblTelephone.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTelephone.gridx = 0;
 		gbc_lblTelephone.gridy = 3;
-		panel_employeeAdd.add(lblTelephone, gbc_lblTelephone);
+		panelEmployeeAdd.add(lblTelephone, gbc_lblTelephone);
 		
 		textTel = new JTextField();
 		textTel.setColumns(10);
@@ -142,14 +142,14 @@ public class EmployeeAdd extends JDialog {
 		gbc_textTel.insets = new Insets(0, 0, 5, 5);
 		gbc_textTel.gridx = 1;
 		gbc_textTel.gridy = 3;
-		panel_employeeAdd.add(textTel, gbc_textTel);
+		panelEmployeeAdd.add(textTel, gbc_textTel);
 		GridBagConstraints gbc_btnClear = new GridBagConstraints();
 		gbc_btnClear.anchor = GridBagConstraints.NORTH;
 		gbc_btnClear.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnClear.insets = new Insets(0, 0, 5, 0);
 		gbc_btnClear.gridx = 2;
 		gbc_btnClear.gridy = 3;
-		panel_employeeAdd.add(btnClear, gbc_btnClear);
+		panelEmployeeAdd.add(btnClear, gbc_btnClear);
 		
 		JButton button_2 = new JButton("Save");
 		button_2.addActionListener(new ActionListener() {
@@ -178,7 +178,7 @@ public class EmployeeAdd extends JDialog {
 		gbc_label_7.insets = new Insets(0, 0, 5, 5);
 		gbc_label_7.gridx = 0;
 		gbc_label_7.gridy = 4;
-		panel_employeeAdd.add(label_7, gbc_label_7);
+		panelEmployeeAdd.add(label_7, gbc_label_7);
 		
 		textSex = new JTextField();
 		textSex.setColumns(10);
@@ -188,14 +188,14 @@ public class EmployeeAdd extends JDialog {
 		gbc_textSex.insets = new Insets(0, 0, 5, 5);
 		gbc_textSex.gridx = 1;
 		gbc_textSex.gridy = 4;
-		panel_employeeAdd.add(textSex, gbc_textSex);
+		panelEmployeeAdd.add(textSex, gbc_textSex);
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.anchor = GridBagConstraints.NORTH;
 		gbc_button_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_button_2.insets = new Insets(0, 0, 5, 0);
 		gbc_button_2.gridx = 2;
 		gbc_button_2.gridy = 4;
-		panel_employeeAdd.add(button_2, gbc_button_2);
+		panelEmployeeAdd.add(button_2, gbc_button_2);
 		
 		JButton button_5 = new JButton("Exit");
 		button_5.addActionListener(new ActionListener() {
@@ -210,7 +210,7 @@ public class EmployeeAdd extends JDialog {
 		gbc_label_8.insets = new Insets(0, 0, 5, 5);
 		gbc_label_8.gridx = 0;
 		gbc_label_8.gridy = 5;
-		panel_employeeAdd.add(label_8, gbc_label_8);
+		panelEmployeeAdd.add(label_8, gbc_label_8);
 		
 		textUser = new JTextField();
 		textUser.setColumns(10);
@@ -220,14 +220,14 @@ public class EmployeeAdd extends JDialog {
 		gbc_textUser.insets = new Insets(0, 0, 5, 5);
 		gbc_textUser.gridx = 1;
 		gbc_textUser.gridy = 5;
-		panel_employeeAdd.add(textUser, gbc_textUser);
+		panelEmployeeAdd.add(textUser, gbc_textUser);
 		GridBagConstraints gbc_button_5 = new GridBagConstraints();
 		gbc_button_5.insets = new Insets(0, 0, 5, 0);
 		gbc_button_5.anchor = GridBagConstraints.SOUTH;
 		gbc_button_5.fill = GridBagConstraints.HORIZONTAL;
 		gbc_button_5.gridx = 2;
 		gbc_button_5.gridy = 5;
-		panel_employeeAdd.add(button_5, gbc_button_5);
+		panelEmployeeAdd.add(button_5, gbc_button_5);
 		
 		JLabel label_9 = new JLabel("Password: ");
 		GridBagConstraints gbc_label_9 = new GridBagConstraints();
@@ -235,7 +235,7 @@ public class EmployeeAdd extends JDialog {
 		gbc_label_9.insets = new Insets(0, 0, 5, 5);
 		gbc_label_9.gridx = 0;
 		gbc_label_9.gridy = 6;
-		panel_employeeAdd.add(label_9, gbc_label_9);
+		panelEmployeeAdd.add(label_9, gbc_label_9);
 		
 		textPass = new JPasswordField();
 		GridBagConstraints gbc_textPass = new GridBagConstraints();
@@ -244,6 +244,6 @@ public class EmployeeAdd extends JDialog {
 		gbc_textPass.insets = new Insets(0, 0, 5, 5);
 		gbc_textPass.gridx = 1;
 		gbc_textPass.gridy = 6;
-		panel_employeeAdd.add(textPass, gbc_textPass);
+		panelEmployeeAdd.add(textPass, gbc_textPass);
 	}
 }

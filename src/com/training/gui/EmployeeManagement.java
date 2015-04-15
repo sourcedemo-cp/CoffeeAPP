@@ -57,7 +57,7 @@ public class EmployeeManagement extends JFrame {
 	@Autowired
 	private ProductManagement productManagement;
 
-	private JPanel contentPane_empManagement;
+	private JPanel contentPaneEmpManagement;
 
 	/**
 	 * Launch the application.
@@ -108,28 +108,28 @@ public class EmployeeManagement extends JFrame {
 		setTitle("Employee management");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 834, 323);
-		contentPane_empManagement = new JPanel();
-		contentPane_empManagement.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane_empManagement);
-		contentPane_empManagement.setLayout(new BorderLayout(0, 0));
+		contentPaneEmpManagement = new JPanel();
+		contentPaneEmpManagement.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPaneEmpManagement);
+		contentPaneEmpManagement.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_button = new JPanel();
-		panel_button.setBorder(new LineBorder(new Color(0, 0, 0)));
-		contentPane_empManagement.add(panel_button, BorderLayout.SOUTH);
-		panel_button.setLayout(new BorderLayout(0, 0));
+		JPanel panelButton = new JPanel();
+		panelButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPaneEmpManagement.add(panelButton, BorderLayout.SOUTH);
+		panelButton.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_Update = new JPanel();
-		panel_button.add(panel_Update, BorderLayout.WEST);
-		panel_Update.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel panelUpdate = new JPanel();
+		panelButton.add(panelUpdate, BorderLayout.WEST);
+		panelUpdate.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton btnNew = new JButton("Add");
-		panel_Update.add(btnNew);
+		panelUpdate.add(btnNew);
 
 		JButton btnUpdate = new JButton("Update");
-		panel_Update.add(btnUpdate);
+		panelUpdate.add(btnUpdate);
 
 		JButton btnDelete = new JButton("Delete");
-		panel_Update.add(btnDelete);
+		panelUpdate.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -177,21 +177,21 @@ public class EmployeeManagement extends JFrame {
 			}
 		});
 
-		JPanel panel_out = new JPanel();
-		panel_button.add(panel_out, BorderLayout.EAST);
+		JPanel panelOut = new JPanel();
+		panelButton.add(panelOut, BorderLayout.EAST);
 
 		JButton btnNewButton = new JButton("Back");
-		panel_out.add(btnNewButton);
+		panelOut.add(btnNewButton);
 
 		JButton btnExit = new JButton("Exit");
-		panel_out.add(btnExit);
+		panelOut.add(btnExit);
 
-		JPanel panel_show = new JPanel();
-		contentPane_empManagement.add(panel_show, BorderLayout.CENTER);
-		panel_show.setLayout(new BorderLayout(0, 0));
+		JPanel panelShow = new JPanel();
+		contentPaneEmpManagement.add(panelShow, BorderLayout.CENTER);
+		panelShow.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
-		panel_show.add(scrollPane, BorderLayout.CENTER);
+		panelShow.add(scrollPane, BorderLayout.CENTER);
 
 		table1 = new JTable();
 

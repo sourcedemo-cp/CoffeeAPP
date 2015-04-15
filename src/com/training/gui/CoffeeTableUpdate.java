@@ -58,27 +58,27 @@ public class CoffeeTableUpdate extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel_tableUpdate = new JPanel();
-		contentPane.add(panel_tableUpdate, BorderLayout.CENTER);
-		panel_tableUpdate.setLayout(null);
+		JPanel panelTableUpdate = new JPanel();
+		contentPane.add(panelTableUpdate, BorderLayout.CENTER);
+		panelTableUpdate.setLayout(null);
 		
 		JLabel lblId = new JLabel("ID");
 		lblId.setBounds(34, 11, 46, 14);
-		panel_tableUpdate.add(lblId);
+		panelTableUpdate.add(lblId);
 		
 		txfID = new JTextField();
 		txfID.setEditable(false);
 		txfID.setBounds(110, 8, 230, 20);
-		panel_tableUpdate.add(txfID);
+		panelTableUpdate.add(txfID);
 		txfID.setColumns(10);
 		
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(34, 51, 46, 14);
-		panel_tableUpdate.add(lblName);
+		panelTableUpdate.add(lblName);
 		
 		txfName = new JTextField();
 		txfName.setBounds(110, 48, 230, 20);
-		panel_tableUpdate.add(txfName);
+		panelTableUpdate.add(txfName);
 		txfName.setColumns(10);
 		
 		JButton btnClear = new JButton("Clear");
@@ -88,7 +88,7 @@ public class CoffeeTableUpdate extends JFrame {
 			}
 		});
 		btnClear.setBounds(10, 150, 89, 23);
-		panel_tableUpdate.add(btnClear);
+		panelTableUpdate.add(btnClear);
 		
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
@@ -107,7 +107,7 @@ public class CoffeeTableUpdate extends JFrame {
 			}
 		});
 		btnOk.setBounds(110, 150, 89, 23);
-		panel_tableUpdate.add(btnOk);
+		panelTableUpdate.add(btnOk);
 		
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
@@ -116,7 +116,7 @@ public class CoffeeTableUpdate extends JFrame {
 			}
 		});
 		btnCancel.setBounds(325, 150, 89, 23);
-		panel_tableUpdate.add(btnCancel);
+		panelTableUpdate.add(btnCancel);
 	}
 
 }

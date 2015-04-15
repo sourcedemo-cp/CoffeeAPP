@@ -61,7 +61,7 @@ public class OrderGui extends JFrame {
 	@Autowired
 	private CreateOrder createOrder;
 	
-	private JPanel contentPane_order;
+	private JPanel contentPaneOrder;
 	private JTable table;
 	static JLabel lblBan;
 
@@ -88,22 +88,22 @@ public class OrderGui extends JFrame {
 		setTitle("Order");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 652, 416);
-		contentPane_order = new JPanel();
-		contentPane_order.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane_order);
-		contentPane_order.setLayout(new BorderLayout(0, 0));
+		contentPaneOrder = new JPanel();
+		contentPaneOrder.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPaneOrder);
+		contentPaneOrder.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_order = new JPanel();
-		contentPane_order.add(panel_order, BorderLayout.CENTER);
-		panel_order.setLayout(new BorderLayout(0, 0));
+		JPanel panelOrder = new JPanel();
+		contentPaneOrder.add(panelOrder, BorderLayout.CENTER);
+		panelOrder.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_button = new JPanel();
-		panel_button.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_order.add(panel_button, BorderLayout.SOUTH);
-		panel_button.setLayout(new BorderLayout(0, 0));
+		JPanel panelButton = new JPanel();
+		panelButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelOrder.add(panelButton, BorderLayout.SOUTH);
+		panelButton.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_Update = new JPanel();
-		panel_button.add(panel_Update, BorderLayout.WEST);
+		JPanel panelUpdate = new JPanel();
+		panelButton.add(panelUpdate, BorderLayout.WEST);
 
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
@@ -136,7 +136,7 @@ public class OrderGui extends JFrame {
 //>>>>>>> branch 'master' of https://github.com/sourcedemo-cp/CoffeeAPP.git
 			}
 		});
-		panel_Update.add(btnAdd);
+		panelUpdate.add(btnAdd);
 
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
@@ -157,7 +157,7 @@ public class OrderGui extends JFrame {
 				}
 			}
 		});
-		panel_Update.add(btnDelete);
+		panelUpdate.add(btnDelete);
 
 		JButton btnCreateOrder = new JButton("Create Order");
 		btnCreateOrder.addActionListener(new ActionListener() {
@@ -175,10 +175,10 @@ public class OrderGui extends JFrame {
 				}
 			}
 		});
-		panel_Update.add(btnCreateOrder);
+		panelUpdate.add(btnCreateOrder);
 
-		JPanel panel_out = new JPanel();
-		panel_button.add(panel_out, BorderLayout.EAST);
+		JPanel panelOut = new JPanel();
+		panelButton.add(panelOut, BorderLayout.EAST);
 
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -188,7 +188,7 @@ public class OrderGui extends JFrame {
 				dispose();
 			}
 		});
-		panel_out.add(btnBack);
+		panelOut.add(btnBack);
 
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
@@ -196,39 +196,39 @@ public class OrderGui extends JFrame {
 				System.exit(0);
 			}
 		});
-		panel_out.add(btnCancel);
+		panelOut.add(btnCancel);
 
-		JPanel panel_ = new JPanel();
-		panel_.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_order.add(panel_, BorderLayout.CENTER);
-		panel_.setLayout(new BorderLayout(0, 0));
+		JPanel panelShow = new JPanel();
+		panelShow.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelOrder.add(panelShow, BorderLayout.CENTER);
+		panelShow.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_infomation = new JPanel();
-		panel_infomation.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_.add(panel_infomation, BorderLayout.NORTH);
-		GridBagLayout gbl_panel_infomation = new GridBagLayout();
-		gbl_panel_infomation.columnWidths = new int[] { 1, 179, 298, 153, 0 };
-		gbl_panel_infomation.rowHeights = new int[] { 20, 0, 0 };
-		gbl_panel_infomation.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0,
+		JPanel panelInfomation = new JPanel();
+		panelInfomation.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelShow.add(panelInfomation, BorderLayout.NORTH);
+		GridBagLayout gbl_panelInfomation = new GridBagLayout();
+		gbl_panelInfomation.columnWidths = new int[] { 1, 179, 298, 153, 0 };
+		gbl_panelInfomation.rowHeights = new int[] { 20, 0, 0 };
+		gbl_panelInfomation.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0,
 				Double.MIN_VALUE };
-		gbl_panel_infomation.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
-		panel_infomation.setLayout(gbl_panel_infomation);
+		gbl_panelInfomation.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		panelInfomation.setLayout(gbl_panelInfomation);
 
 		lblBan = new JLabel();
 		GridBagConstraints gbc_lblBan = new GridBagConstraints();
 		gbc_lblBan.insets = new Insets(0, 0, 5, 5);
 		gbc_lblBan.gridx = 1;
 		gbc_lblBan.gridy = 0;
-		panel_infomation.add(lblBan, gbc_lblBan);
+		panelInfomation.add(lblBan, gbc_lblBan);
 
-		JPanel panel_showDetail = new JPanel();
-		panel_showDetail.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_.add(panel_showDetail, BorderLayout.CENTER);
-		panel_showDetail.setLayout(new BorderLayout(0, 0));
+		JPanel panelShowDetail = new JPanel();
+		panelShowDetail.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelShow.add(panelShowDetail, BorderLayout.CENTER);
+		panelShowDetail.setLayout(new BorderLayout(0, 0));
 
 		table = new JTable();
 		JScrollPane scrollPane = new JScrollPane(table);
-		panel_showDetail.add(scrollPane, BorderLayout.CENTER);
+		panelShowDetail.add(scrollPane, BorderLayout.CENTER);
 	}
 
 	@PostConstruct

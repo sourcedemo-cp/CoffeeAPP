@@ -51,7 +51,7 @@ public class CoffeeTableManagement extends JFrame {
 	@Autowired
 	private CoffeeTableUpdate coffeeTableUpdate;
 
-	private JPanel contentPane_tableManagement;
+	private JPanel contentPaneTableManagement;
 	private JTable table_management;
 
 	/**
@@ -79,19 +79,19 @@ public class CoffeeTableManagement extends JFrame {
 		setTitle("Table Management");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 562, 322);
-		contentPane_tableManagement = new JPanel();
-		contentPane_tableManagement.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane_tableManagement);
-		contentPane_tableManagement.setLayout(new BorderLayout(0, 0));
+		contentPaneTableManagement = new JPanel();
+		contentPaneTableManagement.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPaneTableManagement);
+		contentPaneTableManagement.setLayout(new BorderLayout(0, 0));
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		contentPane_tableManagement.add(panel, BorderLayout.SOUTH);
+		contentPaneTableManagement.add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_update = new JPanel();
-		panel.add(panel_update, BorderLayout.WEST);
-		panel_update.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel panelUpdate = new JPanel();
+		panel.add(panelUpdate, BorderLayout.WEST);
+		panelUpdate.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
@@ -100,7 +100,7 @@ public class CoffeeTableManagement extends JFrame {
 				coffeeTableAdd.setLocationRelativeTo(null);
 			}
 		});
-		panel_update.add(btnAdd);
+		panelUpdate.add(btnAdd);
 
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.addActionListener(new ActionListener() {
@@ -118,7 +118,7 @@ public class CoffeeTableManagement extends JFrame {
 				}
 			}
 		});
-		panel_update.add(btnEdit);
+		panelUpdate.add(btnEdit);
 
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
@@ -139,10 +139,10 @@ public class CoffeeTableManagement extends JFrame {
 				}
 			}
 		});
-		panel_update.add(btnDelete);
+		panelUpdate.add(btnDelete);
 
-		JPanel panel_out = new JPanel();
-		panel.add(panel_out, BorderLayout.EAST);
+		JPanel panelOut = new JPanel();
+		panel.add(panelOut, BorderLayout.EAST);
 
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -152,7 +152,7 @@ public class CoffeeTableManagement extends JFrame {
 				dispose();
 			}
 		});
-		panel_out.add(btnBack);
+		panelOut.add(btnBack);
 
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
@@ -160,14 +160,14 @@ public class CoffeeTableManagement extends JFrame {
 				dispose();
 			}
 		});
-		panel_out.add(btnExit);
+		panelOut.add(btnExit);
 
-		JPanel panel_scroll = new JPanel();
-		contentPane_tableManagement.add(panel_scroll, BorderLayout.CENTER);
-		panel_scroll.setLayout(new BorderLayout(0, 0));
+		JPanel panelScroll = new JPanel();
+		contentPaneTableManagement.add(panelScroll, BorderLayout.CENTER);
+		panelScroll.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
-		panel_scroll.add(scrollPane, BorderLayout.CENTER);
+		panelScroll.add(scrollPane, BorderLayout.CENTER);
 
 		table_management = new JTable();
 		scrollPane.setViewportView(table_management);

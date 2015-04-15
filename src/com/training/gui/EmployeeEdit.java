@@ -30,7 +30,7 @@ public class EmployeeEdit extends JDialog {
 	@Autowired
 	private EmployeeService employeeService;
 	
-	private final JPanel contentPanel_employeeEdit = new JPanel();
+	private final JPanel contentPanelEmployeeEdit = new JPanel();
 	static JTextField textID;
 	static JTextField textName;
 	static JTextField textAddress;
@@ -61,91 +61,91 @@ public class EmployeeEdit extends JDialog {
 		setTitle("Employee Edit");
 		setBounds(100, 100, 427, 361);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel_employeeEdit.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel_employeeEdit, BorderLayout.CENTER);
-		contentPanel_employeeEdit.setLayout(null);
+		contentPanelEmployeeEdit.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanelEmployeeEdit, BorderLayout.CENTER);
+		contentPanelEmployeeEdit.setLayout(null);
 		{
-			JPanel panel_employeeEdit = new JPanel();
-			panel_employeeEdit.setLayout(null);
-			panel_employeeEdit.setBorder(new TitledBorder(null, "Management", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panel_employeeEdit.setBounds(10, 11, 367, 296);
-			contentPanel_employeeEdit.add(panel_employeeEdit);
+			JPanel panelEmployeeEdit = new JPanel();
+			panelEmployeeEdit.setLayout(null);
+			panelEmployeeEdit.setBorder(new TitledBorder(null, "Management", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panelEmployeeEdit.setBounds(10, 11, 367, 296);
+			contentPanelEmployeeEdit.add(panelEmployeeEdit);
 			{
 				JLabel label = new JLabel("ID: ");
 				label.setBounds(22, 24, 46, 14);
-				panel_employeeEdit.add(label);
+				panelEmployeeEdit.add(label);
 			}
 			{
 				JLabel label = new JLabel("Name: ");
 				label.setBounds(22, 62, 46, 14);
-				panel_employeeEdit.add(label);
+				panelEmployeeEdit.add(label);
 			}
 			{
 				JLabel label = new JLabel("Address: ");
 				label.setBounds(22, 100, 60, 14);
-				panel_employeeEdit.add(label);
+				panelEmployeeEdit.add(label);
 			}
 			{
 				JLabel label = new JLabel("Telephone");
 				label.setBounds(22, 138, 60, 14);
-				panel_employeeEdit.add(label);
+				panelEmployeeEdit.add(label);
 			}
 			{
 				JLabel label = new JLabel("Sex: ");
 				label.setBounds(22, 176, 46, 14);
-				panel_employeeEdit.add(label);
+				panelEmployeeEdit.add(label);
 			}
 			{
 				JLabel label = new JLabel("User name: ");
 				label.setBounds(22, 214, 89, 14);
-				panel_employeeEdit.add(label);
+				panelEmployeeEdit.add(label);
 			}
 			{
 				JLabel label = new JLabel("Password: ");
 				label.setBounds(22, 252, 77, 14);
-				panel_employeeEdit.add(label);
+				panelEmployeeEdit.add(label);
 			}
 			{
 				textID = new JTextField();
 				textID.setEditable(false);
 				textID.setColumns(10);
 				textID.setBounds(95, 19, 159, 20);
-				panel_employeeEdit.add(textID);
+				panelEmployeeEdit.add(textID);
 			}
 			{
 				textName = new JTextField();
 				textName.setColumns(10);
 				textName.setBounds(95, 58, 159, 20);
-				panel_employeeEdit.add(textName);
+				panelEmployeeEdit.add(textName);
 			}
 			{
 				textAddress = new JTextField();
 				textAddress.setColumns(10);
 				textAddress.setBounds(95, 97, 159, 20);
-				panel_employeeEdit.add(textAddress);
+				panelEmployeeEdit.add(textAddress);
 			}
 			{
 				textTel = new JTextField();
 				textTel.setColumns(10);
 				textTel.setBounds(95, 136, 159, 20);
-				panel_employeeEdit.add(textTel);
+				panelEmployeeEdit.add(textTel);
 			}
 			{
 				textSex = new JTextField();
 				textSex.setColumns(10);
 				textSex.setBounds(95, 175, 159, 20);
-				panel_employeeEdit.add(textSex);
+				panelEmployeeEdit.add(textSex);
 			}
 			{
 				textUser = new JTextField();
 				textUser.setColumns(10);
 				textUser.setBounds(95, 214, 159, 20);
-				panel_employeeEdit.add(textUser);
+				panelEmployeeEdit.add(textUser);
 			}
 			{
 				textPass = new JPasswordField();
 				textPass.setBounds(95, 253, 159, 20);
-				panel_employeeEdit.add(textPass);
+				panelEmployeeEdit.add(textPass);
 			}
 			{
 				JButton btnClear = new JButton("Clear");
@@ -160,7 +160,7 @@ public class EmployeeEdit extends JDialog {
 					}
 				});
 				btnClear.setBounds(264, 54, 89, 23);
-				panel_employeeEdit.add(btnClear);
+				panelEmployeeEdit.add(btnClear);
 			}
 			{
 				JButton button = new JButton("Update");
@@ -188,7 +188,7 @@ public class EmployeeEdit extends JDialog {
 					}
 				});
 				button.setBounds(264, 91, 89, 23);
-				panel_employeeEdit.add(button);
+				panelEmployeeEdit.add(button);
 			}
 			{
 				JButton button = new JButton("Exit");
@@ -198,7 +198,7 @@ public class EmployeeEdit extends JDialog {
 					}
 				});
 				button.setBounds(264, 248, 89, 23);
-				panel_employeeEdit.add(button);
+				panelEmployeeEdit.add(button);
 			}
 		}
 	}

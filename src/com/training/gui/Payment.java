@@ -78,24 +78,24 @@ public class Payment extends JFrame implements ActionListener{
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JPanel panel_table = new JPanel();
-		contentPane.add(panel_table, BorderLayout.CENTER);
-		panel_table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		JPanel panelTable = new JPanel();
+		contentPane.add(panelTable, BorderLayout.CENTER);
+		panelTable.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_Bans = new JButton[coffeeTables.size()];
 		for(int i = 0;i < coffeeTables.size();i ++){
 			btn_Bans[i] = new JButton(coffeeTables.get(i).getTableName());
-			panel_table.add(btn_Bans[i]);
+			panelTable.add(btn_Bans[i]);
 			btn_Bans[i].addActionListener(this);
 		}
 
-		JPanel panel_button = new JPanel();
-		getContentPane().add(panel_button, BorderLayout.SOUTH);
-		panel_button.setLayout(new BorderLayout(0, 0));
-		panel_button.setBorder(new LineBorder(new Color(0, 0, 0)));
+		JPanel panelButton = new JPanel();
+		getContentPane().add(panelButton, BorderLayout.SOUTH);
+		panelButton.setLayout(new BorderLayout(0, 0));
+		panelButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JPanel panel_out = new JPanel();
-		panel_button.add(panel_out, BorderLayout.EAST);
-		panel_out.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel panelOut = new JPanel();
+		panelButton.add(panelOut, BorderLayout.EAST);
+		panelOut.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton = new JButton("Back");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -105,7 +105,7 @@ public class Payment extends JFrame implements ActionListener{
 				dispose();
 			}
 		});
-		panel_out.add(btnNewButton);
+		panelOut.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Exit");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -113,7 +113,7 @@ public class Payment extends JFrame implements ActionListener{
 				System.exit(0);
 			}
 		});
-		panel_out.add(btnNewButton_1);
+		panelOut.add(btnNewButton_1);
 	}
 	
 	@Override

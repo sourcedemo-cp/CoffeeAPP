@@ -89,14 +89,14 @@ public class CreateOrder extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_infomation = new JPanel();
-		contentPane.add(panel_infomation, BorderLayout.NORTH);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 107, 0, 0 };
-		gbl_panel.rowHeights = new int[] { 28, 20, 0 };
-		gbl_panel.columnWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
-		panel_infomation.setLayout(gbl_panel);
+		JPanel panelInfomation = new JPanel();
+		contentPane.add(panelInfomation, BorderLayout.NORTH);
+		GridBagLayout gbl_panelInfomation = new GridBagLayout();
+		gbl_panelInfomation.columnWidths = new int[] { 107, 0, 0 };
+		gbl_panelInfomation.rowHeights = new int[] { 28, 20, 0 };
+		gbl_panelInfomation.columnWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
+		gbl_panelInfomation.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		panelInfomation.setLayout(gbl_panelInfomation);
 
 		JLabel lblNewLabel = new JLabel("Product:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -104,7 +104,7 @@ public class CreateOrder extends JFrame {
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 0;
-		panel_infomation.add(lblNewLabel, gbc_lblNewLabel);
+		panelInfomation.add(lblNewLabel, gbc_lblNewLabel);
 
 		comboBox = new JComboBox();
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
@@ -112,7 +112,7 @@ public class CreateOrder extends JFrame {
 		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox.gridx = 1;
 		gbc_comboBox.gridy = 0;
-		panel_infomation.add(comboBox, gbc_comboBox);
+		panelInfomation.add(comboBox, gbc_comboBox);
 
 		JLabel lblQuantity = new JLabel("Quantity:");
 		GridBagConstraints gbc_lblQuantity = new GridBagConstraints();
@@ -120,23 +120,23 @@ public class CreateOrder extends JFrame {
 		gbc_lblQuantity.insets = new Insets(0, 0, 0, 5);
 		gbc_lblQuantity.gridx = 0;
 		gbc_lblQuantity.gridy = 1;
-		panel_infomation.add(lblQuantity, gbc_lblQuantity);
+		panelInfomation.add(lblQuantity, gbc_lblQuantity);
 
 		txtQuantity = new JTextField();
 		GridBagConstraints gbc_txtQuantity = new GridBagConstraints();
 		gbc_txtQuantity.anchor = GridBagConstraints.WEST;
 		gbc_txtQuantity.gridx = 1;
 		gbc_txtQuantity.gridy = 1;
-		panel_infomation.add(txtQuantity, gbc_txtQuantity);
+		panelInfomation.add(txtQuantity, gbc_txtQuantity);
 		txtQuantity.setColumns(10);
 
-		JPanel panel_button = new JPanel();
-		panel_button.setBorder(new LineBorder(new Color(0, 0, 0)));
-		contentPane.add(panel_button, BorderLayout.SOUTH);
-		panel_button.setLayout(new BorderLayout(0, 0));
+		JPanel panelButton = new JPanel();
+		panelButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.add(panelButton, BorderLayout.SOUTH);
+		panelButton.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_orderUpdate = new JPanel();
-		panel_button.add(panel_orderUpdate, BorderLayout.WEST);
+		JPanel panelOrderUpdate = new JPanel();
+		panelButton.add(panelOrderUpdate, BorderLayout.WEST);
 
 		JButton btnSave = new JButton("Add");
 		btnSave.addActionListener(new ActionListener() {
@@ -165,7 +165,7 @@ public class CreateOrder extends JFrame {
 				}
 			}
 		});
-		panel_orderUpdate.add(btnSave);
+		panelOrderUpdate.add(btnSave);
 
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
@@ -185,10 +185,10 @@ public class CreateOrder extends JFrame {
 				}
 			}
 		});
-		panel_orderUpdate.add(btnDelete);
+		panelOrderUpdate.add(btnDelete);
 
-		JPanel panel_out = new JPanel();
-		panel_button.add(panel_out, BorderLayout.EAST);
+		JPanel panelOut = new JPanel();
+		panelButton.add(panelOut, BorderLayout.EAST);
 
 		JButton btnNewButton = new JButton("Payment");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -210,7 +210,7 @@ public class CreateOrder extends JFrame {
 				}
 			}
 		});
-		panel_out.add(btnNewButton);
+		panelOut.add(btnNewButton);
 
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
@@ -228,32 +228,32 @@ public class CreateOrder extends JFrame {
 				orderGui.fillDataTable();
 			}
 		});
-		panel_out.add(btnBack);
-		panel_out.add(btnCancel);
+		panelOut.add(btnBack);
+		panelOut.add(btnCancel);
 
-		JPanel panel_show = new JPanel();
-		contentPane.add(panel_show, BorderLayout.CENTER);
-		panel_show.setLayout(new BorderLayout(0, 0));
+		JPanel panelShow = new JPanel();
+		contentPane.add(panelShow, BorderLayout.CENTER);
+		panelShow.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_showDetail = new JPanel();
-		panel_show.add(panel_showDetail, BorderLayout.SOUTH);
+		JPanel panelShowDetail = new JPanel();
+		panelShow.add(panelShowDetail, BorderLayout.SOUTH);
 
 		JLabel label = new JLabel("Sum:");
-		panel_showDetail.add(label);
+		panelShowDetail.add(label);
 
 		lblSum = new JLabel("");
-		panel_showDetail.add(lblSum);
+		panelShowDetail.add(lblSum);
 
 		JLabel lblVnd = new JLabel("VND");
-		panel_showDetail.add(lblVnd);
+		panelShowDetail.add(lblVnd);
 
-		JPanel panel_sum = new JPanel();
-		panel_show.add(panel_sum, BorderLayout.CENTER);
-		panel_sum.setLayout(new BorderLayout(0, 0));
+		JPanel panelSum = new JPanel();
+		panelShow.add(panelSum, BorderLayout.CENTER);
+		panelSum.setLayout(new BorderLayout(0, 0));
 
 		table = new JTable();
 		JScrollPane scrollPane = new JScrollPane(table);
-		panel_sum.add(scrollPane, BorderLayout.CENTER);
+		panelSum.add(scrollPane, BorderLayout.CENTER);
 
 	}
 
