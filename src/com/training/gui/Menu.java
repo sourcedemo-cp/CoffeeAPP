@@ -64,11 +64,11 @@ public class Menu extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Management");
-		menuBar.add(mnNewMenu);
+		JMenu menuBar_list = new JMenu("Management");
+		menuBar.add(menuBar_list);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Employee");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		JMenuItem menuEmployee = new JMenuItem("Employee");
+		menuEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				employeeManagement.setVisible(true);
 				employeeManagement.setLocationRelativeTo(null);
@@ -76,10 +76,10 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem);
+		menuBar_list.add(menuEmployee);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Table");
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+		JMenuItem menuTable = new JMenuItem("Table");
+		menuTable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				coffeeTableManagement.setVisible(true);
 				coffeeTableManagement.setLocationRelativeTo(null);
@@ -88,7 +88,7 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem_1);
+		menuBar_list.add(menuTable);
 		
 		JMenuItem menuProduct = new JMenuItem("Product");
 		menuProduct.addActionListener(new ActionListener() {
@@ -99,10 +99,10 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		mnNewMenu.add(menuProduct);
+		menuBar_list.add(menuProduct);
 		
-		JMenuItem mntmPayment = new JMenuItem("Payment");
-		mntmPayment.addActionListener(new ActionListener() {
+		JMenuItem menuPayment = new JMenuItem("Payment");
+		menuPayment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				payment.setVisible(true);
 				payment.setLocationRelativeTo(null);
@@ -110,7 +110,7 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		mnNewMenu.add(mntmPayment);
+		menuBar_list.add(menuPayment);
 		contentPane_menu = new JPanel();
 		contentPane_menu.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane_menu);
