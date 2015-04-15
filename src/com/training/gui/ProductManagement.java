@@ -53,7 +53,7 @@ public class ProductManagement extends JFrame {
 	@Autowired
 	private ProductService productService;
 
-	private JPanel contentPane;
+	private JPanel contentPane_product;
 	private JTable table1;
 	private final JScrollBar scrollBar_1 = new JScrollBar();
 
@@ -105,38 +105,38 @@ public class ProductManagement extends JFrame {
 		setTitle("Product");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 579, 293);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane_product = new JPanel();
+		contentPane_product.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane_product);
+		contentPane_product.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		JPanel panel_show = new JPanel();
+		contentPane_product.add(panel_show, BorderLayout.CENTER);
+		panel_show.setLayout(new BorderLayout(0, 0));
 
 		table1 = new JTable();
 		// panel_1.add(table1);
 
 		JScrollPane scrollPane = new JScrollPane(table1);
-		panel_1.add(scrollPane, BorderLayout.CENTER);
+		panel_show.add(scrollPane, BorderLayout.CENTER);
 
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		contentPane.add(panel, BorderLayout.SOUTH);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel panel_button = new JPanel();
+		panel_button.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane_product.add(panel_button, BorderLayout.SOUTH);
+		panel_button.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_2 = new JPanel();
-		panel.add(panel_2, BorderLayout.WEST);
-		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel panel_update = new JPanel();
+		panel_button.add(panel_update, BorderLayout.WEST);
+		panel_update.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton btnAdd = new JButton("Add");
-		panel_2.add(btnAdd);
+		panel_update.add(btnAdd);
 
 		JButton btnUpdate = new JButton("Update");
-		panel_2.add(btnUpdate);
+		panel_update.add(btnUpdate);
 
 		JButton btnDelete = new JButton("Delete");
-		panel_2.add(btnDelete);
+		panel_update.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -181,15 +181,15 @@ public class ProductManagement extends JFrame {
 			}
 		});
 
-		JPanel panel_3 = new JPanel();
-		panel.add(panel_3, BorderLayout.EAST);
-		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel panel_out = new JPanel();
+		panel_button.add(panel_out, BorderLayout.EAST);
+		panel_out.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton btnBack = new JButton("Back");
-		panel_3.add(btnBack);
+		panel_out.add(btnBack);
 
 		JButton btnExit = new JButton("Exit");
-		panel_3.add(btnExit);
+		panel_out.add(btnExit);
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
