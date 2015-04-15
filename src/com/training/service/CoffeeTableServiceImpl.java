@@ -10,6 +10,7 @@ import com.training.entity.CoffeeTable;
 
 @Service
 public class CoffeeTableServiceImpl implements CoffeeTableService{
+	
 	@Autowired
 	private CoffeeTableDAO coffeeTableDAO;
 	

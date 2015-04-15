@@ -5,6 +5,7 @@ import java.util.List;
 import com.training.entity.Order;
 
 public interface OrderService {
+	
 	public List<Order> getAllOrder();
 	public List<Order> getOrderByTableID(int id);
 	public boolean addOrder(Order order);
@@ -13,4 +14,5 @@ public interface OrderService {
 	public Order findOrderByID(int id);
 	public List<Order> findOrderByCoffeeTableId(int id);
 	public boolean deleteOrderById(int id);
+	
 }
